@@ -22,6 +22,7 @@ public class Event {
     private Date startDate ;
     private Date endDate ;
     private  int nbParticipant;
+    private String image;
 
     // bi
     @ManyToOne
@@ -31,6 +32,8 @@ public class Event {
     @ManyToOne
     private CampPlace campPlace;
 
+    @OneToMany(mappedBy = "event")
+    private List<Reservation> reservations;
 
 
 

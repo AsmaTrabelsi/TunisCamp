@@ -52,6 +52,10 @@ public class User {
     @OneToMany
     private List<Feedback> feedbacks;
 
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
+
+
 
 
 

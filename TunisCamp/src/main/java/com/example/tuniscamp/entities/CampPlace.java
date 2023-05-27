@@ -26,6 +26,10 @@ public class CampPlace {
     @OneToMany(mappedBy = "campPlace")
     private List<Feedback> feedbacks;
 
+    // uni
+    @OneToMany
+    private  List<Image> images;
+
 
 }
 

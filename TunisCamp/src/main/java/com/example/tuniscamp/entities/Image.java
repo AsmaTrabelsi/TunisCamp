@@ -1,5 +1,6 @@
 package com.example.tuniscamp.entities;
 
+
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
@@ -10,15 +11,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Reservation {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Integer idReservation;
-    private Date date;
-
-    @ManyToOne
-    private User user;
-    @ManyToOne
-    private Event event;
+    private int id;
+    private  String image;
 }
