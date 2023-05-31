@@ -6,4 +6,13 @@ import java.util.List;
 
 public interface IEventService {
 
+    List<Event>  getAllEvents();
+
+    Event getEventById(int id);
+
+    void addEvent(Event event);
+
+    void updateEvent(Event event);
+
+    void deleteEvent(int id);
 }
