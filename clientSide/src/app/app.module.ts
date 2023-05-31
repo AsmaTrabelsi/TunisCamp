@@ -7,6 +7,12 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
+import { FormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AddEventComponent } from './Components/event/add-event/add-event.component';
+
+
 
 @NgModule({
   declarations: [
@@ -14,11 +20,16 @@ import { HomeComponent } from './Components/home/home.component';
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    HomeComponent
-  ],
+    HomeComponent,
+    AddEventComponent
+    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    NgxDropzoneModule,
+    HttpClientModule  
+
   ],
   providers: [],
   bootstrap: [AppComponent]

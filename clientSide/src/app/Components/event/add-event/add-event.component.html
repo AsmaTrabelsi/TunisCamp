@@ -1,0 +1,83 @@
+<div class="mx-5 mt-4 mb-4">
+    <h4>Add New Event</h4>
+</div>
+
+<div class="card bg-light mx-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #eventForm="ngForm">
+            <div class="container-fluid row mt-2">
+                <div class="col-lg-6 col-md-12 p-5 border-end">
+                    <div class="form-group mb-3">
+                        <label for="exampleSelect1" class="form-label">Camp Place</label>
+                        <select class="form-select" id="exampleSelect1">
+                            <option *ngFor="let category of categories">{{category}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleSelect1" class="form-label">Category</label>
+                        <select class="form-select" id="exampleSelect1">
+                            <option *ngFor="let category of categories">{{category}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" class="form-control" id="startDate" name="startDate"
+                            [(ngModel)]="event.startDate" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="endDate">End Date</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="event.endDate"
+                            required>
+                    </div>
+                    <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                        <ngx-dropzone-label>
+                            <div>
+                                <img src="https://www.vhv.rs/dpng/d/189-1898171_cloud-file-upload-cloud-file-upload-icon-hd.png"
+                                    width="50" height="50">
+                                <h4>Drag an image here or browse for an image to upload.</h4>
+                            </div>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                            [file]="f" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-image-preview>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 p-5 ">
+                    <div class="form-group mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="event.name" required>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label for="description">Description</label>
+                        <textarea rows="5" class="form-control" id="description" name="description"
+                            [(ngModel)]="event.description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label ">Event Prix</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="nbParticipant">Number of Participants</label>
+                        <input type="number" class="form-control" id="nbParticipant" name="nbParticipant"
+                            [(ngModel)]="event.nbParticipant" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="image">Image</label>
+                        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="event.image"
+                            required>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-secondary">Add Event</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
