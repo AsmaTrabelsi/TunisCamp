@@ -23,6 +23,7 @@ public class Event {
     private Date endDate ;
     private  int nbParticipant;
     private String image;
+    private double price;
 
     // bi
     @ManyToOne

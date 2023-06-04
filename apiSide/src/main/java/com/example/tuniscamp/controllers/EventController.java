@@ -10,6 +10,7 @@ import java.util.List;
 
 @Tag(name = "Event Management")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequiredArgsConstructor
 @RequestMapping("event")
 public class EventController {
