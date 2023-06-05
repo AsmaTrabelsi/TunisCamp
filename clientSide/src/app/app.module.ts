@@ -11,6 +11,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import {HttpClientModule } from '@angular/common/http';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
 import { EventDetailsModule } from './Components/event/event-details/event-details.module';
+import { GoogleMapComponent } from './Components/event/google-map/google-map.component';
 
 
 
@@ -22,7 +23,7 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
     NotFoundComponent,
     HomeComponent,
     AddEventComponent
-        ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

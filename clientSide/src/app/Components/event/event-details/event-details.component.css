@@ -14,12 +14,12 @@
   }
 
   .btn-primary{
-    background-color: #0C8D40;
-    border-color: #0C8D40;
+    background-color: #0DEC67;
+    border-color: #0DEC67;
     width: fit-content;
 }
 .price-text{
-  color: #0C8D40;
+  color: #0DEC67;
   font-size: 30px;
   font-weight: bold;
   padding-right: 5px;
@@ -39,7 +39,7 @@
   margin-left: 8%;
   text-align: left;
   color: #fff;
-  
+
 }
 
 .carousel-caption h1{
@@ -55,7 +55,7 @@
 .details-container{
   background-color: #0d0d0d;
   color: white;
-  min-height: 900px;
+  min-height: 850px;
 }
 
 .title-container {
@@ -110,12 +110,30 @@
   margin: 0px;
   width: 100%;
 }
+
 .images-container img{
   border-radius: 25px;
-  max-height: 430px;
+  width: 90%;
+  height: 330px;
 
 }
+@media (max-width: 500px) {
+  .images-container img{
+    height: 300px;
 
+  }
+  .title-container h1{
+    font-size: 20px;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .images-container img{
+    height: 330px;
+
+  }
+}
 .features-container{
   background-color: #0d0d0d;
   color: white;
@@ -123,32 +141,15 @@
   width: 100%;
 }
 
-.table-container {
-  display: flex;
-  justify-content: center;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  padding: 20px;
-  font-size: large;
-}
-
-th, td {
-  border: 1px solid rgb(65, 65, 65);
-  padding: 8px;
-  text-align: left;
-}
-
 .icon{
-  color:  rgb(96, 94, 94);
+  color:  white;
+  font-size: 35px;;
 }
 
 .bg-container {
   background-image: url("assets/tbarka.jpg");
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   height: 600px;
   width: 100%;
@@ -169,8 +170,15 @@ th, td {
   border-radius: 25px;
 }
 
-.relevant-container{
-  background-color: #0d0d0d;
-  color: white;
+
+ i {
+  font-size: 24px;
+  color: #ffffff;
 }
 
+
+
+.features-container img{
+  height: 150px;
+  width: 150px;
+}

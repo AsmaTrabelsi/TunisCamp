@@ -1,9 +1,14 @@
+<div class="relevant-container pt-5 pb-5">
+	<h1 class="text-center">Relevant Camping</h1>
+  <div class="container-fluid row my-4">
 
-<div class="ui-card mx-2">
-	<img [src]="imageSrc">
-	<div class="description">
-		<h3>Mountain Morning</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-		<a href="#">Read More</a>
-	</div>
-</div>
+	<div *ngFor="let eventDto of relevantEvents" class="col-lg-3 col-md-6 mb-3">
+		<div (click)="selectEvent()" class="ui-card mx-2 px-2">
+			<img [src]="eventDto.image">
+			<div class="description">
+				<h3>{{eventDto.title}}</h3>
+				<p><i class="bi bi-geo-alt-fill icon"></i> &nbsp;{{eventDto.campPlace}}</p>
+			</div>
+		</div>
+  </div>
+

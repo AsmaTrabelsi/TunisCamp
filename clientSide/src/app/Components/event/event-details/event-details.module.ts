@@ -3,21 +3,27 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from '@coreui/angular';
 import { EventDetailsComponent } from './event-details.component';
 import { AnimatedCardComponent } from '../animated-card/animated-card.component';
+import { GoogleMapComponent } from '../google-map/google-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 
 @NgModule({
   declarations: [
     EventDetailsComponent,
-    AnimatedCardComponent
+    AnimatedCardComponent,
+    GoogleMapComponent
   ],
-  
+
   imports: [
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    GoogleMapsModule
+
   ],
   exports :[
-    EventDetailsComponent
+    EventDetailsComponent,
+    GoogleMapComponent
   ]
 })
 export class EventDetailsModule { }
