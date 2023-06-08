@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import {Event} from 'app/Models/event'
 import { EventService } from 'app/Services/event.service';
-import { ImageService } from 'app/Services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-event',
@@ -12,7 +14,7 @@ import { ImageService } from 'app/Services/image.service';
 export class AddEventComponent {
   files: File[] = [];
 
-  event: Event = new Event("", "", new Date(), new Date(),0, "", 0);
+  event: Event = new Event("", "", new Date(), new Date(),0,0);
 
   categories = [
     "Music Festival Camping",
@@ -22,31 +24,39 @@ export class AddEventComponent {
     "Wildlife Camping"
   ]
 
-  constructor(private eventService: EventService,private imageService: ImageService){
+  constructor(private eventService: EventService,
+    private router : Router,
+    private sanitizer : DomSanitizer){
 
   }
 
-  addEvent(eventNgForm : NgForm) {
-    // Logic to handle form submission
-    console.log(this.event);
-    if(eventNgForm.valid == false ){
-      //||this.files.length <1
+  addEvent(eventNgForm: NgForm){
+    if (eventNgForm.valid == false || this.files.length < 1) {
+      console.log(eventNgForm.errors);
       return;
     }
-    var res = this.eventService.addEvent(this.event);
-    console.log(res);
-    this.eventService.addEvent(this.event)
-    .subscribe(
-      response => {
-        console.log('Event added successfully', response);
-        // Perform any additional actions after successful addition
+    this.eventService.addEvent(this.event, this.files[0]).subscribe(
+      reponse =>{
+        console.log('Event added successfully');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your event has been saved',
+          showConfirmButton: false,
+          timer: 2500
+        });
+        eventNgForm.resetForm();
+        this.files = [];
       },
-      error => {
-        console.error('Failed to add event', error);
-        // Handle error cases
-      });
-      
-    
+      error=>{
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to upload image',
+        });
+      }
+    );
   }
 
 
@@ -60,17 +70,6 @@ export class AddEventComponent {
 		this.files.splice(this.files.indexOf(event), 1);
 	}
 
-  async handleFileInputChange(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      try {
-        const blob: Blob = await this.imageService.fileToBlob(file);
-        console.log(blob);
-        // Further processing with the Blob object
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
 
 }
+

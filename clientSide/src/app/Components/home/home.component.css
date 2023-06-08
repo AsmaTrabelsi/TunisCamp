@@ -1,8 +1,10 @@
-
+html{
+  scroll-behavior: smooth;
+}
 .bg-container {
     background-image: url("assets/bg3.jpg");
-    background-size: cover; 
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 700px;
     width: 100%;
@@ -13,7 +15,7 @@
     font-weight: 700;
     color: white;
   }
-  
+
   .bg-container h6{
     color: white;
   }
@@ -28,3 +30,12 @@
     align-items :center;
 
   }
+.partners-container h6{
+  color: #0DEC67;
+}
+
+li{
+  color: black;
+}
+
+

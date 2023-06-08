@@ -10,7 +10,7 @@ public interface IEventService {
 
     Event getEventById(int id);
 
-    void addEvent(Event event);
+    Event addEvent(Event event);
 
     void updateEvent(Event event);
 

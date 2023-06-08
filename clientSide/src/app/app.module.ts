@@ -11,8 +11,9 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import {HttpClientModule } from '@angular/common/http';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
 import { EventDetailsModule } from './Components/event/event-details/event-details.module';
-import { GoogleMapComponent } from './Components/event/google-map/google-map.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -30,7 +31,10 @@ import { GoogleMapComponent } from './Components/event/google-map/google-map.com
     FormsModule,
     NgxDropzoneModule,
     HttpClientModule,
-    EventDetailsModule
+    EventDetailsModule,
+    BrowserAnimationsModule,
+    CarouselModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

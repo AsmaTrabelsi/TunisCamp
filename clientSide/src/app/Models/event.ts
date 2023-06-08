@@ -1,3 +1,4 @@
+
 export class Event{
 
     idEvent? : number;
@@ -6,19 +7,18 @@ export class Event{
     startDate : Date;
     endDate : Date;
     nbParticipant : number;
-    image : string;
+    image? : any;
     price: number;
 
-    constructor(name: string, des: string, startDate: Date, endDate: Date, nbP: number, img: string,price: number, id?: number) {
+    constructor(name: string, des: string, startDate: Date, endDate: Date, nbP: number,price: number, id?: number,img?: any) {
         this.idEvent = id;
         this.name = name;
         this.description = des;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.image = img;
         this.nbParticipant = nbP;
         this.price= price;
       }
-      
+
 
 }

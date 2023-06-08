@@ -1,9 +1,11 @@
 package com.example.tuniscamp.controllers;
 
 import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.services.IEventService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,19 +18,27 @@ import java.util.List;
 public class EventController {
 
     private final IEventService iEventService;
+    private final ModelMapper modelMapper;
+
     @GetMapping
     public List<Event> getAll(){
-        return iEventService.getAllEvents();
+        List<Event> events = iEventService.getAllEvents();
+        return events;
     }
 
     @GetMapping("/{id}")
     public Event get(@PathVariable int id){
-        return iEventService.getEventById(id);
+        Event event = iEventService.getEventById(id);
+        return event;
     }
     @PostMapping
-    public void add(@RequestBody Event event){
-        iEventService.addEvent(event);
+    public Event addEvent(@ModelAttribute EventDto eventDto){
+        Event event = modelMapper.map(eventDto, Event.class);
+        return iEventService.addEvent(event);
     }
+
+
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
         iEventService.deleteEvent(id);
@@ -37,6 +47,7 @@ public class EventController {
     public void update(@RequestBody Event event){
         iEventService.updateEvent(event);
     }
+
 
 
 }

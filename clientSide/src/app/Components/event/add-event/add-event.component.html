@@ -2,10 +2,10 @@
     <div class="mx-5 mt-4 mb-4">
         <h4>Add New Event</h4>
     </div>
-    
+
     <div class="card mx-5">
         <div class="card-body">
-            <form (ngSubmit)="addEvent(eventNgForm)" #eventNgForm="ngForm" #form>
+            <form enctype="multipart/form-data" (ngSubmit)="addEvent(eventNgForm)" #eventNgForm="ngForm" #form>
                 <div class="container-fluid row mt-2">
                     <div class="col-lg-6 col-md-12 p-5 border-end">
                         <div class="form-group mb-3">
@@ -20,13 +20,13 @@
                                 <option *ngFor="let category of categories">{{category}}</option>
                             </select>
                         </div>
-    
+
                         <div class="form-group mb-3">
                             <label for="startDate">Start Date</label>
                             <input type="date" class="form-control" id="startDate" name="startDate"
                                 [(ngModel)]="event.startDate" required>
                             <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
-    
+
                         </div>
                         <div class="form-group mb-3">
                             <label for="endDate">End Date</label>
@@ -34,21 +34,20 @@
                                 required>
                         </div>
                         <label class="mb-2">Add Images</label>
-                        <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                        <div class="custom-dropzone" ngx-dropzone [multiple]="false"  (change)="onSelect($event)">
                             <ngx-dropzone-label>
                                 <div>
-                                    <img src="https://www.vhv.rs/dpng/d/189-1898171_cloud-file-upload-cloud-file-upload-icon-hd.png"
-                                        width="50" height="50">
+                                  <i class="bi bi-cloud-arrow-up-fill icon"></i>
                                     <h4>Drag an image here or browse for an image to upload.</h4>
                                 </div>
                             </ngx-dropzone-label>
-                            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
-                                [file]="f" [removable]="true" (removed)="onRemove(f)">
+                            <ngx-dropzone-image-preview   ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                [file]="f"  [removable]="true" (removed)="onRemove(f)">
                                 <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
                             </ngx-dropzone-image-preview>
                         </div>
                     </div>
-    
+
                     <div class="col-lg-6 col-md-12 p-5 ">
                         <div class="form-group mb-3">
                             <label for="name">Name</label>
@@ -60,7 +59,7 @@
                                 </div>
                               </div>
                         </div>
-                    
+
                         <div class="form-group mb-3">
                             <label for="description">Description</label>
                             <textarea #descriptionRef="ngModel" rows="5" class="form-control" [ngClass]="{'is-invalid' :(descriptionRef.invalid && (descriptionRef.touched || descriptionRef.dirty))}" id="description" name="description"
@@ -92,10 +91,7 @@
                                     </div>
                                   </div>
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="image">Image</label>
-                            <input type="text" class="form-control" id="image" name="image" [(ngModel)]="event.image">
-                        </div>
+
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary" [disabled]="!form.checkValidity()" >Add Event</button>
                         </div>

@@ -23,8 +23,8 @@ public class EventService implements IEventService{
     }
 
     @Override
-    public void addEvent(Event event) {
-        eventRepository.save(event);
+    public Event addEvent(Event event) {
+        return eventRepository.save(event);
     }
 
     @Override
