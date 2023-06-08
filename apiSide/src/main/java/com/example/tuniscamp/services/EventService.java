@@ -1,10 +1,12 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.EventCategory;
 import com.example.tuniscamp.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,5 +38,11 @@ public class EventService implements IEventService{
     @Override
     public void deleteEvent(int id) {
         eventRepository.deleteById(id);
+    }
+
+    @Override
+    public List<EventCategory> getCategories() {
+        List<EventCategory> categories = Arrays.asList(EventCategory.values());
+        return categories;
     }
 }

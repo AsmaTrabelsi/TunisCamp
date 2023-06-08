@@ -1,6 +1,7 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.EventCategory;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface IEventService {
     void updateEvent(Event event);
 
     void deleteEvent(int id);
+    List<EventCategory> getCategories();
 }

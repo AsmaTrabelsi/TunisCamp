@@ -21,6 +21,7 @@ public class MapperConfig {
                     mapper.map(EventDto::getStartDate, Event::setStartDate);
                     mapper.map(EventDto::getEndDate, Event::setEndDate);
                     mapper.map(EventDto::getPrice, Event::setPrice);
+                    mapper.map(EventDto::getCategory, Event::setCategory);
                     mapper.map(EventDto::getNbParticipant, Event::setNbParticipant);
 
                     mapper.map(src -> {

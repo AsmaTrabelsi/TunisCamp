@@ -31,6 +31,8 @@ public class Event {
     @ManyToOne
     private User user ;
 
+    @Enumerated(EnumType.STRING)
+    private EventCategory category;
     // bi
     @ManyToOne
     private CampPlace campPlace;

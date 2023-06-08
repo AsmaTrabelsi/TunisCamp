@@ -1,6 +1,7 @@
 package com.example.tuniscamp.controllers;
 
 import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.EventCategory;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.services.IEventService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,6 +27,10 @@ public class EventController {
         return events;
     }
 
+    @GetMapping("/categories")
+    public List<EventCategory> getCategories(){
+        return  iEventService.getCategories();
+    }
     @GetMapping("/{id}")
     public Event get(@PathVariable int id){
         Event event = iEventService.getEventById(id);

@@ -29,7 +29,6 @@ public class CampPlace {
     @OneToMany
     private  List<Image> images;
 
-
 }
 
 

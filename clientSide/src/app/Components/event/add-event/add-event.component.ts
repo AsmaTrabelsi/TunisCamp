@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -11,30 +11,37 @@ import Swal from 'sweetalert2';
   templateUrl: './add-event.component.html',
   styleUrls: ['./add-event.component.css']
 })
-export class AddEventComponent {
+export class AddEventComponent implements OnInit{
   files: File[] = [];
+  selectedCategory : any;
+  event: Event = new Event("", "", new Date(), new Date(),0,0,"");
 
-  event: Event = new Event("", "", new Date(), new Date(),0,0);
+  categories :{value:string,label:string}[]=[];
 
-  categories = [
-    "Music Festival Camping",
-    "Adventure Camping",
-    "Family Camping",
-    "Yoga and Meditation Camping",
-    "Wildlife Camping"
-  ]
-
-  constructor(private eventService: EventService,
-    private router : Router,
-    private sanitizer : DomSanitizer){
+  constructor(private eventService: EventService){
 
   }
+  ngOnInit(): void {
+    this.eventService.getEventCategories().subscribe(
+      response =>{
+        response.forEach((element) => {
+          this.categories.push({ value: element, label: element })
+        });
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
 
   addEvent(eventNgForm: NgForm){
     if (eventNgForm.valid == false || this.files.length < 1) {
       console.log(eventNgForm.errors);
       return;
     }
+    console.log(this.selectedCategory);
+    console.log(this.event);
     this.eventService.addEvent(this.event, this.files[0]).subscribe(
       reponse =>{
         console.log('Event added successfully');
@@ -70,6 +77,12 @@ export class AddEventComponent {
 		this.files.splice(this.files.indexOf(event), 1);
 	}
 
-
+  formatCategoryName(category: string): string {
+    const formatedCategory = category.toLowerCase().replaceAll('_'," ");
+    return formatedCategory;
+  }
+  onselectecat(event :any){
+    console.log(event.target);
+  }
 }
 
