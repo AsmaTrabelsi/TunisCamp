@@ -45,4 +45,9 @@ public class EventService implements IEventService{
         List<EventCategory> categories = Arrays.asList(EventCategory.values());
         return categories;
     }
+
+    @Override
+    public List<Event> getRelevantEvent(EventCategory category) {
+        return eventRepository.findAllByCategory(category);
+    }
 }

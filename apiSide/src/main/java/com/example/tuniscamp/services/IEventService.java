@@ -17,4 +17,5 @@ public interface IEventService {
 
     void deleteEvent(int id);
     List<EventCategory> getCategories();
+    List<Event> getRelevantEvent(EventCategory category);
 }

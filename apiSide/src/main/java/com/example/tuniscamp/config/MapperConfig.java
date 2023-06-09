@@ -2,6 +2,7 @@ package com.example.tuniscamp.config;
 
 import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
+import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,13 @@ public class MapperConfig {
                             throw new RuntimeException(e);
                         }
                     }, Event::setImage);
+                });
+        modelMapper.createTypeMap(Event.class,RelevantEvent.class)
+                .addMappings(mapper ->{
+                    mapper.map(Event::getIdEvent, RelevantEvent::setIdEvent);
+                    mapper.map(Event::getName, RelevantEvent::setName);
+                    mapper.map(src->src.getCampPlace().getAddress(), RelevantEvent::setCampPlaceLocation);
+
                 });
         return modelMapper;
     }

@@ -16,7 +16,7 @@ export class AddEventComponent implements OnInit{
   selectedCategory : any;
   event: Event = new Event("", "", new Date(), new Date(),0,0,"");
 
-  categories :{value:string,label:string}[]=[];
+  categories :string[]=[];
 
   constructor(private eventService: EventService){
 
@@ -24,9 +24,8 @@ export class AddEventComponent implements OnInit{
   ngOnInit(): void {
     this.eventService.getEventCategories().subscribe(
       response =>{
-        response.forEach((element) => {
-          this.categories.push({ value: element, label: element })
-        });
+
+        this.categories = response
       },
       error =>{
         console.log(error);
@@ -81,8 +80,6 @@ export class AddEventComponent implements OnInit{
     const formatedCategory = category.toLowerCase().replaceAll('_'," ");
     return formatedCategory;
   }
-  onselectecat(event :any){
-    console.log(event.target);
-  }
+
 }
 

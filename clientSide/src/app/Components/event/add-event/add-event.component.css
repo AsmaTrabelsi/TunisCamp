@@ -16,3 +16,12 @@
  font-size: 50px;
  display: inline-block;
 }
+.container-left-side{
+  border-right: 1px solid #dee2e6;
+
+}
+@media (max-width: 1000px) {
+  .container-left-side {
+    border-right: 0px;
+  }
+}

@@ -15,20 +15,27 @@ export class EventDetailsComponent implements OnInit {
     "assets/camp2.jpg"
 
   ];
-  features : Feature[]=[
-    new Feature("Destination", "Ain Zaghouan", "bi bi-pin-map"),
-    new Feature("Age", "+13", "bi bi-person-dash"),
-    new Feature("Not allowed", "Ain Zaghouan", "bi bi-pin-map"),
-    new Feature("Destination", "Ain Zaghouan", "bi bi-pin-map"),
-  ]
+  features : Feature[]=[]
   event = new Event("Camping Night in Ain zaghouan","The Phi Phi Islands, located in Krabi province in southern Thailand, are a group of six islands known for their stunning natural beauty, crystal-clear waters, and white sandy beaches. The two main islands, Koh Phi Phi Don and Koh Phi Phi Leh, are the most popular among tourists. Koh Phi Phi Don is the larger of the two and is home to the main town and beaches,while Koh Phi Phi Leh is a smaller, uninhabited island known for its dramatic limestone cliffs and iconic Maya Bay, which was made famous by the movie “The Beach. Visitors can explore the islands by boat and enjoy activities such as snorkeling, diving, and island-hopping.",
-  new Date(),new Date(),25,899,"");
+  new Date(),new Date(),25,899,"WELL_BEING_CAMPING_BALNEAOTHERAPY_HAMMAM_SAUNA");
   slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
   date = new Date();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.features =[
+      new Feature("Category", this.formatCategoryName(this.event.category), "bi bi-tag"),
+      new Feature("Destination", "Ain Zaghouan", "bi bi-pin-map"),
+      new Feature("Age", "+13", "bi bi-person-dash"),
+      new Feature("Number of available places", this.event.nbParticipant.toString()+" Places", "bi bi-people-fill"),
+      new Feature("Start Date",this.event.startDate.toDateString(),"bi bi-calendar-heart"),
+      new Feature("Start Date",this.event.endDate.toDateString(),"bi bi-calendar-heart"),
+      new Feature("Price",this.event.price.toString()+"DT","bi bi-coin"),
+      new Feature("Organizer","Travel ToDo","bi bi-file-earmark-person-fill")
+
+
+    ]
 
     this.slides[0] = {
       src: 'assets/bg5.jpg',
@@ -56,7 +63,10 @@ export class EventDetailsComponent implements OnInit {
 
     }
   }
-
+  formatCategoryName(category: string): string {
+    const formatedCategory = category.toLowerCase().replaceAll('_'," ");
+    return formatedCategory;
+  }
 
 }
 
@@ -64,4 +74,5 @@ class Feature{
   constructor(public type :string, public description: string , public icon :string){
 
   }
+
 }
