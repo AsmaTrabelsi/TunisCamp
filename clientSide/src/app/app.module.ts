@@ -24,7 +24,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NotFoundComponent,
     HomeComponent,
     AddEventComponent
-    ],
+        ],
   imports: [
     BrowserModule,
     AppRoutingModule,

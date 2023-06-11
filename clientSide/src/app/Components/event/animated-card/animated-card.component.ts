@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventDto } from 'app/Models/eventDto';
+import { EventDto } from 'app/Models/dto/eventDto';
 
 @Component({
   selector: 'app-animated-card',

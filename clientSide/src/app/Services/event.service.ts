@@ -32,6 +32,11 @@ export class EventService {
 
   }
 
+  getRelevantEvent(){
+    return this.httpClient.get<string[]>(this.apiurl+'event/categories');
+
+  }
+
   convertEventToFormData(event: Event, file:File): FormData{
     console.log(event.category);
     const formData = new FormData();

@@ -13,11 +13,10 @@ export class EventDetailsComponent implements OnInit {
     "assets/bg3.jpg",
     "assets/tbarka.jpg",
     "assets/camp2.jpg"
-
   ];
   features : Feature[]=[]
-  event = new Event("Camping Night in Ain zaghouan","The Phi Phi Islands, located in Krabi province in southern Thailand, are a group of six islands known for their stunning natural beauty, crystal-clear waters, and white sandy beaches. The two main islands, Koh Phi Phi Don and Koh Phi Phi Leh, are the most popular among tourists. Koh Phi Phi Don is the larger of the two and is home to the main town and beaches,while Koh Phi Phi Leh is a smaller, uninhabited island known for its dramatic limestone cliffs and iconic Maya Bay, which was made famous by the movie “The Beach. Visitors can explore the islands by boat and enjoy activities such as snorkeling, diving, and island-hopping.",
-  new Date(),new Date(),25,899,"WELL_BEING_CAMPING_BALNEAOTHERAPY_HAMMAM_SAUNA");
+  event = new Event("Camping Night in Zaghouan","The Phi Phi Islands, located in Krabi province in southern Thailand, are a group of six islands known for their stunning natural beauty, crystal-clear waters, and white sandy beaches. The two main islands, Koh Phi Phi Don and Koh Phi Phi Leh, are the most popular among tourists. Koh Phi Phi Don is the larger of the two and is home to the main town and beaches,while Koh Phi Phi Leh is a smaller, uninhabited island known for its dramatic limestone cliffs and iconic Maya Bay, which was made famous by the movie “The Beach. Visitors can explore the islands by boat and enjoy activities such as snorkeling, diving, and island-hopping.",
+  new Date(),new Date(),25,199,"WELL_BEING_CAMPING_BALNEAOTHERAPY_HAMMAM_SAUNA");
   slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
   date = new Date();
 
