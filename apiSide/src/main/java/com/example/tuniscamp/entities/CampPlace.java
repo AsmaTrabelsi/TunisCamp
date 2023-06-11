@@ -16,7 +16,6 @@ public class CampPlace {
     private Integer idCampPlace;
     private String name;
     private CampPlaceCategory category;
-
     private int tel;
     private String email;
     private String address;
@@ -29,7 +28,6 @@ public class CampPlace {
     // uni
     @OneToMany
     private  List<Image> images;
-
 
 }
 
