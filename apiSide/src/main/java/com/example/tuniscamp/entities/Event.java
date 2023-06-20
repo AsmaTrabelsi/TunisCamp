@@ -22,12 +22,17 @@ public class Event {
     private Date startDate ;
     private Date endDate ;
     private  int nbParticipant;
-    private String image;
+    @Lob
+    @Column(length = 50000000)
+    private byte[] image;
+    private double price;
 
     // bi
     @ManyToOne
     private User user ;
 
+    @Enumerated(EnumType.STRING)
+    private EventCategory category;
     // bi
     @ManyToOne
     private CampPlace campPlace;
