@@ -1,11 +1,13 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.Product;
+import com.example.tuniscamp.entities.ProductCategory;
 import com.example.tuniscamp.repositories.EventRepository;
 import com.example.tuniscamp.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -23,6 +25,12 @@ public class ProductService implements IProductService{
     @Override
     public Product getProductById(int id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<ProductCategory> getCategories() {
+        List<ProductCategory> categories = Arrays.asList(ProductCategory.values());
+        return categories;
     }
 
     @Override
