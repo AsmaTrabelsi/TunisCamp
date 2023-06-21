@@ -5,6 +5,7 @@ import { EventDetailsComponent } from './event-details.component';
 import { AnimatedCardComponent } from '../animated-card/animated-card.component';
 import { GoogleMapComponent } from '../google-map/google-map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { EventListComponent } from '../event-list/event-list.component';
 
 
 
@@ -12,7 +13,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
   declarations: [
     EventDetailsComponent,
     AnimatedCardComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    EventListComponent
   ],
 
   imports: [
@@ -23,7 +25,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
   ],
   exports :[
     EventDetailsComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    EventListComponent
   ]
 })
 export class EventDetailsModule { }

@@ -14,6 +14,7 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { EventCardComponent } from './Components/event/event-card/event-card.component';
 
 
 @NgModule({
@@ -23,8 +24,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-    AddEventComponent
-        ],
+    AddEventComponent,
+    EventCardComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -173,18 +173,7 @@
     <div class="bg-position">
         <owl-carousel-o [options]="eventOptions">
           <ng-template carouselSlide *ngFor="let event of events">
-            <div class="event-card">
-              <div class="date">
-                <h3>24</h3>
-                <h4>Jun</h4>
-              </div>
-              <div class="policy-img">
-                <img src="assets/bg.png">
-              </div>
-              <h2>event title here</h2>
-              <p>here is a small description of the current event here is a small description of the current event  here is a small description of the current event here is a small description of the current event </p>
-              <a href="" class="read-more">Read More<i class="fa fa-caret-right"></i></a>
-            </div>
+            <app-event-card [event]="event"></app-event-card>
           </ng-template>
         </owl-carousel-o>
 				<div class="abt-btn my-4 text-center">
