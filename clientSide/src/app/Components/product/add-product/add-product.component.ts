@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Product } from 'src/app/Models/Product.model';
-import { productservice } from 'src/app/Services/product.service';
+import { Product } from 'app/Models/Product.model';
+import { productservice } from 'app/Services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -15,16 +15,16 @@ export class AddProductComponent implements OnInit{
 
   categories :string[]=[];
 
-  constructor(private productService: productservice){
+  constructor(private productservice: productservice){
 
   }
   ngOnInit(): void {
-    this.productService.getProductCategories().subscribe(
-      response =>{
+    this.productservice.getProductCategories().subscribe(
+      (      response: string[]) =>{
 
         this.categories = response
       },
-      error =>{
+      (      error: any) =>{
         console.log(error);
       }
     )
@@ -38,11 +38,11 @@ export class AddProductComponent implements OnInit{
     }
     console.log(this.selectedCategory);
     console.log(this.product);
-    this.productService.addProduct(this.product, this.files[0]).subscribe(
-      reponse =>{
+    this.productservice.addProduct(this.product, this.files[0]).subscribe(
+      (      reponse: any) =>{
         console.log('Product added successfully');
 
-        /*Swal.fire({
+        /* Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Your product has been saved',
@@ -55,7 +55,7 @@ export class AddProductComponent implements OnInit{
         this.files = [];
       },
 
-      error=>{
+      (      error: any)=>{
         console.log(error);
 
         /*
