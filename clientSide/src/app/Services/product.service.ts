@@ -22,11 +22,19 @@ getProductCategories(){
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'multipart/form-data');
 
-   return  this.httpClient.post(this.apiurl + 'event', this.convertEventToFormData(product,file)) ;
+   return  this.httpClient.post(this.apiurl + 'product', this.convertProductToFormData(product,file)) ;
 
   }
-  convertEventToFormData(product: Product, file: File): any {
-    throw new Error("Method not implemented.");
+  convertProductToFormData(product: Product, file: File): any {
+    const formData = new FormData();
+    formData.append('name', product.name);
+    formData.append('description', product.description);
+    formData.append('size', product.size.toString());
+    formData.append('weight', product.weight.toString());
+    formData.append('color', product.color);
+    formData.append('category', product.category.toString());
+    formData.append('image', file, file.name);
+    return formData;
   }
 
   getAllProduct(){

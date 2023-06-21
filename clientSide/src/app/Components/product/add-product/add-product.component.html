@@ -5,8 +5,7 @@
 
   <div class="card mx-5">
       <div class="card-body">
-          <form enctype="multipart/form-data" (ngSubmit)="addproduct
-          (eventNgForm)" #eventNgForm="ngForm" #form>
+          <form enctype="multipart/form-data" (ngSubmit)="addProduct(productNgForm)" #productNgForm="ngForm" #form>
               <div class="container-fluid row mt-2">
                   <div class="col-lg-6 col-md-12 p-5 container-left-side">
 
@@ -18,7 +17,7 @@
                       </div>
 
                       <label class="mb-2">Add Images</label>
-                      <div class="custom-dropzone" ngx-dropzone [multiple]="false"  (change)="onSelect($event)">
+                      <div class="custom-dropzone" ngx-dropzone (change)="onSelect($event)">
                           <ngx-dropzone-label>
                               <div>
                                 <i class="bi bi-cloud-arrow-up-fill icon"></i>
@@ -64,7 +63,7 @@
                           <div class="input-group mb-3">
                               <span class="input-group-text">$</span>
                               <input #priceRef="ngModel" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required min="1"
-                               [ngClass]="{'is-invalid' :(priceRef.invalid &&(priceRef.touched || priceRef.dirty))}" id="price" name="price" [(ngModel)]="event.price">
+                               [ngClass]="{'is-invalid' :(priceRef.invalid &&(priceRef.touched || priceRef.dirty))}" id="price" name="price" [(ngModel)]="product.price">
                               <div *ngIf="priceRef.invalid && (priceRef.touched ||priceRef.dirty)" class="invalid-feedback">
                                   <div *ngIf="priceRef.errors?.['required']">Product Price is required.
                                   </div>
@@ -83,7 +82,7 @@
                         <label for="weight">Weight</label>
                         <input  #sizeRef="ngModel" type="number" class="form-control"
                          id="weight" name="weight"
-                            [(ngModel)]="weight.size">
+                            [(ngModel)]="product.weight">
                     </div>
 
                     <div class="form-group mb-3">

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import {Event} from 'app/Models/event'
 import { EventService } from 'app/Services/event.service';
 import Swal from 'sweetalert2';
