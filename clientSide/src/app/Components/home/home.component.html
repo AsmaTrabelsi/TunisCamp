@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="bg-container d-flex flex-column justify-content-center">
+    <div class="explorer-container px-5">
+        <h1 class="animate__animated animate__slideInLeft">We Create</h1>
+        <h1 class="animate__animated animate__slideInRight">Camping Event</h1>
+        <h6 class="animate__animated animate__fadeIn">Sei alla ricerca del campeggio ideale dove trascorrere le tue vacanze in Piemonte? </h6>
+    </div>
+</div>
+
+<div class="partners-container text-center my-3">
+  <h6>Our Partner’s</h6>
+  <h1>We Work With The Best Partners</h1>
+  <div class="my-5">
+  <owl-carousel-o [options]="customOptions2">
+
+    <ng-container *ngFor="let slide of partnerLogos">
+      <ng-template carouselSlide [id]="slide">
+        <img [src]="slide" [alt]="slide" [title]="slide" style="margin-left: 20px; width: 155px;">
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>
+</div>
+
+<div>
+  <ul>
+    <li *ngFor="let event of events">{{event.name}} </li>
+  </ul>
+  <img [src]="imageData" alt="Blob Image" width="30px" height="30px">
+
+</div>
+
+
+
+
+
+

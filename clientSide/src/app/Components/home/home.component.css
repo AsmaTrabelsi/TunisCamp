@@ -1,0 +1,41 @@
+html{
+  scroll-behavior: smooth;
+}
+.bg-container {
+    background-image: url("assets/bg3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 700px;
+    width: 100%;
+  }
+
+ .bg-container h1{
+    font-size: 55px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .bg-container h6{
+    color: white;
+  }
+  .animate__fadeIn{
+    animation-duration: 4s;
+  }
+
+  .explorer-container{
+    width:100%;
+    text-align: left;
+    color: #fff;
+    align-items :center;
+
+  }
+.partners-container h6{
+  color: #0DEC67;
+}
+
+li{
+  color: black;
+}
+
+
