@@ -14,6 +14,8 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
+import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-    AddEventComponent
+    AddEventComponent,
+    AddCampPlaceComponent,
+    CampPlaceDetailsComponent
     ],
   imports: [
     BrowserModule,

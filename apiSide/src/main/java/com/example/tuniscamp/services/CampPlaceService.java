@@ -1,10 +1,14 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.CampPlace;
+import com.example.tuniscamp.entities.CampPlaceCategory;
+import com.example.tuniscamp.entities.EventCategory;
+import com.example.tuniscamp.entities.State;
 import com.example.tuniscamp.repositories.CampPlaceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -39,4 +43,17 @@ public class CampPlaceService implements ICampPlaceService {
         campPlaceRepository.deleteById(id);
 
     }
+
+
+    @Override
+    public List<CampPlaceCategory> getCategories() {
+        List<CampPlaceCategory> categories = Arrays.asList(CampPlaceCategory.values());
+        return categories;
+    }
+    @Override
+    public List<State> getState() {
+        List<State> states = Arrays.asList(State.values());
+        return states;
+    }
+
 }

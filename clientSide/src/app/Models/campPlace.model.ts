@@ -1,6 +1,6 @@
-export class campPlace {
+export class CampPlace {
 
-    idCampPlace : number;
+    idCampPlace? : number ;
     name :  string;
     category : string ;
     tel : number;
@@ -8,7 +8,7 @@ export class campPlace {
     address : string ;
     state : string;
 
-constructor(idCampPlace : number ,name: string,category: string, tel : number,email: string,address: string,state : string){
+constructor(name: string,category: string, tel : number,email: string,address: string,state : string, idCampPlace? : number){
 
     this.idCampPlace = idCampPlace;
     this.name = name;

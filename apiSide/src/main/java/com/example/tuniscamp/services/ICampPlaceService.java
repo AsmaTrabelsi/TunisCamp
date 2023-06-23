@@ -1,6 +1,6 @@
 package com.example.tuniscamp.services;
 
-import com.example.tuniscamp.entities.CampPlace;
+import com.example.tuniscamp.entities.*;
 
 import java.util.List;
 
@@ -14,4 +14,8 @@ public interface ICampPlaceService {
     void updateCampPlace(CampPlace campPlace);
 
     void deleteCampPlace(int id);
+    List<CampPlaceCategory> getCategories();
+    List<State> getState();
+
+
 }
