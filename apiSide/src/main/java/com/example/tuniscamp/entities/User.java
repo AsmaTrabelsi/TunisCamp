@@ -4,6 +4,8 @@ package com.example.tuniscamp.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,26 +14,32 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Integer idUser;
+    private Long idUser;
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
+    private String email;
+    private String profileImageUrl;
     private int tel;
     private String address;
+    private Date lastLoginDate;
+    private Date lastLoginDateDisplay;
+    private Date joinDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Enumerated(EnumType.STRING)
     private State government;
     private String taxNum;
-
-    // bi
-    @ManyToOne
-    private Role role;
+    private String[] roles; //ROLE_USER ROLE_ADMIN
+    private String[] authorities; //CRUD
+    private boolean isActive;
+    private boolean isNotLocked;
 
     // bidirectionnel
     @OneToMany(mappedBy = "user")
@@ -54,10 +62,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
-
-
-
-
-
-
 }
