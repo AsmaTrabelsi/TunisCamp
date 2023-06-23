@@ -1,0 +1,57 @@
+<div class="background-image"></div>
+<div class="container">
+  <div class="flex-container">
+    <div class="card">
+      <div class="card-header">
+        We glad to make your reservation easier
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <p class="text">
+            Start date: {{ backendDate ? backendDate.toLocaleString() : null }} <br>
+            Start time: {{ backendTime ? backendTime.toLocaleString() : null }} <br><br><br>
+            Location: {{ backendLocation }}
+          </p>
+        </div>
+        <div class="inputbox">
+          <input required type="text" [(ngModel)]="user_input" name="user_input" id="user_input">
+          <span>How many person ?</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input required type="tel" [(ngModel)]="phone_number" name="phone_number" id="phone_number" (input)="validatePhoneNumber($event)" pattern="^\+216\d{7}$" readonly>
+          <span>Phone number</span>
+          <i></i>
+        </div>
+        <div class="inputbox">
+          <input required type="text" [(ngModel)]="additional_notes" name="additional_notes" id="additional_notes">
+          <span>Additional notes</span>
+          <i></i>
+        </div>
+        <button class="button">Book</button>
+      </div>
+    </div>
+    <div class="video-container">
+      <iframe width="600" height="315" src="https://www.youtube.com/embed/WOB4Gmqv82A" title="Tabarka - طبرقة - Tunisia" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+      <div class="cards">
+          <img  src="assets/pic1.jpg">
+
+          <img src="assets/pic2.jpg">
+
+            <img src="assets/pic3.jpg">
+
+            <img src="assets/pic4.jpg">
+    </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
