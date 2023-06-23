@@ -83,9 +83,9 @@ export class AddCampPlaceComponent {
 		this.files.splice(this.files.indexOf(event), 1);
 	}
 
-  formatCategoryName(category: string): string {
-    const formatedCategory = category.toLowerCase().replaceAll('_'," ");
-    return formatedCategory;
+  formatEnumName(name: string): string {
+    const formatedName = name.toLowerCase().replaceAll('_'," ");
+    return formatedName;
   }
 
 }

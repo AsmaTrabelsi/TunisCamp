@@ -11,19 +11,17 @@
                         <div class="form-group mb-3">
                           <label for="categorySelect" class="form-label">Category</label>
                           <select class="form-select" id="categorySelect" [(ngModel)]="campPlace.category" name="category">
-                            <option *ngFor="let category of categories" [value]="category">{{ formatCategoryName(category) }}</option>
+                            <option *ngFor="let category of categories" [value]="category">{{ formatEnumName(category) }}</option>
                           </select>
                         </div>
 
-            
-                            <div class="col-lg-6 col-md-12 p-5 container-left-side">
+
                                 <div class="form-group mb-3">
                                   <label for="categorySelect" class="form-label">State</label>
                                   <select class="form-select" id="categorySelect" [(ngModel)]="campPlace.state" name="state">
-                                    <option *ngFor="let state of states" [value]="state">{{ formatCategoryName(state) }}</option>
+                                    <option *ngFor="let state of states" [value]="state">{{ formatEnumName(state) }}</option>
                                   </select>
                                 </div>
-                            </div>
 
                         <label class="mb-2">Add Images</label>
                         <div class="custom-dropzone" ngx-dropzone [multiple]="false"  (change)="onSelect($event)">
@@ -56,8 +54,7 @@
                         <div class="form-group">
                             <label class="form-label ">Tel</label>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">$</span>
-                                <input #telRef="ngModel" type="text" class="form-control"
+                              <input #telRef="ngModel" type="text" class="form-control"
                                  [ngClass]="{'is-invalid' :(telRef.invalid &&(telRef.touched || telRef.dirty))}" id="campPlace" name="campPlace" [(ngModel)]="campPlace.tel">
                                 <div *ngIf="telRef.invalid && (telRef.touched ||telRef.dirty)" class="invalid-feedback">
                                     <div *ngIf="telRef.errors?.['required']">tel is required.

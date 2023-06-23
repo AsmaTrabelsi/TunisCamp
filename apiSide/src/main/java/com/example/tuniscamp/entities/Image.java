@@ -16,5 +16,5 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private int id;
-    private  String image;
+    private  byte[] image;
 }

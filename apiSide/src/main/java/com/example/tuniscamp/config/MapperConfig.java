@@ -51,13 +51,35 @@ public class MapperConfig {
 
          modelMapper.createTypeMap(CampPlaceDto.class, CampPlace.class)
                 .addMappings(mapper -> {
-                    mapper.map(src -> {
+                    mapper.map(CampPlaceDto::getName, CampPlace::setName);
+                    mapper.map(CampPlaceDto::getEmail, CampPlace::setEmail);
+                    mapper.map(CampPlaceDto::getTel, CampPlace::setTel);
+                    mapper.map(CampPlaceDto::getAddress, CampPlace::setAddress);
+                    mapper.map(CampPlaceDto::getState, CampPlace::setState);
+                    mapper.map(CampPlaceDto::getCategory, CampPlace::setCategory);
+                    /*mapper.map(src -> {
                         try {
                             return src.getImages().getBytes();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                    }, CampPlace::setImages);
+                    },
+                     */
+                    mapper.map(src -> {
+                        List<byte[]> images = new ArrayList<>();
+                        List<MultipartFile> imageFiles = src.getImages();
+                        if (imageFiles != null) {
+                            for (MultipartFile image : imageFiles) {
+                                try {
+                                    images.add(image.getBytes());
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        }
+                        return images;},
+                    CampPlace::setImages);
+
                 });
 
                    /* mapper.map(src -> {

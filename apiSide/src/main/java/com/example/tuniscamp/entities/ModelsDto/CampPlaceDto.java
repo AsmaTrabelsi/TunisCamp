@@ -18,5 +18,5 @@ public class CampPlaceDto {
     private String address;
     private State state;
     @OneToMany
-    private  MultipartFile images;
+    private  List<MultipartFile> images;
 }

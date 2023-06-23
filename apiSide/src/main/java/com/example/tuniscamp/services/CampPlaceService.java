@@ -5,9 +5,11 @@ import com.example.tuniscamp.entities.CampPlaceCategory;
 import com.example.tuniscamp.entities.EventCategory;
 import com.example.tuniscamp.entities.State;
 import com.example.tuniscamp.repositories.CampPlaceRepository;
+import com.example.tuniscamp.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 
 public class CampPlaceService implements ICampPlaceService {
     private final CampPlaceRepository campPlaceRepository;
+    private final ImageRepository imageRepository;
     @Override
     public List<CampPlace> getAllCampPlaces() {
         return campPlaceRepository.findAll();
@@ -27,8 +30,10 @@ public class CampPlaceService implements ICampPlaceService {
     }
 
     @Override
+    @Transactional
     public void addCampPlace(CampPlace campPlace) {
-        campPlaceRepository.save(campPlace);
+        imageRepository.saveAll(campPlace.getImages());
+        campPlaceRepository.saveAndFlush(campPlace);
 
     }
 
