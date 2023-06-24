@@ -16,5 +16,7 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private int id;
+    @Lob
+    @Column(columnDefinition = "BLOB")
     private  byte[] image;
 }

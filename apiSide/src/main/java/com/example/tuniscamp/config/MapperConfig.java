@@ -1,12 +1,10 @@
 package com.example.tuniscamp.config;
 
-import com.example.tuniscamp.entities.CampPlace;
-import com.example.tuniscamp.entities.CampPlaceCategory;
-import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.*;
 import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
-import com.example.tuniscamp.entities.State;
+import org.apache.commons.io.IOUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.OneToMany;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,20 +64,8 @@ public class MapperConfig {
                         }
                     },
                      */
-                    mapper.map(src -> {
-                        List<byte[]> images = new ArrayList<>();
-                        List<MultipartFile> imageFiles = src.getImages();
-                        if (imageFiles != null) {
-                            for (MultipartFile image : imageFiles) {
-                                try {
-                                    images.add(image.getBytes());
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
-                        }
-                        return images;},
-                    CampPlace::setImages);
+
+
 
                 });
 

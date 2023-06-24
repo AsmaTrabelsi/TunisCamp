@@ -32,6 +32,7 @@ public class CampPlaceService implements ICampPlaceService {
     @Override
     @Transactional
     public void addCampPlace(CampPlace campPlace) {
+
         imageRepository.saveAll(campPlace.getImages());
         campPlaceRepository.saveAndFlush(campPlace);
 

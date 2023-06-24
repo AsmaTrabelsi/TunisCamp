@@ -45,7 +45,9 @@ export class CampPlaceService {
     formData.append('state', campPlace.state);
     //formData.append('image', files[0], files[0].name);
     for (let i = 0; i < files.length; i++) {
-      formData.append('images', files[i], files[i].name);
+      //formData.append('images', files[i], files[i].name);
+      formData.append('images[' + i + ']', files[i], files[i].name);
+
     }
     console.log(formData);
     return formData;

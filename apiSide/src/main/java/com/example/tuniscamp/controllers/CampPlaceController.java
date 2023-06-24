@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,8 +38,19 @@ public class CampPlaceController {
         iCampPlaceService.updateCampPlace(campPlace);
     }
     @PostMapping
-    public CampPlace addCampPlace(@ModelAttribute CampPlaceDto campPlaceDto){
+    public CampPlace addCampPlace(@ModelAttribute CampPlaceDto campPlaceDto)  {
         CampPlace campPlace = modelMapper.map(campPlaceDto, CampPlace.class);
+        List<Image> images = new ArrayList<Image>();
+        for(int i = 0; i<campPlaceDto.getImages().size(); i++){
+
+            try {
+                images.add(new Image(0, campPlaceDto.getImages().get(i).getBytes()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        campPlace.setImages(images);
         iCampPlaceService.addCampPlace(campPlace);
         return campPlace;
     }
