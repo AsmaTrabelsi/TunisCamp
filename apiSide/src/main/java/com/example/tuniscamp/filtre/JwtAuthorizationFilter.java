@@ -20,6 +20,7 @@ import java.util.List;
 
 import static org.springframework.http.HttpHeaders.*;
 
+@Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private JWTTokenProvider jwtTokenProvider;
