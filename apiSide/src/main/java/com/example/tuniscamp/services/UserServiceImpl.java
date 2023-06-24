@@ -38,15 +38,15 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username);
         if (user == null) {
-            LOGGER.error(NO_USER_FOUND_BY_USERNAME + username);
-            throw new UsernameNotFoundException(NO_USER_FOUND_BY_USERNAME + username);
+            LOGGER.error("NO_USER_FOUND_BY_USERNAME" + username);
+            throw new UsernameNotFoundException("NO_USER_FOUND_BY_USERNAME" + username);
         } else {
-            validateLoginAttempt(user);
+           // validateLoginAttempt(user);
             user.setLastLoginDateDisplay(user.getLastLoginDate());
             user.setLastLoginDate(new Date());
             userRepository.save(user);
             UserPrincipal userPrincipal = new UserPrincipal(user);
-            LOGGER.info(FOUND_USER_BY_USERNAME + username);
+            LOGGER.info("FOUND_USER_BY_USERNAME" + username);
             return userPrincipal;
         }
     }

@@ -15,10 +15,11 @@ import java.util.Collections;
 @SpringBootApplication
 public class TunisCampApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(TunisCampApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -32,7 +33,7 @@ public class TunisCampApplication {
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
-    }
+    }*/
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
