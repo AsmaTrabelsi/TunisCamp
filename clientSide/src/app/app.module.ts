@@ -10,11 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {HttpClientModule } from '@angular/common/http';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
-import { EventDetailsModule } from './Components/event/event-details/event-details.module';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { EventCardComponent } from './Components/event/event-card/event-card.component';
+import {EventModule} from './Components/event/event.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -23,17 +22,15 @@ import { EventCardComponent } from './Components/event/event-card/event-card.com
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
-    HomeComponent,
-    AddEventComponent,
-    EventCardComponent
-    ],
+    HomeComponent
+  ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxDropzoneModule,
     HttpClientModule,
-    EventDetailsModule,
+    EventModule,
     BrowserAnimationsModule,
     CarouselModule
 

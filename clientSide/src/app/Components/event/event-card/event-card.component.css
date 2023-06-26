@@ -1,19 +1,24 @@
 .event-card{
   background-color: #fff;
   padding: 20px;
-  margin-left: 50px;
+  margin-left: 30px;
   border-radius: 5px;
   border-bottom: 1px solid#a8a8a8;
 }
+.event-card-home{
+  margin-left: 50px;
+}
 .date{
   position: absolute;
-  top :0;
-  left: 60px;
   z-index: 2;
-  background: #fa0;
+  background: #0DEC67;
   padding: 15px 10px;
   text-align: center;
   border-radius: 0 0 4px 4px;
+}
+.date-home{
+  top :0;
+  left: 60px;
 }
 .date h3{
   color: #fff;
@@ -56,7 +61,7 @@
 }
 
 .event-card h2:hover{
-  color: #fa0;
+  color: #0DEC67;
 }
 .event-card p{
   color: #777;
@@ -79,7 +84,7 @@
   margin-left: 4px;
 }
 .read-more:hover{
-  background: #fa0;
+  background: #0DEC67;
   color: #fff;
 }
 .read-more:hover i{

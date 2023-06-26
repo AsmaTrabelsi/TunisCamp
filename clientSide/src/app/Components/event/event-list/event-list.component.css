@@ -3,4 +3,25 @@
 }
 .filter-container{
   background-color: white;
+  height: 100%;
 }
+.mat-mdc-standard-chip {
+  background-color: grey;
+
+}
+
+
+.mat-mdc-standard-chip.mat-accent.mat-mdc-chip-selected, .mat-mdc-standard-chip.mat-accent.mat-mdc-chip-highlighted {
+  --mdc-chip-elevated-container-color: #0DEC67;
+}
+.event-container{
+  position: relative;
+
+}
+.pagination-container {
+  display: flex;
+  justify-content: end;
+}
+
+
+

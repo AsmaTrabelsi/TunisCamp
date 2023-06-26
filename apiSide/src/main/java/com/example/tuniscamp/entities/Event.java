@@ -23,7 +23,7 @@ public class Event {
     private Date endDate ;
     private  int nbParticipant;
     @Lob
-    @Column(length = 50000000)
+    @Column(columnDefinition = "BLOB")
     private byte[] image;
     private double price;
 

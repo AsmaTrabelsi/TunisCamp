@@ -33,3 +33,19 @@ html{
   transform: translate(-50%,-50%);
 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.ngx-slider .ngx-slider-pointer{
+  background-color: #0DEC67 !important;
+}
+
+.ngx-slider .ngx-slider-selection{
+  background: #0DEC67 !important;
+}
+.ngx-pagination .current {
+  background: #0DEC67 !important;
+}
+

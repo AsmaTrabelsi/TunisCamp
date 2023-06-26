@@ -64,7 +64,7 @@
 }
 
 .title span {
-  color: #fa0;
+  color: #0DEC67;
 }
 /*header style*/
 .bg-container {
@@ -109,7 +109,7 @@
 }
 
 .discount {
-    background: #fa0;
+    background: #0DEC67;
     z-index: 3;
     position: relative;
     font-weight: 700;
@@ -151,7 +151,7 @@
 
 .label-green {
     padding: 5px 8px;
-    background-color: #5cb85c;
+    background-color: #fa0;
 }
 
 .image{
@@ -216,7 +216,7 @@
 }
 
 .content a:hover {
-    color: #fa0;
+    color: #0DEC67;
     text-decoration: none;
 }
 
@@ -226,7 +226,7 @@
 
 .content .money {
     font-size: 20px;
-    color: #fa0;
+    color: #0DEC67;
     font-weight: 700;
     font-style: italic;
     margin-right: 6px;
@@ -276,11 +276,11 @@
 
 }
 .service-card:hover .round{
-  background-color: #fa0;
+  background-color: #0DEC67;
   cursor: pointer;
 }
 .service-card:hover .h2{
-  color: #fa0;
+  color: #0DEC67;
   cursor: pointer;
 }
 
@@ -328,7 +328,7 @@
   font-family: 'Outfit';
   margin: 0;
   padding: 10px 0;
-  color: #ffa800;
+  color: #0DEC67;
   font-weight: 500;
   overflow-wrap: break-word;
 }
@@ -346,8 +346,8 @@
 
 .custom-btn{
   color: #fff;
-  border: 3px solid #ffa800;
-  background: #ffa800;
+  border: 3px solid #0DEC67;
+  background: #0DEC67;
   background-size: 500px;
   transition:  300ms ease-in-out;
   cursor: pointer;

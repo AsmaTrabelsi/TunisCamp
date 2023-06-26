@@ -9,5 +9,7 @@ import { Event } from 'app/Models/event';
 export class EventCardComponent {
 
   @Input() event: any;
+  @Input() isHomeComponent?: boolean;
+
 
 }
