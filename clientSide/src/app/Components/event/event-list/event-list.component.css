@@ -1,9 +1,15 @@
 *{
   background-color: #f3f7fb;
 }
-.filter-container{
+.filters{
   background-color: white;
   height: 100%;
+}
+
+.filters .filters-clear {
+  font-size: 13px;
+  float: right;
+  line-height: 22px;
 }
 .mat-mdc-standard-chip {
   background-color: grey;
@@ -18,10 +24,47 @@
   position: relative;
 
 }
+.events{
+  padding-right: 20px;
+}
 .pagination-container {
   display: flex;
   justify-content: end;
 }
 
 
+.custom-chip {
+  font-size: 16px;
+}
+.btn-secondary{
+  background-color: #fff;
+  color: #0d0d0d;
+  border-color: #0d0d0d;
+  width: 100px ;
 
+}
+.btn-secondary:hover{
+  background-color: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}
+
+.btn-primary{
+  background-color: #fff;
+  color: #0DEC67;
+  border-color: #0DEC67;
+  width: 100px;
+}
+.btn-primary:hover{
+  background-color: #0DEC67;
+  border-color: #0DEC67;
+  color: #fff;
+}
+.btn-outline-primary{
+  border: none;
+}
+.btn-outline-primary:hover{
+  background-color: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}

@@ -16,6 +16,8 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { PagingHeaderComponent } from './paging-header/paging-header.component';
 
 
 
@@ -26,7 +28,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GoogleMapComponent,
     EventListComponent,
     EventCardComponent,
-    AddEventComponent
+    AddEventComponent,
+    PagingHeaderComponent
   ],
 
   imports: [
@@ -40,7 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatSliderModule,
     NgxSliderModule,
     NgxDropzoneModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatExpansionModule
 
   ],
   exports :[
@@ -48,7 +52,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GoogleMapComponent,
     EventListComponent,
     EventCardComponent,
-    AddEventComponent
+    AddEventComponent,
   ]
 })
 export class EventModule { }

@@ -10,13 +10,12 @@ import { EventFilterDto } from 'app/Models/dto/eventFilterDto';
 })
 export class EventListComponent {
   events : any;
-  selectedDate: any;
-
   eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'));
   selectedOptions: { [id: number]: boolean } = {};
   categories :any;
+  selectedCategories: any;
+  panelOpenState = false;
   /// slider variables
-
   options: Options = {
     floor: 0,
     ceil: 500,
@@ -26,7 +25,6 @@ export class EventListComponent {
   p: number = 1;
   totalItems = 1;
   constructor(private eventServive : EventService){
-
   }
 
   ngOnInit(): void {
@@ -43,11 +41,7 @@ export class EventListComponent {
   }
 
 
-  priceChanged(event: any){
-    console.log("price changed" + event.target.value.value);
-  }
   getFilteredEvents(){
-    console.log(this.selectedDate);
 
     this.eventServive.getFilteredEvents(this.eventFilter,this.p-1, this.pageSize).subscribe(
       response =>{
@@ -89,4 +83,18 @@ onPageChange(event: any) {
   this.getFilteredEvents();
 }
 
+clearFilter(){
+  console.log("clean data");
+  this.eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'));
+  this.p = 1;
+  this.selectedCategories= [];
+  this.getFilteredEvents();
+}
+
+onSearch(){
+
+}
+onReset(){
+
+}
 }
