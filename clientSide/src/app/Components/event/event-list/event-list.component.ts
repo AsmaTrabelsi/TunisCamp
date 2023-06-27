@@ -10,7 +10,7 @@ import { EventFilterDto } from 'app/Models/dto/eventFilterDto';
 })
 export class EventListComponent {
   events : any;
-  eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'));
+  eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'),"name,asc","");
   selectedOptions: { [id: number]: boolean } = {};
   categories :any;
   selectedCategories: any;
@@ -24,6 +24,12 @@ export class EventListComponent {
   pageSize = 6;
   p: number = 1;
   totalItems = 1;
+
+  sortOptions = [
+    {name: 'Alphabetical', value: 'name,asc',icon: "sort_by_alpha"},
+    {name: 'Price: Low to high', value: 'price,asc' ,icon: "arrow_upward"},
+    {name: 'Price: High to low', value: 'price,desc', icon:"arrow_downward"},
+  ];
   constructor(private eventServive : EventService){
   }
 
@@ -85,16 +91,20 @@ onPageChange(event: any) {
 
 clearFilter(){
   console.log("clean data");
-  this.eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'));
+  this.eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'),"name,asc");
   this.p = 1;
   this.selectedCategories= [];
   this.getFilteredEvents();
 }
 
-onSearch(){
 
-}
 onReset(){
+  this.eventFilter.searchTerm ="";
+  this.getFilteredEvents();
+}
 
+selectSortOption(value : string){
+  this.eventFilter.sort = value;
+  this.getFilteredEvents();
 }
 }

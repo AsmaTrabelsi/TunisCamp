@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Event } from 'app/Models/event';
 
@@ -12,4 +13,16 @@ export class EventCardComponent {
   @Input() isHomeComponent?: boolean;
 
 
+  constructor(private datePipe: DatePipe) { }
+
+  getFormatedDay(dateString: string): string {
+    const date = new Date(dateString);
+    const formattedDate = this.datePipe.transform(date, 'dd');
+    return formattedDate || '';
+  }
+  getFormatedMonth(dateString: string): string {
+    const date = new Date(dateString);
+    const formattedDate = this.datePipe.transform(date, 'MMM');
+    return formattedDate || '';
+  }
 }

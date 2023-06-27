@@ -18,6 +18,7 @@ public interface IEventService {
             Double maxPrice,
             Date startDate,
             Date endDate,
+            String search,
             Pageable pageable);
     Event getEventById(int id);
 

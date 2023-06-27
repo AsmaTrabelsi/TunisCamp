@@ -42,6 +42,8 @@ export class EventService {
     params = params.append('endDate', formatDate(eventFilterDto.endDate, 'yyyy-MM-dd', 'en-US'));
     params = params.append('page', page.toString());
     params = params.append('size', size.toString());
+    params = params.append('sort', eventFilterDto.sort);
+    params = params.append('search', eventFilterDto.searchTerm);
 
     return this.httpClient.get<Page<Event>>(this.apiurl + 'event/filteredEvents', { params });
   }

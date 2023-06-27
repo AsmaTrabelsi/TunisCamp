@@ -6,6 +6,7 @@ import com.example.tuniscamp.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class EventService implements IEventService{
 
     @Override
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        return eventRepository.findTop10ByOrderByStartDateDesc();
     }
 
     public Page<Event> getFilteredEvents(
@@ -29,8 +30,16 @@ public class EventService implements IEventService{
             Double maxPrice,
             Date startDate,
             Date endDate,
+            String search,
             Pageable pageable) {
-        return eventRepository.findByCategoryInAndPriceBetweenAndStartDateBetween(categories, minPrice, maxPrice, startDate, endDate, pageable);
+        return eventRepository.findByCategoryInAndPriceBetweenAndStartDateBetweenWithSearch(
+                categories,
+                minPrice,
+                maxPrice,
+                startDate,
+                endDate,
+                search,
+                pageable);
     }
 
 
@@ -65,4 +74,7 @@ public class EventService implements IEventService{
     public List<Event> getRelevantEvent(EventCategory category) {
         return eventRepository.findAllByCategory(category);
     }
+
+
+
 }

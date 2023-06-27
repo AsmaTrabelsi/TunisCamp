@@ -44,12 +44,9 @@ export class HomeComponent  implements OnInit {
         console.log(reponse);
 
         this.events = reponse;
-        console.log(this.events[0].image);
-        this.imageData = 'data:image/jpeg;base64,' + this.events[2].image;
-
       },
       error=>{
-        console.log("eroor"+error);
+        console.log("error"+error);
       }
     )
   }

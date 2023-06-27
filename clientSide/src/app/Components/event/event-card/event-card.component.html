@@ -1,7 +1,7 @@
 <div class="event-card" [ngClass]="{'event-card-home': isHomeComponent}">
   <div class="date" [ngClass]="{'date-home': isHomeComponent}">
-    <h3>24</h3>
-    <h4>Jun</h4>
+    <h3>{{getFormatedDay(event.startDate)}}</h3>
+    <h4>{{getFormatedMonth(event.startDate)}}</h4>
   </div>
   <div class="event-img">
     <img [src]="'data:image/jpeg;base64,' + event.image" alt="event.name">

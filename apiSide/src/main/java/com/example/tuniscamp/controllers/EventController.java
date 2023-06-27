@@ -8,6 +8,7 @@ import com.example.tuniscamp.services.IEventService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
@@ -80,13 +81,16 @@ public class EventController {
             @RequestParam(required = false, defaultValue = "2020-01-01") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
             @RequestParam(required = false, defaultValue = "2050-12-12") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "6") int size
+            @RequestParam(defaultValue = "6") int size,
+            @RequestParam(required = false,defaultValue = "id,asc") String sort,
+            @RequestParam(required = false,defaultValue = "") String search
+
     ) {
         if (categories == null) {
             categories = Arrays.asList(EventCategory.values());
         }
 
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, getSort(sort));
 
         return iEventService.getFilteredEvents(
                 categories,
@@ -94,9 +98,15 @@ public class EventController {
                 maxPrice,
                 startDate,
                 endDate,
+                search,
                 pageable
         );
     }
-
+    private Sort getSort(String sort) {
+        String[] sortParams = sort.split(",");
+        String property = sortParams[0];
+        String direction = sortParams[1];
+        return Sort.by(Sort.Direction.fromString(direction), property);
+    }
 
 }
