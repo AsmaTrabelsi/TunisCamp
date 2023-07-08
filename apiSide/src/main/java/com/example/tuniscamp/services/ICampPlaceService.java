@@ -16,6 +16,7 @@ public interface ICampPlaceService {
     void deleteCampPlace(int id);
     List<CampPlaceCategory> getCategories();
     List<State> getState();
+    List<CampPlace> getCampPlaceByCategory(CampPlaceCategory category);
 
 
 }

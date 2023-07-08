@@ -17,6 +17,9 @@ public class CampPlaceDto {
     private String email;
     private String address;
     private State state;
+    private String description;
+    private Double longitude ;
+    private Double latitude;
     @OneToMany
     private  List<MultipartFile> images;
 }

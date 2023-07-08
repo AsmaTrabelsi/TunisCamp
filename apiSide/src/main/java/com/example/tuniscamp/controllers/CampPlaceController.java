@@ -62,4 +62,9 @@ public class CampPlaceController {
         public List<State> getState(){
         return  iCampPlaceService.getState();
     }
+    @GetMapping("/getSimilaireCampPlace")
+    public List<CampPlace> getCampPlaceByCategory(CampPlaceCategory category){
+        return iCampPlaceService.getCampPlaceByCategory(category);
+    }
+
 }

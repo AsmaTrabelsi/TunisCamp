@@ -20,6 +20,10 @@ public class CampPlace {
     private String email;
     private String address;
     private State state;
+    @Column(length = 1000)
+    private String description;
+    private Double longitude ;
+    private Double latitude;
     @OneToMany(mappedBy = "campPlace")
     private List<Event> events;
     @OneToMany(mappedBy = "campPlace")
@@ -28,6 +32,7 @@ public class CampPlace {
     // uni
     @OneToMany
     private  List<Image> images;
+
 
 }
 

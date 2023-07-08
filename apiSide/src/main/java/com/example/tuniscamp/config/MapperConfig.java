@@ -4,17 +4,12 @@ import com.example.tuniscamp.entities.*;
 import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
-import org.apache.commons.io.IOUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.OneToMany;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Configuration
 public class MapperConfig {
@@ -56,6 +51,11 @@ public class MapperConfig {
                     mapper.map(CampPlaceDto::getAddress, CampPlace::setAddress);
                     mapper.map(CampPlaceDto::getState, CampPlace::setState);
                     mapper.map(CampPlaceDto::getCategory, CampPlace::setCategory);
+                    mapper.map(CampPlaceDto::getDescription,CampPlace::setDescription);
+                    mapper.map(CampPlaceDto::getLongitude,CampPlace::setLongitude);
+                    mapper.map(CampPlaceDto::getLatitude,CampPlace::setLatitude);
+
+
                     /*mapper.map(src -> {
                         try {
                             return src.getImages().getBytes();

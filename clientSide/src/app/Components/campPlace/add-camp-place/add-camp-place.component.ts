@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 export class AddCampPlaceComponent {
   files: File[] = [];
   selectedCategory : any;
-  campPlace: CampPlace = new CampPlace ("", "", 0,"","","");
+  campPlace: CampPlace = new CampPlace ("", "", 0,"","","",[],"",0,0);
+  
 
   categories :string[]=[];
   states :string[]=[];

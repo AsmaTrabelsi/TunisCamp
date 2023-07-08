@@ -61,5 +61,9 @@ public class CampPlaceService implements ICampPlaceService {
         List<State> states = Arrays.asList(State.values());
         return states;
     }
+    @Override
+    public List<CampPlace> getCampPlaceByCategory(CampPlaceCategory category){
+    return campPlaceRepository.findTop4ByCategory(category);
+}
 
 }

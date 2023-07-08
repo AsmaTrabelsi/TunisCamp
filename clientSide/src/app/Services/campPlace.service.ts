@@ -43,6 +43,9 @@ export class CampPlaceService {
     formData.append('address', campPlace.address);
     formData.append('category', campPlace.category)
     formData.append('state', campPlace.state);
+    formData.append('description', campPlace.description);
+     formData.append('longitude', campPlace.longitude.toString());
+      formData.append('latitude', campPlace.latitude.toString());
     //formData.append('image', files[0], files[0].name);
     for (let i = 0; i < files.length; i++) {
       //formData.append('images', files[i], files[i].name);

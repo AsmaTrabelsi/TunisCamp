@@ -17,6 +17,6 @@ public class Image {
     @Setter(AccessLevel.NONE)
     private int id;
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "LONGBLOB")
     private  byte[] image;
 }

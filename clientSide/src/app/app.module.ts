@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
+import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
+
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-det
     HomeComponent,
     AddEventComponent,
     AddCampPlaceComponent,
-    CampPlaceDetailsComponent
+    CampPlaceDetailsComponent,
+    CampPlaceCardComponent
+  
     ],
   imports: [
     BrowserModule,
