@@ -1,13 +1,16 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.User;
+import com.example.tuniscamp.exception.EmailExistException;
+import com.example.tuniscamp.exception.UserNotFoundException;
+import com.example.tuniscamp.exception.UsernameExistException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface IUserService {
-    //User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException;
+    User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, EmailExistException, UsernameExistException;
 
     List<User> getUsers();
 
