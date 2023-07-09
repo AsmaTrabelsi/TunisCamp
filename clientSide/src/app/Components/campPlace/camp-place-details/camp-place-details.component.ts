@@ -22,7 +22,7 @@ export class CampPlaceDetailsComponent {
     // Add more images to the list
 
   ];
-  campPlace = new CampPlace('bni mtir','FORET',28315715,'aaaaa','aaaa','BEJA',this.imageList,"description du poste ",1,1);
+  campPlace = new CampPlace('bni mtir','FORET',28315715,'aaaaa','aaaa','BEJA',this.imageList,"Your ultimate destination for camping enthusiasts in Tunisia! We are passionate about providing you with the best camping experiences and offering a platform for buying and selling camping equipment  we curate exciting camping events across Tunisia, bringing together nature lovers and adventure seekers. Whether you're looking for camping trips with direct access to the beach, camping sites with heated swimming pools, or unique accommodations, we have something for everyone ",1,1);
   campPlaces:{name:string,img:string,state:string}[]=[
 
     {name:"Tbarka",img:"assets/tbarka.jpg",state:"state1"},

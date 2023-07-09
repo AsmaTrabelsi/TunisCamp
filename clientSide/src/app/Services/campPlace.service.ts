@@ -1,6 +1,9 @@
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CampPlace } from 'app/Models/campPlace.model';
+import { CampPlaceFilterDto } from 'app/Models/campPlaceFilterDto';
+import { Page } from 'app/Models/page';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +57,35 @@ export class CampPlaceService {
     }
     console.log(formData);
     return formData;
+  }
+
+
+  getFilteredCamPlace(campPlaceFilterDto: CampPlaceFilterDto, page: number, size: number): Observable<Page<CampPlace>> {
+
+    let params = new HttpParams();
+
+    if (campPlaceFilterDto.categories && campPlaceFilterDto.categories.length > 0) {
+
+      params = params.append('categories', campPlaceFilterDto.categories.toString());
+
+    }   if (campPlaceFilterDto.states && campPlaceFilterDto.states.length > 0) {
+
+      params = params.append('states', campPlaceFilterDto.states.toString());
+
+    }
+
+    params = params.append('page', page.toString());
+
+    params = params.append('size', size.toString());
+
+    params = params.append('sort', campPlaceFilterDto.sort);
+
+    params = params.append('search', campPlaceFilterDto.searchTerm);
+
+
+
+
+    return this.httpClient.get<Page<CampPlace>>(this.apiurl + 'campPlace/filteredCampPlaces', { params });
+
   }
 }
