@@ -9,7 +9,7 @@
     <div class="py-3">
       <h6>Category</h6>
       <mat-chip-listbox aria-label="Fish selection" selectable multiple [(ngModel)]="selectedCategories">
-        <mat-chip-option *ngFor="let category of categories" [value]="category" class="custom-chip" color="accent" (click)="toggleCategorySelection(category)" >
+        <mat-chip-option  *ngFor="let category of categories" [value]="category" class="custom-chip" color="accent" (click)="toggleCategorySelection(category)" >
           {{ formatCategoryName(category) }}
         </mat-chip-option>
       </mat-chip-listbox>

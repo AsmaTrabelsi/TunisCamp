@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Event } from 'app/Models/event';
+import { EventService } from 'app/Services/event.service';
 
 @Component({
   selector: 'app-event-details',
@@ -7,7 +8,7 @@ import { Event } from 'app/Models/event';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-
+  @Input() eventId : any;
   images : string[]=[
     "assets/zaghouan.jpg",
     "assets/bg3.jpg",
@@ -20,9 +21,19 @@ export class EventDetailsComponent implements OnInit {
   slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
   date = new Date();
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
+    this.eventService.getEventById(this.eventId).subscribe(
+      reponse =>{
+        console.log(reponse);
+
+       // this.event = reponse;
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
     this.features =[
       new Feature("Category", this.formatCategoryName(this.event.category), "bi bi-tag"),
       new Feature("Destination", "Ain Zaghouan", "bi bi-pin-map"),

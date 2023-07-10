@@ -31,4 +31,6 @@ public interface EventRepository extends JpaRepository<Event,Integer> {
             @Param("search") String search,
             Pageable pageable);
 
+    List<Event> findTop10ByCampPlaceIdCampPlace(Integer campPlaceId);
+
 }

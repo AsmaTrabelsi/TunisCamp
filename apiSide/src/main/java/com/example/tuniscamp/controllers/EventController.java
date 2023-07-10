@@ -102,6 +102,11 @@ public class EventController {
                 pageable
         );
     }
+
+    @GetMapping("eventByCampPlace")
+    public List<Event> getEventsByCampPlace(Integer campPlaceId){
+        return iEventService.getEventsByCampPlace(campPlaceId);
+    }
     private Sort getSort(String sort) {
         String[] sortParams = sort.split(",");
         String property = sortParams[0];

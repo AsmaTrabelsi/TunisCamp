@@ -17,13 +17,14 @@ public class Event {
     private Integer idEvent;
     private String name;
 
+    @Column(length = 1000)
     private String description;
 
     private Date startDate ;
     private Date endDate ;
     private  int nbParticipant;
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
     private double price;
 

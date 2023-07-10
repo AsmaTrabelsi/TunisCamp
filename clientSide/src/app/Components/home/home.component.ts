@@ -20,6 +20,23 @@ export class HomeComponent  implements OnInit {
     {name:"Zaghoun",img:"assets/zaghouan.jpg"}
 
   ];
+
+      // camp place a supprime
+      imageList: string[] = [
+        'assets/zaghouan.jpg',
+        'assets/bg.png',
+        'assets/bg3.jpg',
+        'assets/tbarka.jpg',
+        // Add more images to the list
+      ];
+      selectedCampImage = 'assets/zaghouan.jpg';
+
+      selectImage(image: string) {
+        this.selectedCampImage = image;
+      }
+
+
+
   equipements :Equipement[]=[
     {name:"Automatic Tent For Beach And Camping",description:"Automatic tent for beach and camping 8 places 250*250*165 cm This pop-up beach tent opens automatically in seconds, no assembly required. very easy to fold up into a small round shape and put in the carry bag.",
     state:"new",price:250,category:"Beach And Camping",images:["https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/1271/1.jpg?4466","https://contents.mediadecathlon.com/p1259581/k$47977d533ae46915ab592bab64ec7153/tente-de-camping-2-seconds-verte-3-personnes.jpg?format=auto&quality=60&f=452x452",
@@ -122,4 +139,9 @@ export class Equipement{
     public category:string,public url:string, public images:string[]){
 
     }
+
+
+
+
+
 }

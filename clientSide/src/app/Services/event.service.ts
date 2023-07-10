@@ -31,6 +31,10 @@ export class EventService {
     return this.httpClient.get<Event[]>(this.apiurl+'event');
   }
 
+  getEventById(id: any){
+    return this.httpClient.get<Event>(this.apiurl+'event/'+id);
+  }
+
   getFilteredEvents(eventFilterDto: EventFilterDto, page: number, size: number): Observable<Page<Event>> {
     let params = new HttpParams();
     if (eventFilterDto.categories && eventFilterDto.categories.length > 0) {

@@ -75,6 +75,9 @@ public class EventService implements IEventService{
         return eventRepository.findAllByCategory(category);
     }
 
-
+    @Override
+    public List<Event> getEventsByCampPlace(Integer campPlaceId){
+        return eventRepository.findTop10ByCampPlaceIdCampPlace(campPlaceId);
+    }
 
 }

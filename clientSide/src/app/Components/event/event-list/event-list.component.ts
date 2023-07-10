@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Options } from "@angular-slider/ngx-slider";
 import { EventService } from 'app/Services/event.service';
 import { EventFilterDto } from 'app/Models/dto/eventFilterDto';
@@ -8,7 +8,7 @@ import { EventFilterDto } from 'app/Models/dto/eventFilterDto';
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.css']
 })
-export class EventListComponent {
+export class EventListComponent implements OnInit{
   events : any;
   eventFilter = new EventFilterDto([],0.0,500,new Date('2023-06-01'),new Date('2050-12-12'),"name,asc","");
   selectedOptions: { [id: number]: boolean } = {};
@@ -39,7 +39,7 @@ export class EventListComponent {
         this.categories = response
       },
       error =>{
-        console.log(error);
+        console.log(error.message);
       }
     );
 
@@ -59,7 +59,7 @@ export class EventListComponent {
 
       },
       error=>{
-        console.log("eroor"+error);
+        console.log("error"+error.message);
       }
     )
   }
