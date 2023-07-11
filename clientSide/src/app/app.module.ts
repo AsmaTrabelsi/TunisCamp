@@ -15,6 +15,7 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ProductListComponent } from './Components/product/product-list/product-list.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NotFoundComponent,
     HomeComponent,
     AddProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

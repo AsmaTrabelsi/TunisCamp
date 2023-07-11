@@ -18,14 +18,14 @@ getProductCategories(){
 
    }
 
-   addProduct(product: Product, file:File) {
+   addProduct(product: Product, files:File[]) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'multipart/form-data');
 
-   return  this.httpClient.post(this.apiurl + 'product', this.convertProductToFormData(product,file)) ;
+   return  this.httpClient.post(this.apiurl + 'product/addProduct', this.convertProductToFormData(product,files)) ;
 
   }
-  convertProductToFormData(product: Product, file: File): any {
+  convertProductToFormData(product: Product, files: File[]): any {
     const formData = new FormData();
     formData.append('name', product.name);
     formData.append('description', product.description);
@@ -33,7 +33,12 @@ getProductCategories(){
     formData.append('weight', product.weight.toString());
     formData.append('color', product.color);
     formData.append('category', product.category.toString());
-    formData.append('image', file, file.name);
+    formData.append('state', product.state.toString());
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files[' + i + ']', files[i], files[i].name);
+
+    }
     return formData;
   }
 

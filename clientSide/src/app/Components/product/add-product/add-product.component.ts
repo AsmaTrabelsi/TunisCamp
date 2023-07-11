@@ -12,7 +12,7 @@ import { productservice } from 'app/Services/product.service';
 export class AddProductComponent implements OnInit{
   files: File[] = [];
   selectedCategory : any;
-  product: Product = new Product(1, "", "", "", 1,false, 1,1, "");
+  product: Product = new Product(1, "", "", "",0,false, 0,0, "");
 
   categories :string[]=[];
 
@@ -39,7 +39,7 @@ export class AddProductComponent implements OnInit{
     }
     console.log(this.selectedCategory);
     console.log(this.product);
-    this.productService.addProduct(this.product, this.files[0]).subscribe(
+    this.productService.addProduct(this.product, this.files).subscribe(
       reponse =>{
         console.log('Product added successfully');
 
