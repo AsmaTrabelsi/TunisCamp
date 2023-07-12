@@ -26,7 +26,6 @@ import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-det
 import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
 import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
 import {MatChipsModule} from '@angular/material/chips';
-import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -43,12 +42,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
     AddProductComponent,
     ProductDetailsComponent,
     ProductCardComponent,
@@ -57,17 +50,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     CampPlaceDetailsComponent,
     CampPlaceCardComponent,
     CampPlaceListComponent,
-    PagingHeaderComponent,
   ],
   imports: [
     CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
     EventModule,
-    BrowserAnimationsModule,
-    CarouselModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -76,7 +62,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     BrowserAnimationsModule,
     CarouselModule,
     MatChipsModule,
-    NgxPaginationModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
