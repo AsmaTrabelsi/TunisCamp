@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
+import javax.transaction.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -48,6 +49,7 @@ public class ProductService implements IProductService{
         return productRepository.findTop4ByCategory(category);
     }
     @Override
+
     @Transactional
     public void UpdateProduct(Product product) {
         productFileRepository.saveAll(product.getFiles());

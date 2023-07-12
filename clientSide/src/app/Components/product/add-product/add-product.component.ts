@@ -13,6 +13,7 @@ import { productservice } from 'app/Services/product.service';
 export class AddProductComponent implements OnInit{
   files: File[] = [];
   selectedCategory : any;
+
   product: Product = new Product(1, "", "", "",0,false, 0,[],0,"");
 
   categories :string[]=[];

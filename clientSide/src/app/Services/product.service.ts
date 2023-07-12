@@ -25,7 +25,6 @@ export class productservice {
 
   }
   convertProductToFormData(product: Product, files: File[]): any {
-    console.log(files);
     const formData = new FormData();
     formData.append('name', product.name);
     formData.append('description', product.description);
@@ -38,7 +37,7 @@ export class productservice {
       formData.append('files[' + i + ']', files[i], files[i].name);
 
     }
-      return formData;
+    return formData;
   }
   getFilteredProducts(productFilterDto: ProductFilterDto, page: number, size: number): Observable<Page<Product>> {
     let params = new HttpParams();

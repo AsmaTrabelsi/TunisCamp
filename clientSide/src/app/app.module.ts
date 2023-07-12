@@ -25,6 +25,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
 
+
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
@@ -37,49 +38,43 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
-
-    AddProductComponent,
-    ProductDetailsComponent,
-    ProductCardComponent,
-    ListProductComponent,
-
-    AddCampPlaceComponent,
-    CampPlaceDetailsComponent,
-    CampPlaceCardComponent,
-    CampPlaceListComponent,
-    PagingHeaderComponent,
-
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        NotFoundComponent,
+        HomeComponent,
+        AddProductComponent,
+        ProductDetailsComponent,
+        ProductCardComponent,
+        ListProductComponent,
+        AddCampPlaceComponent,
+        CampPlaceDetailsComponent,
+        CampPlaceCardComponent,
+        CampPlaceListComponent,
+        PagingHeaderComponent,
     ],
-
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgxDropzoneModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CarouselModule,
-    MatChipsModule,
-
-    NgxPaginationModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    NgxSliderModule,
-    
-    NgxPaginationModule
-
-
-  ],
-
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        NgxDropzoneModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CarouselModule,
+        MatChipsModule,
+        NgxPaginationModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        NgxSliderModule,
+        NgxPaginationModule,
+        EventDetailsModule
+    ]
 })
 export class AppModule { }

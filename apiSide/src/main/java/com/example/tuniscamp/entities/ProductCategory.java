@@ -5,5 +5,4 @@ public enum ProductCategory {
     EQUITATION,
     TREKKING,
     RANDONNEE
-
 }

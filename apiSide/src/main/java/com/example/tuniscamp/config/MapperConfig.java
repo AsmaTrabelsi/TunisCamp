@@ -3,7 +3,6 @@ package com.example.tuniscamp.config;
 import com.example.tuniscamp.entities.*;
 import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
-import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
 import com.example.tuniscamp.entities.Product;
 import org.modelmapper.ModelMapper;
