@@ -2,17 +2,13 @@ package com.example.tuniscamp.config;
 
 import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
-import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
 import com.example.tuniscamp.entities.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 public class MapperConfig {
@@ -57,6 +53,7 @@ public class MapperConfig {
                     mapper.map(ProductDto::getWeight, Product::setWeight);
                     mapper.map(ProductDto::getState, Product::setState);
                 });
+
         return modelMapper;
     }
 

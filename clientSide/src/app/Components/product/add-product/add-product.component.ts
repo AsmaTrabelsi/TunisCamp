@@ -4,6 +4,7 @@ import { Product } from 'app/Models/Product.model';
 import { productservice } from 'app/Services/product.service';
 
 
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -12,7 +13,8 @@ import { productservice } from 'app/Services/product.service';
 export class AddProductComponent implements OnInit{
   files: File[] = [];
   selectedCategory : any;
-  product: Product = new Product(1, "", "", "",0,false, 0,0, "");
+
+  product: Product = new Product(1, "", "", "",0,false, 0,[],0,"");
 
   categories :string[]=[];
 
@@ -71,19 +73,21 @@ export class AddProductComponent implements OnInit{
   }
 
 
-	onSelect(product: any) {
-		console.log(product);
-		this.files.push(...product.addedFiles);
-	}
+  onSelect(product: any) {
+    console.log(product);
+    this.files.push(...product.addedFiles);
+  }
 
-	onRemove(product: any) {
-		console.log(product);
-		this.files.splice(this.files.indexOf(product), 1);
-	}
+  onRemove(product: any) {
+    console.log(product);
+    this.files.splice(this.files.indexOf(product), 1);
+  }
 
   formatCategoryName(category: string): string {
     const formatedCategory = category.toLowerCase().replaceAll('_'," ");
     return formatedCategory;
   }
 
-}
+  }
+
+

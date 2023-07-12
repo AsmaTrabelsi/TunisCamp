@@ -32,3 +32,4 @@ public class ProductDto {
     private List<MultipartFile> files;
 
 }
+

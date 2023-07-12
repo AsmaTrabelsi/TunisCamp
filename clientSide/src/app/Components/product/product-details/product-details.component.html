@@ -1,0 +1,62 @@
+<div class="row">
+  <div class=" p-5 col-6 ">
+    <div class="card p-5">
+      <div class="card-main">
+          <div class="product-container">
+              <div class="p" (mouseover)="imageChange(equipement,0)"><img [src]="equipement.images[0]"
+                      alt="Product"></div>
+              <div class="p" (mouseover)="imageChange(equipement,1)"><img [src]="equipement.images[1]"
+                      alt="Product"></div>
+              <div class="p" (mouseover)="imageChange(equipement,2)"><img [src]="equipement.images[2]"
+                      alt="Product"></div>
+          </div>
+          <div class="image">
+              <img [src]="equipement.url" alt="Product">
+          </div>
+      </div>
+  </div>
+  </div>
+<div class=" py-5 col-6">
+
+<h2>{{equipement.name}}</h2>
+<h6>{{equipement.category}}</h6>
+<div class="row">
+  <div class="col-2">
+    <span><h6 [ngClass]="{ 'available': equipement.available, 'out-of-stock': !equipement.available }">
+      {{ equipement.available ? 'Available' : 'Out of Stock' }}
+    </h6></span>
+  </div>
+  <div class="col">
+    <span><strong>{{equipement.price}}dt</strong></span>
+  </div>
+</div>
+<p>{{equipement.description}}</p>
+<ul>
+  <li>
+    <i class="bi bi-bandaid"></i> &nbsp; {{equipement.state}}
+  </li>
+  <li *ngIf="equipement.size">
+    <i class="bi bi-arrows-angle-contract"></i> &nbsp; {{equipement.size}}
+  </li>
+  <li *ngIf="equipement.weight">
+    <i class="bi bi-box-seam-fill"></i> &nbsp; {{equipement.weight}}
+  </li>
+</ul>
+
+</div>
+
+
+</div>
+<section class="bg-color" id="new-equipement">
+  <div class="containers">
+      <div class="title">
+          <p>Similair Product</p>
+          <h2><span>New</span> Equipment</h2>
+      </div>
+      <div class="row">
+          <div class="col-lg-3 col-md-6" *ngFor="let e of equipements">
+              <app-product-card [equipement]="{product:e,url:e.files[0].file}"></app-product-card>
+          </div>
+      </div>
+  </div>
+</section>
