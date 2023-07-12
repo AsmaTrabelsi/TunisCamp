@@ -1,13 +1,17 @@
 package com.example.tuniscamp.config;
 
-import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.*;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
+import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
+import com.example.tuniscamp.entities.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+
 
 @Configuration
 public class MapperConfig {
@@ -40,7 +44,24 @@ public class MapperConfig {
                     mapper.map(src->src.getCampPlace().getAddress(), RelevantEvent::setCampPlaceLocation);
 
                 });
+
+
+        //product auto mapper  (ProductDto => Product
+        modelMapper.createTypeMap(ProductDto.class, Product.class)
+                .addMappings(mapper -> {
+                    mapper.map(ProductDto::getName, Product::setName);
+                    mapper.map(ProductDto::getDescription, Product::setDescription);
+                    mapper.map(ProductDto::getPrice, Product::setPrice);
+                    mapper.map(ProductDto::getCategory, Product::setCategory);
+                    mapper.map(ProductDto::getColor, Product::setColor);
+                    mapper.map(ProductDto::getWeight, Product::setWeight);
+                    mapper.map(ProductDto::getState, Product::setState);
+                });
+
         return modelMapper;
     }
 
-}
+
+
+    }
+
