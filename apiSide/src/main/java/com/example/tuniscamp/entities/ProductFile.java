@@ -12,6 +12,8 @@ public class ProductFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Integer idFile;
-    private String file;
+    private int id;
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private  byte[] file;
 }
