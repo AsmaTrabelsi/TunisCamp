@@ -32,6 +32,8 @@ export class productservice {
     formData.append('weight', product.weight.toString());
     formData.append('color', product.color);
     formData.append('category', product.category.toString());
+    formData.append('price', product.price.toString());
+
     formData.append('state', product.state.toString());
     for (let i = 0; i < files.length; i++) {
       formData.append('files[' + i + ']', files[i], files[i].name);
@@ -64,6 +66,10 @@ export class productservice {
 
   getAllProduct(){
     return this.httpClient.get<Product[]>(this.apiurl+'product');
+  }
+
+  getProductById(id:any){
+    return this.httpClient.get<Product>(this.apiurl+'product/'+id);
   }
 
 

@@ -2,6 +2,7 @@ package com.example.tuniscamp.config;
 
 import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
+import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
 import com.example.tuniscamp.entities.Product;
 import org.modelmapper.ModelMapper;

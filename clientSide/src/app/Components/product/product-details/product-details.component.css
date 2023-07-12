@@ -112,3 +112,17 @@ height: 300px;
 ul {
   list-style: none;
 }
+
+.title {
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.contact-card{
+  background-color: #f3f7fb;
+  display: flex;
+  border-radius: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+}

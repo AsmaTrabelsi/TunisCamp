@@ -1,5 +1,6 @@
 package com.example.tuniscamp.controllers;
 
+import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.Product;
 import com.example.tuniscamp.entities.ProductCategory;
 import com.example.tuniscamp.entities.ProductFile;
@@ -95,21 +96,6 @@ public class ProductController {
     }
 
 
-    @PostMapping("/addProduct")
-    public Product addCampPlace(@ModelAttribute ProductDto productDto)  {
-        Product product = modelMapper.map(productDto, Product.class);
-        List<ProductFile> images = new ArrayList<ProductFile>();
-        for(int i = 0; i<productDto.getFiles().size(); i++){
-            try {
-                images.add(new ProductFile(0, productDto.getFiles().get(i).getBytes()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        product.setFiles(images);
-        iProductService.addProduct(product);
-        return product;
-    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
