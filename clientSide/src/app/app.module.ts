@@ -6,7 +6,7 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
-import {MatChipsModule} from '@angular/material/chips';
+
 import { AddProductComponent } from './Components/product/add-product/add-product.component';
 import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -15,16 +15,25 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+
 import { ProductDetailsComponent } from './Components/product/product-details/product-details.component';
 import { ProductCardComponent } from './Components/product/product-card/product-card.component';
 import { ListProductComponent } from './Components/product/list-product/list-product.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 
+
+
+import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
+import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
+import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
+import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -35,13 +44,19 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
+
     AddProductComponent,
     ProductDetailsComponent,
     ProductCardComponent,
     ListProductComponent,
-    PagingHeaderComponent
 
-  ],
+    AddCampPlaceComponent,
+    CampPlaceDetailsComponent,
+    CampPlaceCardComponent,
+    CampPlaceListComponent,
+    PagingHeaderComponent,
+
+    ],
 
   imports: [
     BrowserModule,
@@ -52,12 +67,18 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BrowserAnimationsModule,
     CarouselModule,
     MatChipsModule,
+
     NgxPaginationModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    NgxSliderModule
-    ],
+    NgxSliderModule,
+    
+    NgxPaginationModule
+
+
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

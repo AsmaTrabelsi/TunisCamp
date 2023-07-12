@@ -1,9 +1,12 @@
 package com.example.tuniscamp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,26 +15,35 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    private Integer idUser;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Long id;
+    private String userId;
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    private String email;
+    private String profileImageUrl;
     private int tel;
     private String address;
+    private Date lastLoginDate;
+    private Date lastLoginDateDisplay;
+    private Date joinDate;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Enumerated(EnumType.STRING)
     private State government;
     private String taxNum;
-
-    // bi
-    @ManyToOne
-    private Role role;
+    //private String[] roles; //ROLE_USER ROLE_ADMIN
+    private String role;
+    private String[] authorities; //CRUD
+    private boolean isActive;
+    private boolean isNotLocked;
 
     // bidirectionnel
     @OneToMany(mappedBy = "user")
@@ -54,10 +66,6 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
-
-
-
-
 
 
 }
