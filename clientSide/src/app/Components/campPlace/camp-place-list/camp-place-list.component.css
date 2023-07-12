@@ -37,6 +37,7 @@ filters{
     --mdc-chip-elevated-container-color: #0DEC67;
   
   }
+
   
   .event-container{
   
@@ -156,10 +157,9 @@ filters{
   }
   
   
-  
-  
-  .selected-sort {
-  
-    background-color: rgb(232, 229, 229);
-  
-  }
+ 
+
+
+.mat-mdc-standard-chip
+ {--mdc-chip-elevated-container-color: #e0e0e0;
+}

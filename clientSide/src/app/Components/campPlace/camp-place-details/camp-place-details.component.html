@@ -1,6 +1,6 @@
 <div class="image-container">
 
-  <img [src]="selectedCampImage" *ngIf="selectedCampImage" class="big-image">
+  <img [src]="'data:image/jpeg;base64,'+ selectedCampImage" *ngIf="selectedCampImage" class="big-image">
 
   <div class="image-overlay">
 <div class ="text-container"> 
@@ -19,24 +19,12 @@
   
           <div *ngFor="let image of campPlace.images" class="list-image-wrapper">
   
-            <img [src]="image" (click)="selectImage(image)" class="list-image">
+            <img [src]="'data:image/jpeg;base64,'+ image.image" (click)="selectImage(image.image)" class="list-image">
   
           </div>
   
         </div>
   
-  
-  
-  
-  
-   
-  
-  
-  
-  
-    
-  
- 
 
     <section id="about-us" class="py-5">
 
@@ -52,10 +40,7 @@
     
                 <div class="about-img-box shrink">
     
-                  <img [src]="campPlace.images[3]">
-    
-    
-    
+                  <img [src]="'data:image/jpeg;base64,'+campPlace.images[0].image">
     
                 </div>
     
@@ -65,7 +50,7 @@
     
                 <div class="about-img-box2 shrink mt-4">
     
-                    <img [src]="campPlace.images[1]">
+                    <img [src]="'data:image/jpeg;base64,'+ campPlace.images[1].image">
     
                 </div>
     
@@ -146,8 +131,8 @@
     <div class="container-fluid row my-4">
   <div class="row mx-5 px-5 my-3">
 
-    <div class="col-lg-3 col-md-6" *ngFor="let campPlace of campPlaces">
-        <app-camp-place-card  [campPlace]="campPlace" > </app-camp-place-card>
+    <div class="col-lg-3 col-md-6" *ngFor="let camp of campPlaces">
+        <app-camp-place-card  [campPlace]="camp" > </app-camp-place-card>
 
         </div>
         </div>
@@ -155,10 +140,12 @@
 
 <div class="abt-btn my-4 text-center">
 
-  <a routerLink="CampPlaceList" class="custom-btn btn px-5 py-2">
+  <a routerLink="/listCampPlace" class="custom-btn btn px-5 py-2">
 
 <span>View More</span>
 
 </a>
 
 </div>
+
+

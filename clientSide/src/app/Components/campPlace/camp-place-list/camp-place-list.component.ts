@@ -80,7 +80,8 @@ export class CampPlaceListComponent implements OnInit {
       error=>{
         console.log("error"+error.message);
       }
-    )
+    );
+    
   }
 
  
@@ -157,8 +158,4 @@ onReset(){
 
  
 
-selectSortOption(value : string){
-  this.campPlaceFilter.sort = value;
-  this.getFilteredCampPlaces();
-}
 }

@@ -6,11 +6,17 @@ import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.services.ICampPlaceService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.springframework.data.domain.Sort;
+
 
 
 @RestController
@@ -62,9 +68,46 @@ public class CampPlaceController {
         public List<State> getState(){
         return  iCampPlaceService.getState();
     }
-    @GetMapping("/getSimilaireCampPlace")
-    public List<CampPlace> getCampPlaceByCategory(CampPlaceCategory category){
+    @GetMapping("/getSimilaireCampPlace/{category}")
+    public List<CampPlace> getCampPlaceByCategory(@PathVariable CampPlaceCategory category){
         return iCampPlaceService.getCampPlaceByCategory(category);
     }
 
+    @GetMapping("/filteredCampPlaces")
+    public Page<CampPlace> getFilteredCampPlaces(
+            @RequestParam(required = false) List<CampPlaceCategory> categories,
+            @RequestParam(required = false) List<State> states,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "6") int size,
+    @RequestParam(required = false,defaultValue = "id,asc") String sort,
+    @RequestParam(required = false,defaultValue = "") String search
+
+
+
+    ) {
+
+
+
+        if (categories == null) {
+            categories = Arrays.asList(CampPlaceCategory.values());
+        }
+        if (states == null) {
+            states = Arrays.asList(State.values());
+        }
+
+
+
+        Pageable pageable = PageRequest.of(page, size, getSort(sort));
+        return iCampPlaceService.getFiltredCampPlace(categories,states,search ,pageable);
+
+    }
+
+
+
+    private Sort getSort(String sort) {
+        String[] sortParams = sort.split(",");
+        String property = sortParams[0];
+        String direction = sortParams[1];
+        return Sort.by(Sort.Direction.fromString(direction), property);
+    }
 }

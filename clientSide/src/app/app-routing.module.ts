@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: "addEvent", component: AddEventComponent},
   {path: "EventDetails", component: EventDetailsComponent},
   {path: "AddCampPlace", component: AddCampPlaceComponent},
-  {path: "CampPlaceDetails", component: CampPlaceDetailsComponent},
+  {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent}
 
 

@@ -1,6 +1,10 @@
+<a [routerLink]="['/CampPlaceDetails',campPlace.idCampPlace]">
+
+
 <div class="ui-card mx-2 px-2">
 
-    <img [src]="'data:image/jpeg;base64,' + campPlace.img">
+  (click)="navigateToEvent(campPlace)"
+    <img [src]="'data:image/jpeg;base64,' + campPlace.images[0].image">
 
     <div class="description">
 
@@ -8,7 +12,9 @@
 
       <p>{{campPlace.state}}</p>
 
+
     </div>
 
   </div>
 
+</a>

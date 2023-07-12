@@ -88,4 +88,10 @@ export class CampPlaceService {
     return this.httpClient.get<Page<CampPlace>>(this.apiurl + 'campPlace/filteredCampPlaces', { params });
 
   }
+  getCampPlaceByCategory (category : any){
+    return this.httpClient.get<CampPlace>(this.apiurl + 'campPlace/getSimilaireCampPlace/'+ category);
+  }
+  getCampPlaceById (idCampPlace : any){
+    return this.httpClient.get<CampPlace>(this.apiurl + 'campPlace/'+ idCampPlace);
+  }
 }

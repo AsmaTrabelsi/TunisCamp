@@ -7,6 +7,8 @@ import com.example.tuniscamp.entities.State;
 import com.example.tuniscamp.repositories.CampPlaceRepository;
 import com.example.tuniscamp.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -65,5 +67,10 @@ public class CampPlaceService implements ICampPlaceService {
     public List<CampPlace> getCampPlaceByCategory(CampPlaceCategory category){
     return campPlaceRepository.findTop4ByCategory(category);
 }
+    @Override
+    public Page<CampPlace> getFiltredCampPlace(List <CampPlaceCategory> category, List <State> state, String search, Pageable pageable){
+        return campPlaceRepository.findByCampPlaceCategoryInAndStateInWithSearch(category, state, search,pageable);
+    }
+
 
 }

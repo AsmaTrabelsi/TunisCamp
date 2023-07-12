@@ -74,24 +74,11 @@
 
           <button (click)="onReset()" class="btn btn-secondary">Reset</button>
 
-          <button mat-icon-button [matMenuTriggerFor]="menu">
 
-            <mat-icon >sort</mat-icon>
 
-          </button>
+       
 
-          <mat-menu #menu="matMenu">
-
-            <button mat-menu-item *ngFor="let sort of sortOptions" (click)="selectSortOption(sort.value)" [ngClass]="{'selected-sort' : sort.value==campPlaceFilter.sort}">
-
-              <mat-icon>{{sort.icon}}</mat-icon>
-
-              <span>{{sort.name}}</span>
-
-            </button>
-
-          </mat-menu>
-
+         
       </div>
 
  
@@ -100,9 +87,9 @@
 
     <div class="row events">
 
-      <div class="col-lg-4 col-md-6 event-container px-0 mx-0 mb-3" *ngFor="let campPlace of campPlaces | paginate: { itemsPerPage: 6, currentPage: p , totalItems: totalItems}">
+      <div class="col-lg-3 col-md-6 event-container px-0 mx-0 mb-3" *ngFor="let campPlace of campPlaces | paginate: { itemsPerPage: 6, currentPage: p , totalItems: totalItems}">
 
-        <app-camp-place-card [campPlace]="{name: campPlace.name,state : campPlace.state,img :campPlace.images[0]}"></app-camp-place-card>
+        <app-camp-place-card [campPlace]="campPlace"></app-camp-place-card>
 
       </div>
 
@@ -124,4 +111,3 @@
 
  
 
- 
