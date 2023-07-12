@@ -12,11 +12,14 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static com.example.tuniscamp.constants.FileConstant.USER_FOLDER;
+
 @SpringBootApplication
 public class TunisCampApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(TunisCampApplication.class, args);
+        new File(USER_FOLDER).mkdirs();
     }
 
     /*@Bean
