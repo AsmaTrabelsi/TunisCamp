@@ -19,6 +19,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import javax.mail.MessagingException;
+
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,14 +48,16 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder;
     private LoginAttemptService loginAttemptService;
+    private EmailService emailService;
+
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, LoginAttemptService loginAttemptService) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, LoginAttemptService loginAttemptService, EmailService emailService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.loginAttemptService = loginAttemptService;
-        //this.emailService = emailService;
+        this.emailService = emailService;
     }
 
     @Override
@@ -86,7 +90,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     }
 
     @Override
-    public User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, EmailExistException, UsernameExistException {
+    public User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, EmailExistException, UsernameExistException, MessagingException {
         validateNewUsernameAndEmail(StringUtils.EMPTY, username, email);
         User user = new User();
         user.setUserId(generateUserId());
@@ -104,7 +108,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         user.setAuthorities(ROLE_USER.getAuthorities());
         userRepository.save(user);
         LOGGER.info("New user password: " + password);
-        //emailService.sendNewPasswordEmail(firstName, password, email);
+        emailService.sendNewPasswordEmail(firstName, password, email);
         return user;
     }
 
@@ -124,11 +128,6 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public User findUserByEmail(String email) {
 
         return userRepository.findUserByEmail(email);
-    }
-
-    @Override
-    public void deleteUser(String username) throws IOException {
-
     }
 
     private String encodePassword(String password) {
