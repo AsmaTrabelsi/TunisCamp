@@ -20,11 +20,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import static com.example.tuniscamp.enumeration.Role.ROLE_USER;
+import static com.example.tuniscamp.constants.UserImplConstant.*;
+import static com.example.tuniscamp.enumeration.Role.*;
 
 @Service
 @Transactional
@@ -34,13 +45,14 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     private Logger LOGGER = LoggerFactory.getLogger(getClass());
     private UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder;
+    private LoginAttemptService loginAttemptService;
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, LoginAttemptService loginAttemptService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        //this.loginAttemptService = loginAttemptService;
+        this.loginAttemptService = loginAttemptService;
         //this.emailService = emailService;
     }
 
@@ -48,16 +60,28 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username);
         if (user == null) {
-            LOGGER.error("NO_USER_FOUND_BY_USERNAME" + username);
-            throw new UsernameNotFoundException("NO_USER_FOUND_BY_USERNAME" + username);
+            LOGGER.error(NO_USER_FOUND_BY_USERNAME + username);
+            throw new UsernameNotFoundException(NO_USER_FOUND_BY_USERNAME + username);
         } else {
-           // validateLoginAttempt(user);
+            validateLoginAttempt(user);
             user.setLastLoginDateDisplay(user.getLastLoginDate());
             user.setLastLoginDate(new Date());
             userRepository.save(user);
             UserPrincipal userPrincipal = new UserPrincipal(user);
-            LOGGER.info("FOUND_USER_BY_USERNAME" + username);
+            LOGGER.info(FOUND_USER_BY_USERNAME + username);
             return userPrincipal;
+        }
+    }
+
+    private void validateLoginAttempt(User user) {
+        if(user.isNotLocked()) {
+            if(loginAttemptService.hasExceededMaxAttempts(user.getUsername())) {
+                user.setNotLocked(false);
+            } else {
+                user.setNotLocked(true);
+            }
+        } else {
+            loginAttemptService.evictUserFromLoginAttemptCache(user.getUsername());
         }
     }
 
@@ -86,17 +110,20 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
 
     @Override
     public List<User> getUsers() {
-        return null;
+
+        return userRepository.findAll();
     }
 
     @Override
     public User findUserByUsername(String username) {
-        return null;
+
+        return userRepository.findUserByUsername(username);
     }
 
     @Override
     public User findUserByEmail(String email) {
-        return null;
+
+        return userRepository.findUserByEmail(email);
     }
 
     @Override
@@ -122,21 +149,21 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         if(StringUtils.isNotBlank(currentUsername)) {
             User currentUser = findUserByUsername(currentUsername);
             if(currentUser == null) {
-                throw new UserNotFoundException("NO_USER_FOUND_BY_USERNAME" + currentUsername);
+                throw new UserNotFoundException(NO_USER_FOUND_BY_USERNAME + currentUsername );
             }
             if(userByNewUsername != null && !currentUser.getId().equals(userByNewUsername.getId())) {
-                throw new UsernameExistException("USERNAME_ALREADY_EXISTS");
+                throw new UsernameExistException(USERNAME_ALREADY_EXISTS);
             }
             if(userByNewEmail != null && !currentUser.getId().equals(userByNewEmail.getId())) {
-                throw new EmailExistException("EMAIL_ALREADY_EXISTS");
+                throw new EmailExistException(USERNAME_ALREADY_EXISTS);
             }
             return currentUser;
         } else {
             if(userByNewUsername != null) {
-                throw new UsernameExistException("USERNAME_ALREADY_EXISTS");
+                throw new UsernameExistException(USERNAME_ALREADY_EXISTS);
             }
             if(userByNewEmail != null) {
-                throw new EmailExistException("EMAIL_ALREADY_EXISTS");
+                throw new EmailExistException(EMAIL_ALREADY_EXISTS);
             }
             return null;
         }
