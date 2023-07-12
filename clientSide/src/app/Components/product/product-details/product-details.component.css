@@ -103,11 +103,11 @@ height: 300px;
 
 
 .available {
-  color: green;
+  color: #0DEC67;
 }
 
 .out-of-stock {
-  color: red;
+  color: red !important;
 }
 ul {
   list-style: none;
