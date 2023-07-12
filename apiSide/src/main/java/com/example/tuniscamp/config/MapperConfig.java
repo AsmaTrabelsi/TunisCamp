@@ -1,6 +1,7 @@
 package com.example.tuniscamp.config;
 
-import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.*;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
 import org.modelmapper.ModelMapper;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+
 
 @Configuration
 public class MapperConfig {
@@ -40,7 +42,49 @@ public class MapperConfig {
                     mapper.map(src->src.getCampPlace().getAddress(), RelevantEvent::setCampPlaceLocation);
 
                 });
-        return modelMapper;
-    }
 
+         modelMapper.createTypeMap(CampPlaceDto.class, CampPlace.class)
+                .addMappings(mapper -> {
+                    mapper.map(CampPlaceDto::getName, CampPlace::setName);
+                    mapper.map(CampPlaceDto::getEmail, CampPlace::setEmail);
+                    mapper.map(CampPlaceDto::getTel, CampPlace::setTel);
+                    mapper.map(CampPlaceDto::getAddress, CampPlace::setAddress);
+                    mapper.map(CampPlaceDto::getState, CampPlace::setState);
+                    mapper.map(CampPlaceDto::getCategory, CampPlace::setCategory);
+                    mapper.map(CampPlaceDto::getDescription,CampPlace::setDescription);
+                    mapper.map(CampPlaceDto::getLongitude,CampPlace::setLongitude);
+                    mapper.map(CampPlaceDto::getLatitude,CampPlace::setLatitude);
+
+
+                    /*mapper.map(src -> {
+                        try {
+                            return src.getImages().getBytes();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    },
+                     */
+
+
+
+                });
+
+                   /* mapper.map(src -> {
+                        List<byte[]> images = new ArrayList<>();
+                        List<MultipartFile> imageFiles = src.getImages();
+                        if (imageFiles != null) {
+                            for (MultipartFile image : imageFiles) {
+                                try {
+                                    images.add(image.getBytes());
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        }
+                        return images;
+                    }, CampPlace::setImages);
+                });*/
+        return modelMapper;
+
+    }
 }

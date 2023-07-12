@@ -14,6 +14,15 @@ import { EventDetailsModule } from './Components/event/event-details/event-detai
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
+import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
+import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
+import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -23,7 +32,13 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FooterComponent,
     NotFoundComponent,
     HomeComponent,
-    AddEventComponent
+    AddEventComponent,
+    AddCampPlaceComponent,
+    CampPlaceDetailsComponent,
+    CampPlaceCardComponent,
+    CampPlaceListComponent,
+    PagingHeaderComponent,
+  
     ],
   imports: [
     BrowserModule,
@@ -33,7 +48,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     EventDetailsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MatChipsModule,
+    MatMenuModule,
+    MatIconModule,
+    NgxPaginationModule
+
 
   ],
   providers: [],
