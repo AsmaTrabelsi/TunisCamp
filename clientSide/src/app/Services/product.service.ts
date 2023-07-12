@@ -67,11 +67,17 @@ export class productservice {
   getAllProduct(){
     return this.httpClient.get<Product[]>(this.apiurl+'product');
   }
+  getProductCount(){
+    return this.httpClient.get<number>(this.apiurl+'product/productCount');
+  }
 
   getProductById(id:any){
     return this.httpClient.get<Product>(this.apiurl+'product/'+id);
   }
 
-
+//for home screen
+getNewestProducts(){
+  return this.httpClient.get<Product[]>(this.apiurl+'product/getNewestProduct');
+}
 
 }

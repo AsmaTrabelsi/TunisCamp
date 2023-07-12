@@ -72,12 +72,17 @@ public class EventService implements IEventService{
 
     @Override
     public List<Event> getRelevantEvent(EventCategory category) {
-        return eventRepository.findAllByCategory(category);
+        return eventRepository.findTop4ByCategory(category);
     }
 
     @Override
     public List<Event> getEventsByCampPlace(Integer campPlaceId){
         return eventRepository.findTop10ByCampPlaceIdCampPlace(campPlaceId);
+    }
+
+    @Override
+    public long eventCount(){
+        return  this.eventRepository.count();
     }
 
 }

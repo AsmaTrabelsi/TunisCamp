@@ -37,13 +37,29 @@ public class MapperConfig {
                         }
                     }, Event::setImage);
                 });
+
         modelMapper.createTypeMap(Event.class,RelevantEvent.class)
                 .addMappings(mapper ->{
                     mapper.map(Event::getIdEvent, RelevantEvent::setIdEvent);
                     mapper.map(Event::getName, RelevantEvent::setName);
                     mapper.map(src->src.getCampPlace().getAddress(), RelevantEvent::setCampPlaceLocation);
+                    mapper.map(Event::getImage, RelevantEvent::setImage);
+
 
                 });
+
+    modelMapper.createTypeMap(CampPlaceDto.class, CampPlace.class).addMappings(
+            mapper -> {
+                mapper.map(CampPlaceDto::getName, CampPlace::setName);
+                mapper.map(CampPlaceDto::getEmail, CampPlace::setEmail);
+                mapper.map(CampPlaceDto::getTel, CampPlace::setTel);
+                mapper.map(CampPlaceDto::getAddress, CampPlace::setAddress);
+                mapper.map(CampPlaceDto::getState, CampPlace::setState);
+                mapper.map(CampPlaceDto::getCategory, CampPlace::setCategory);
+                mapper.map(CampPlaceDto::getDescription, CampPlace::setDescription);
+                mapper.map(CampPlaceDto::getLongitude, CampPlace::setLongitude);
+                mapper.map(CampPlaceDto::getLatitude, CampPlace::setLatitude);
+            });
 
 
         //product auto mapper  (ProductDto => Product

@@ -9,10 +9,7 @@
   float: right;
   line-height: 22px;
 }
-.mat-mdc-standard-chip {
-  background-color: grey;
 
-}
 
 
 .mat-mdc-standard-chip.mat-accent.mat-mdc-chip-selected, .mat-mdc-standard-chip.mat-accent.mat-mdc-chip-highlighted {

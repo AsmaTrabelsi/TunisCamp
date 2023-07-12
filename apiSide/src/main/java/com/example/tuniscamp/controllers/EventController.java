@@ -1,9 +1,11 @@
 package com.example.tuniscamp.controllers;
 
+import com.example.tuniscamp.entities.CampPlace;
 import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.EventCategory;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
+import com.example.tuniscamp.services.ICampPlaceService;
 import com.example.tuniscamp.services.IEventService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ import java.util.*;
 public class EventController {
 
     private final IEventService iEventService;
+    private final ICampPlaceService iCampPlaceService ;
     private final ModelMapper modelMapper;
 
     @GetMapping
@@ -47,6 +50,9 @@ public class EventController {
     @PostMapping
     public Event addEvent(@ModelAttribute EventDto eventDto) {
         Event event = modelMapper.map(eventDto, Event.class);
+
+        CampPlace campPlace = this.iCampPlaceService.getCampPlaceById(eventDto.getIdCampPlace());
+        event.setCampPlace(campPlace);
         return iEventService.addEvent(event);
     }
 
@@ -61,8 +67,8 @@ public class EventController {
         iEventService.updateEvent(event);
     }
 
-    @GetMapping("relevantEvent")
-    public List<RelevantEvent> getRelevantEvent(EventCategory category) {
+    @GetMapping("relevantEvent/{category}")
+    public List<RelevantEvent> getRelevantEvent(@PathVariable  EventCategory category) {
         List<RelevantEvent> relevantEvents = new ArrayList<RelevantEvent>();
         for (Event event : iEventService.getRelevantEvent(category)) {
             RelevantEvent relevantEvent = modelMapper.map(event, RelevantEvent.class);
@@ -113,5 +119,10 @@ public class EventController {
         String direction = sortParams[1];
         return Sort.by(Sort.Direction.fromString(direction), property);
     }
+    @GetMapping("eventCount")
+    public long getEventsCount(){
+        return this.iEventService.eventCount();
+    }
+
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Event} from 'app/Models/event'
+import { CampPlaceService } from 'app/Services/campPlace.service';
 import { EventService } from 'app/Services/event.service';
 import Swal from 'sweetalert2';
 
@@ -13,13 +14,22 @@ export class AddEventComponent implements OnInit{
   files: File[] = [];
   selectedCategory : any;
   event: Event = new Event("", "", new Date(), new Date(),0,0,"");
-
+  campPlaces : any;
   categories :string[]=[];
 
-  constructor(private eventService: EventService){
+  constructor(private eventService: EventService,private campPlaceService: CampPlaceService){
 
   }
   ngOnInit(): void {
+    this.campPlaceService.getCampPlacesSelect().subscribe(
+      response =>{
+
+        this.campPlaces = response
+      },
+      error =>{
+        console.log(error);
+      }
+    );
     this.eventService.getEventCategories().subscribe(
       response =>{
 

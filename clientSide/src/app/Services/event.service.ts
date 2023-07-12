@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EventFilterDto } from 'app/Models/dto/eventFilterDto';
+import { RelevantEvent } from 'app/Models/dto/RelevantEventDto';
 import { Page } from 'app/Models/page';
 import { Observable } from 'rxjs';
 import { Event } from '../Models/event';
@@ -57,8 +58,13 @@ export class EventService {
 
   }
 
-  getRelevantEvent(){
-    return this.httpClient.get<string[]>(this.apiurl+'event/categories');
+  getRelevantEvent(category:any){
+    return this.httpClient.get<RelevantEvent[]>(this.apiurl+'event/relevantEvent/'+category);
+
+  }
+
+  getEventsCount(){
+    return this.httpClient.get<number>(this.apiurl+'event/eventCount');
 
   }
 
@@ -72,6 +78,7 @@ export class EventService {
     formData.append('nbParticipant', event.nbParticipant.toString());
     formData.append('category', event.category.toString());
     formData.append('price', event.price.toString());
+    formData.append('idCampPlace', event.idCampPlace!.toString());
     formData.append('image', file, file.name);
     return formData;
   }

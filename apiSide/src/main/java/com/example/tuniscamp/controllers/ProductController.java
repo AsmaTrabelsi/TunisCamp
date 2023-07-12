@@ -107,4 +107,14 @@ public class ProductController {
         iProductService.UpdateProduct(product);
     }
 
+    //for home screen
+
+    @GetMapping("/getNewestProduct")
+    public List<Product> getProductByCategory(){
+        return iProductService.getTop4Product();
+    }
+    @GetMapping("productCount")
+    public long getProductsCount(){
+        return this.iProductService.productCount();
+    }
 }

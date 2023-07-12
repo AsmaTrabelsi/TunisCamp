@@ -2,6 +2,7 @@ package com.example.tuniscamp.repositories;
 
 import com.example.tuniscamp.entities.CampPlace;
 import com.example.tuniscamp.entities.CampPlaceCategory;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceSelectDto;
 import com.example.tuniscamp.entities.State;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,4 +23,11 @@ public interface CampPlaceRepository extends JpaRepository<CampPlace,Integer> {
             @Param("states") List<State> states,
             @Param("search") String search,
             Pageable pageable);
+
+    // for home screen
+    List<CampPlace> findTop5ByOrderByIdCampPlaceAsc();
+    @Query("SELECT new com.example.tuniscamp.entities.ModelsDto.CampPlaceSelectDto(c.idCampPlace, c.name) FROM CampPlace c")
+    List<CampPlaceSelectDto> findAllCampPlaces();
+    long count();
+
 }

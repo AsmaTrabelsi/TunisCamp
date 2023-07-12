@@ -75,5 +75,15 @@ public class ProductService implements IProductService{
         productRepository.deleteById(id);
 
     }
+
+    // for home screen
+    @Override
+    public List<Product> getTop4Product(){
+        return this.productRepository.findTop4ByOrderByIdProductDesc();
+    }
+    @Override
+    public long productCount(){
+        return  this.productRepository.count();
+    }
 }
 

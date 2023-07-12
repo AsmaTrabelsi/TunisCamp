@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CarouselModule } from '@coreui/angular';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { EventDetailsComponent } from './event-details/event-details.component';
@@ -11,8 +11,6 @@ import {MatSliderModule} from '@angular/material/slider';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { EventCardComponent } from './event-card/event-card.component';
 import { AddEventComponent } from './add-event/add-event.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from 'app/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -20,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { PagingHeaderComponent } from 'app/Shared/paging-header/paging-header.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -39,6 +39,8 @@ import { PagingHeaderComponent } from 'app/Shared/paging-header/paging-header.co
         EventListComponent,
         EventCardComponent,
         AddEventComponent,
+        PagingHeaderComponent,
+
     ],
     providers: [DatePipe],
     imports: [
@@ -53,9 +55,10 @@ import { PagingHeaderComponent } from 'app/Shared/paging-header/paging-header.co
         MatButtonModule,
         MatMenuModule,
         MatIconModule,
-        PagingHeaderComponent,
-        BrowserModule,
-        AppRoutingModule,
+        NgxPaginationModule,
+        CommonModule,
+        RouterModule
+
     ]
 })
 export class EventModule { }

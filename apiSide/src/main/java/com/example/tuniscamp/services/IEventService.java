@@ -32,4 +32,7 @@ public interface IEventService {
 
 
     List<Event> getEventsByCampPlace(Integer campPlaceId);
+
+    long eventCount();
+
 }

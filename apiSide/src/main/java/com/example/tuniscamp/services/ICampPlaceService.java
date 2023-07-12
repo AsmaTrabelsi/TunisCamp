@@ -1,6 +1,7 @@
 package com.example.tuniscamp.services;
 
 import com.example.tuniscamp.entities.*;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceSelectDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -23,4 +24,9 @@ public interface ICampPlaceService {
     Page<CampPlace> getFiltredCampPlace(List <CampPlaceCategory> category,List <State> state, String search, Pageable pageable);
 
 
+    //for home screen
+    List<CampPlace> findTop5CampPlaces();
+    long campPlacesCount();
+
+    List<CampPlaceSelectDto> getCampPlaceSelect();
 }

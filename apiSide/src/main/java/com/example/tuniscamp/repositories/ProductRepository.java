@@ -1,5 +1,6 @@
 package com.example.tuniscamp.repositories;
 
+import com.example.tuniscamp.entities.CampPlace;
 import com.example.tuniscamp.entities.EventCategory;
 import com.example.tuniscamp.entities.Product;
 import com.example.tuniscamp.entities.ProductCategory;
@@ -23,4 +24,11 @@ public interface ProductRepository extends JpaRepository <Product, Integer> {
             @Param("maxPrice") Double maxPrice,
             @Param("search") String search,
             Pageable pageable);
+
+    //for home screen
+    List<Product> findTop4ByOrderByIdProductDesc();
+
+    long count();
+
+
 }

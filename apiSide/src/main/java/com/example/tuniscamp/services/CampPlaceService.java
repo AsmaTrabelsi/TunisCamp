@@ -3,6 +3,7 @@ package com.example.tuniscamp.services;
 import com.example.tuniscamp.entities.CampPlace;
 import com.example.tuniscamp.entities.CampPlaceCategory;
 import com.example.tuniscamp.entities.EventCategory;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceSelectDto;
 import com.example.tuniscamp.entities.State;
 import com.example.tuniscamp.repositories.CampPlaceRepository;
 import com.example.tuniscamp.repositories.ImageRepository;
@@ -72,5 +73,19 @@ public class CampPlaceService implements ICampPlaceService {
         return campPlaceRepository.findByCampPlaceCategoryInAndStateInWithSearch(category, state, search,pageable);
     }
 
+    // for home screen
+    @Override
+    public List<CampPlace> findTop5CampPlaces() {
+        return campPlaceRepository.findTop5ByOrderByIdCampPlaceAsc();
+    }
+
+    @Override
+    public long campPlacesCount(){
+        return this.campPlaceRepository.count();
+    }
+    @Override
+    public List<CampPlaceSelectDto> getCampPlaceSelect(){
+        return this.campPlaceRepository.findAllCampPlaces();
+    }
 
 }

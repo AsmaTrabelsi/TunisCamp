@@ -1,37 +1,10 @@
-<!--
-<c-carousel>
-    <c-carousel-inner>
-      <c-carousel-item *ngFor="let slide of slides">
-        <img
-          alt="{{slide.title}}"
-          class="d-block w-100"
-          loading="lazy"
-          src="{{slide.src}}"
-        />
-        <c-carousel-caption class="">
-          <div class="">
-            <h1 class="animate__animated animate__slideInLeft">We Create</h1>
-            <h1 class="animate__animated animate__slideInRight">Camping Event</h1>
-            <h6 class="animate__animated animate__fadeIn">Sei alla ricerca del campeggio ideale dove trascorrere le tue vacanze in Piemonte? </h6>
-
-          </div>
 
 
-   <h3>{{slide.title}}</h3>
-          <p>{{slide.subtitle}}</p>
-                    <button>Exploer now</button>
 
-        </c-carousel-caption>
-      </c-carousel-item>
-    </c-carousel-inner>
-    <c-carousel-control  caption="Previous" direction="prev"></c-carousel-control>
-    <c-carousel-control  caption="Next" direction="next"></c-carousel-control>
-  </c-carousel>
--->
 <div class="background-container">
   <!--title & description container-->
 <div class="details-container">
-        <img src="assets/zaghouan.jpg" width="100%" class="img-fluid" alt="Full-width image">
+        <img [src]="'data:image/jpeg;base64,' + event.image" width="100%" class="img-fluid" alt="Full-width image">
         <div class="big-container">
           <div class="title-container">
             <h1>{{event.name}}</h1>
@@ -45,7 +18,7 @@
                 </p>
               </div>
               <div class="text-right">
-                <h6>{{event.startDate.toLocaleDateString()}}</h6>
+                <h6>{{ event.startDate  | date: 'yyyy-MM-dd' }}</h6>
                 <button class="btn btn-primary">Book Now</button>
               </div>
             </div>
@@ -76,9 +49,33 @@
 <div class="feature-table">
   <table class="table" >
     <tbody>
-      <tr *ngFor="let feautre of features" >
-        <td class="p-3" width="20%"><i class="feature-icon" [ngClass]="feautre.icon"></i>{{feautre.type}}</td>
-        <td class="p-3" width="30%">{{feautre.description}}</td>
+      <tr>
+        <td class="p-3 bi bi-tag" width="20%"><i class="feature-icon" ></i>Category</td>
+        <td class="p-3" width="30%">{{formatCategoryName(event.category)}}</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-pin-map" width="20%"><i class="feature-icon" ></i>CampPlace</td>
+        <td class="p-3" width="30%">{{event.campPlace.name}}</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-person-dash" width="20%"><i class="feature-icon" ></i>Age</td>
+        <td class="p-3" width="30%">+13</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-people-fill" width="20%"><i class="feature-icon" ></i>Number of available places</td>
+        <td class="p-3" width="30%">{{event.nbParticipant}}</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon" ></i>Start Date</td>
+        <td class="p-3" width="30%">{{ event.startDate  | date: 'yyyy-MM-dd' }}</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-calendar-heart" width="20%"><i class="feature-icon" ></i>End Date</td>
+        <td class="p-3" width="30%">{{ event.endDate  | date: 'yyyy-MM-dd' }}</td>
+      </tr>
+      <tr>
+        <td class="p-3 bi bi-coin" width="20%"><i class="feature-icon" ></i>Price</td>
+        <td class="p-3" width="30%">{{event.price}}Dt</td>
       </tr>
     </tbody>
   </table>
@@ -122,7 +119,7 @@
 
    <!--Relevant Camping container-->
 
-<app-animated-card></app-animated-card>
+<app-animated-card [category]="event.category"></app-animated-card>
 
   <!--Discover more container-->
 
@@ -130,7 +127,7 @@
   <div class="animate__animated animate__zoomIn">
   <h1>Ready to Camp with Us</h1>
   <h1>On Your Next Camp?</h1>
-  <button class="btn btn-primary text-center mt-4 py-2 px-5">Discover More</button>
+  <button routerLink="" class="btn btn-primary text-center mt-4 py-2 px-5">Discover More</button>
 </div>
 </div>
 

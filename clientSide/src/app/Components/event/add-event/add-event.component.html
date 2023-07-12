@@ -9,13 +9,13 @@
             <form enctype="multipart/form-data" (ngSubmit)="addEvent(eventNgForm)" #eventNgForm="ngForm" #form>
                 <div class="container-fluid row mt-2">
                     <div class="col-lg-6 col-md-12 p-5 container-left-side">
-                        <div class="form-group mb-3">
-                            <label for="campPlaceSelect" class="form-label">Camp Place</label>
-                            <select class="form-select" id="campPlaceSelect">
-                              <option value="" selected disabled>Select Camp Place</option>
-                              <option *ngFor="let category of categories">{{category}}</option>
-                            </select>
-                        </div>
+                      <div class="form-group mb-3">
+                        <label for="campSelect" class="form-label">CampPlace</label>
+                        <select class="form-select" id="campSelect" [(ngModel)]="event.idCampPlace" name="camp">
+                          <option value="" selected disabled>Select Camp Place</option>
+                          <option *ngFor="let camp of campPlaces" [value]="camp.idCampPlace">{{camp.name}}</option>
+                        </select>
+                      </div>
                         <div class="form-group mb-3">
                           <label for="categorySelect" class="form-label">Category</label>
                           <select class="form-select" id="categorySelect" [(ngModel)]="event.category" name="category">

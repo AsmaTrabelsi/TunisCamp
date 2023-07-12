@@ -21,7 +21,7 @@ const routes: Routes = [
 
   {path: "addproduct", component: AddProductComponent},
   {path: "addEvent", component: AddEventComponent},
-  {path: "EventDetails", component: EventDetailsComponent},
+  {path: "EventDetails/:idEvent", component: EventDetailsComponent},
   {path: "EventList", component: EventListComponent},
   {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
 
