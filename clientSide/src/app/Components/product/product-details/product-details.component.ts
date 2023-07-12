@@ -28,8 +28,8 @@ export class ProductDetailsComponent implements OnInit{
       this.productservice.getProductById(id).subscribe(
         reponse =>{
 
-          this.equipement= {product:reponse, url:reponse.files[0].file};
-          console.log(reponse.name);
+          this.equipement = {product:reponse, url:reponse.files[0].file};
+          console.log(this.equipement.product.available);
 
     this.productservice.getSimilairProducts(this.equipement.product.category).subscribe( reponse =>{
 

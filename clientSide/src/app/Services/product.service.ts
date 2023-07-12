@@ -33,6 +33,7 @@ export class productservice {
     formData.append('color', product.color);
     formData.append('category', product.category.toString());
     formData.append('price', product.price.toString());
+    formData.append('available', product.available.toString());
 
     formData.append('state', product.state.toString());
     for (let i = 0; i < files.length; i++) {
@@ -47,7 +48,6 @@ export class productservice {
       params = params.append('categories', productFilterDto.categories.toString());
     }
     params = params.append('minPrice', productFilterDto.minPrice.toString());
-    params = params.append('maxPrice', productFilterDto.maxPrice.toString());
     params = params.append('page', page.toString());
     params = params.append('size', size.toString());
     params = params.append('sort', productFilterDto.sort);

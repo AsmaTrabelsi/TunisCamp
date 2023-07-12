@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-main">
           <div class="product-container">
-              <div class="p" (mouseover)="imageChange(equipement,0)"><img [src]="'data:image/jpeg;base64,'+equipement.product.files[0].file"
+              <div class="p" (mouseover)="imageChange(equipement,0)"><img [src]="'data:image/jpeg;base64,'+ equipement.product.files[0].file"
                       alt="Product"></div>
               <div *ngIf="equipement.product.files[1].file" class="p" (mouseover)="imageChange(equipement,1)"><img [src]="'data:image/jpeg;base64,'+equipement.product.files[1].file"
                       alt="Product"></div>
@@ -22,8 +22,8 @@
 <h6>{{equipement.product.category}}</h6>
 <div class="row">
   <div class="col-2">
-    <span><h6 [ngClass]="{ 'available': equipement.available, 'out-of-stock': !equipement.available }">
-      {{ equipement.available ? 'Available' : 'Out of Stock' }}
+    <span><h6 [ngClass]="{'available ==1': equipement.available, 'out-of-stock': !equipement.available }">
+      {{ equipement.available == 1 ? 'Available' : 'Out of Stock' }}
     </h6></span>
   </div>
   <div class="col">

@@ -11,6 +11,7 @@ export class ProductCardComponent implements OnInit{
     console.log(this.equipement);
   }
   @Input() equipement: any;
+
   imageChange(equipment: any, index: number) {
     equipment.url = equipment.product.files[index].file;
   }
