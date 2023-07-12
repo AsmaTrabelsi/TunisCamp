@@ -9,11 +9,11 @@ import { Equipement } from 'app/Models/equipement';
 export class ProductCardComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.equipement);
-    console.log(this.equipement.product.files[0].file);
   }
   @Input() equipement: any;
+
   imageChange(equipment: any, index: number) {
-    equipment.url = equipment.product.files[index];
+    equipment.url = equipment.product.files[index].file;
   }
 
 

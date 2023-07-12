@@ -22,7 +22,8 @@ const routes: Routes = [
   {path: "addEvent", component: AddEventComponent},
   {path: "EventDetails", component: EventDetailsComponent},
 
-  {path: "ProductDetails", component: ProductDetailsComponent},
+  {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
+
   {path: "ProductCard", component: ProductCardComponent},
   {path: "ProductList", component: ListProductComponent},
 
