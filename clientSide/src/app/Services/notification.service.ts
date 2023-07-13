@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NotifierService } from 'angular-notifier';
+import { ToastrService } from 'ngx-toastr';
 import { NotificationType } from 'app/enum/notification-type.enum';
 
 @Injectable({
@@ -7,10 +7,26 @@ import { NotificationType } from 'app/enum/notification-type.enum';
 })
 export class NotificationService {
 
-    constructor(private notifier: NotifierService) {}
+  constructor(private toastr: ToastrService) {}
 
-     public notify(type: NotificationType, message: string) {
-    this.notifier.notify(type, message);
+  public notify(type: NotificationType, message: string) {
+    switch (type) {
+      case NotificationType.SUCCESS:
+        this.toastr.success(message);
+        break;
+      case NotificationType.ERROR:
+        this.toastr.error(message);
+        break;
+      case NotificationType.WARNING:
+        this.toastr.warning(message);
+        break;
+      case NotificationType.INFO:
+        this.toastr.info(message);
+        break;
+      default:
+        break;
+    }
   }
 
 }
+
