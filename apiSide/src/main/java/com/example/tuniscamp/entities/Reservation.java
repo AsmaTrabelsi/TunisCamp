@@ -16,7 +16,7 @@ public class Reservation {
     @Setter(AccessLevel.NONE)
     private Integer idReservation;
     private Date date;
-
+    private String notes;
     @ManyToOne
     private User user;
     @ManyToOne

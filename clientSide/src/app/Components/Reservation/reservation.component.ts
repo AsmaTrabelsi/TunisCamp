@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators  } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventService } from 'app/Services/event.service';
+import { ReservationService } from 'app/Services/reservation.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -7,7 +11,63 @@ import { FormControl, Validators  } from '@angular/forms';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
-export class ReservationComponent {
+export class ReservationComponent implements OnInit{
+  reservation: any;
+  idEvent : any;
+  event: any;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.idEvent = params.get('idEvent');
+      this.eventService.getEventById(this.idEvent).subscribe(
+        reponse =>{
+
+         this.event = reponse;
+         console.log(this.event.campPlace.images[0]);
+        },
+        error=>{
+          console.log("error "+error.message);
+        }
+      );
+    });
+
+  }
+
+  submitFeedback(){
+
+    this.reservationService.addReservation(this.reservation).subscribe(
+      reponse =>{
+        console.log('Feedback added successfully');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your Reservation has been saved',
+          showConfirmButton: false,
+          timer: 2500
+        });
+
+          this.router.navigate(['/EventDetails/:'+this.idEvent]);
+
+      },
+      error=>{
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Unable to add reservation',
+        });
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+
+
   backendLocation: string;
   user_input!: string;
   phone_number!: string; // Add the phone_number variable
@@ -24,7 +84,8 @@ export class ReservationComponent {
   backendDate: string; // Assuming you retrieve the date from the backend as a Date object
   backendTime: string; // Assuming you retrieve the time from the backend as a string
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private reservationService: ReservationService,
+    private router: Router, private eventService: EventService) {
     // Set the backendDate to a specific date
     this.backendDate='30 July 2023';
 

@@ -8,10 +8,9 @@ import { Component } from '@angular/core';
 export class GoogleMapComponent {
 
   display : any;
-
-  center: google.maps.LatLngLiteral = {lat: 36.806156, lng: 10.181753};
-  zoom = 4;
-
+  center: google.maps.LatLngLiteral = {lat: 36.866257, lng: 10.164836};
+  zoom = 16;
+  markerOptions :google.maps.MarkerOptions = {draggable: false};
   moveMap(event: google.maps.MapMouseEvent) {
     if(event.latLng!= null)
     this.center = (event.latLng.toJSON());

@@ -1,5 +1,6 @@
 package com.example.tuniscamp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Feedback {
     private String comment ;
     private Date createAt ;
     @ManyToOne
+    @JsonIgnore
     private CampPlace campPlace;
 
 

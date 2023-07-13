@@ -1,7 +1,14 @@
 package com.example.tuniscamp.controllers;
 
+import com.example.tuniscamp.entities.CampPlace;
+import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.Feedback;
+import com.example.tuniscamp.entities.ModelsDto.FeedbackDto;
 import com.example.tuniscamp.services.FeedbackService;
+import com.example.tuniscamp.services.ICampPlaceService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,15 +16,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Feedback Management")
 @RestController
-@RequestMapping("/feedbacks")
+@CrossOrigin(origins = "http://localhost:4200/")
+@RequiredArgsConstructor
+@RequestMapping("feedback")
 public class FeedbackController {
     private final FeedbackService feedbackService;
+    private final ICampPlaceService iCampPlaceService ;
+    private final ModelMapper modelMapper;
 
-    @Autowired
-    public FeedbackController(FeedbackService feedbackService) {
-        this.feedbackService = feedbackService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
@@ -36,9 +44,13 @@ public class FeedbackController {
     }
 
     @PostMapping
-    public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
+    public Feedback addFeedback(@RequestBody FeedbackDto feedbackDto) {
+        Feedback feedback = modelMapper.map(feedbackDto, Feedback.class);
+
+        CampPlace campPlace = this.iCampPlaceService.getCampPlaceById(feedbackDto.getIdCampPlace());
+        feedback.setCampPlace(campPlace);
         feedbackService.addFeedback(feedback);
-        return ResponseEntity.status(HttpStatus.CREATED).body(feedback);
+        return feedback;
     }
 
     @DeleteMapping("/{id}")

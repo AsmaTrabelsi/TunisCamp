@@ -1,6 +1,8 @@
 import { Component, Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { CampPlaceService } from 'app/Services/campPlace.service';
 import { EventService } from 'app/Services/event.service';
+import { productservice } from 'app/Services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -12,47 +14,90 @@ export class HomeComponent  implements OnInit {
   events : any;
   public imageData: any;
   reader :FileReader= new FileReader();
-  destinations:{name:string,img:string}[]=[
-    {name:"Tbarka",img:"assets/tbarka.jpg"},
-    {name:"Zaghoun",img:"assets/zaghouan.jpg"},
-    {name:"Tbarka",img:"assets/tbarka.jpg"},
-    {name:"Zaghoun",img:"assets/zaghouan.jpg"},
-    {name:"Zaghoun",img:"assets/zaghouan.jpg"}
 
-  ];
-  equipements :Equipement[]=[
-    {name:"Automatic Tent For Beach And Camping",description:"Automatic tent for beach and camping 8 places 250*250*165 cm This pop-up beach tent opens automatically in seconds, no assembly required. very easy to fold up into a small round shape and put in the carry bag.",
-    state:"new",price:250,category:"Beach And Camping",images:["https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/1271/1.jpg?4466","https://contents.mediadecathlon.com/p1259581/k$47977d533ae46915ab592bab64ec7153/tente-de-camping-2-seconds-verte-3-personnes.jpg?format=auto&quality=60&f=452x452",
-    "https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"],url:"https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"},
-    {name:"Chaise de camping plage pliante - Fauteuil pliable",description:"Automatic tent for beach and camping 8 places 250*250*165 cm This pop-up beach tent opens automatically in seconds, no assembly required. very easy to fold up into a small round shape and put in the carry bag.",
-    state:"new",price:50,category:"Beach And Camping",images:["https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/9344/1.jpg?7547","https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/75/9344/1.jpg?7546",
-    "https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/14/9716/1.jpg?9651"],url:"https://tn.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/14/9716/1.jpg?9651"},
-    {name:"Automatic Tent For Beach And Camping",description:"Automatic tent for beach and camping 8 places 250*250*165 cm This pop-up beach tent opens automatically in seconds, no assembly required. very easy to fold up into a small round shape and put in the carry bag.",
-    state:"new",price:250,category:"Beach And Camping",images:["https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/1271/1.jpg?4466","https://contents.mediadecathlon.com/p1259581/k$47977d533ae46915ab592bab64ec7153/tente-de-camping-2-seconds-verte-3-personnes.jpg?format=auto&quality=60&f=452x452",
-    "https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"],url:"https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"},
-    {name:"Automatic Tent For Beach And Camping",description:"Automatic tent for beach and camping 8 places 250*250*165 cm This pop-up beach tent opens automatically in seconds, no assembly required. very easy to fold up into a small round shape and put in the carry bag.",
-    state:"new",price:250,category:"Beach And Camping",images:["https://tn.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/68/1271/1.jpg?4466","https://contents.mediadecathlon.com/p1259581/k$47977d533ae46915ab592bab64ec7153/tente-de-camping-2-seconds-verte-3-personnes.jpg?format=auto&quality=60&f=452x452",
-    "https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"],url:"https://www.lidl.fr/assets/gcpc6867a05209246f2bd0ab39f90668e7e.jpeg"},
-  ]
+    campPlaces : any;
+    products : any;
+    productsCount: any;
+    eventsCount: any;
+    campPlacesCount: any;
+      // camp place a supprime
+      imageList: string[] = [
+        'assets/zaghouan.jpg',
+        'assets/bg.png',
+        'assets/bg3.jpg',
+        'assets/tbarka.jpg',
+        // Add more images to the list
+      ];
+      selectedCampImage = 'assets/zaghouan.jpg';
 
-  constructor(private eventServive : EventService,private sanitizer: DomSanitizer){
+
+
+
+  constructor(private eventServive : EventService,private campPlaceService: CampPlaceService,private productService: productservice){
 
   }
   ngOnInit(): void {
+
+    this.eventServive.getEventsCount().subscribe(
+      reponse =>{
+        this.eventsCount=reponse;
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
+    this.productService.getProductCount().subscribe(
+      reponse =>{
+        this.productsCount = reponse
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
+
+    this.campPlaceService.getCampPlaceCount().subscribe(
+      reponse =>{
+       this.campPlacesCount= reponse;
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
+
+    this.campPlaceService.getTop5CampPlace().subscribe(
+      reponse =>{
+        console.log(reponse);
+
+        this.campPlaces = reponse;
+        console.log(this.campPlaces[0].name);
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
+
+    this.productService.getNewestProducts().subscribe(
+      reponse =>{
+        console.log(reponse);
+
+        this.products = reponse;
+      },
+      error=>{
+        console.log("error"+error);
+      }
+    );
     this.eventServive.getAllEvent().subscribe(
       reponse =>{
         console.log(reponse);
 
         this.events = reponse;
-        console.log(this.events[0].image);
-        this.imageData = 'data:image/jpeg;base64,' + this.events[2].image;
-
       },
       error=>{
-        console.log("eroor"+error);
+        console.log("error"+error);
       }
     )
   }
+
   partnerLogos: string[] = [
     'assets/partner/ctrip.png',
     'assets/partner/traveltodo.png',
@@ -118,6 +163,10 @@ export class HomeComponent  implements OnInit {
   imageChange(equipment: Equipement, index: number) {
     equipment.url = equipment.images[index];
   }
+
+  selectImage(image: string) {
+    this.selectedCampImage = image;
+  }
 }
 
 export class Equipement{
@@ -125,4 +174,9 @@ export class Equipement{
     public category:string,public url:string, public images:string[]){
 
     }
+
+
+
+
+
 }
