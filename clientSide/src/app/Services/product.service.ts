@@ -72,6 +72,13 @@ export class productservice {
     return this.httpClient.get<Product>(this.apiurl+'product/'+id);
   }
 
+  deleteProduct(id:any){
 
+    return this.httpClient.delete<string[]>(this.apiurl+'product/'+id);
+
+
+
+
+  }
 
 }

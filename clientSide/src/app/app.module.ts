@@ -11,7 +11,7 @@ import { AddProductComponent } from './Components/product/add-product/add-produc
 import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {HttpClientModule } from '@angular/common/http';
-import { EventDetailsModule } from './Components/event/event-details/event-details.module';
+import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -24,6 +24,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ProductDetailsComponent,
     ProductCardComponent,
     ListProductComponent,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    ProductTableComponent
 
   ],
 
@@ -54,7 +56,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatTableModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
