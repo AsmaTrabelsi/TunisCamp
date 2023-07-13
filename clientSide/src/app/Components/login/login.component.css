@@ -154,13 +154,13 @@ a {
   text-decoration: none !important;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 18px;
   color: #343232;
 }
 
 a:hover {
-  text-decoration: underline #ffe600 2px !important;
+  text-decoration: underline #1B4D3E 2px !important;
 }
 
 .form-floating {
