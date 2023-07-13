@@ -20,7 +20,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { PagingHeaderComponent } from 'app/Shared/paging-header/paging-header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
-
+import { EventTableComponent } from './event-table/event-table.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [
@@ -31,6 +33,7 @@ import { RouterModule } from '@angular/router';
         EventCardComponent,
         AddEventComponent,
         PagingHeaderComponent,
+        EventTableComponent
 
     ],
     exports: [
@@ -40,6 +43,7 @@ import { RouterModule } from '@angular/router';
         EventCardComponent,
         AddEventComponent,
         PagingHeaderComponent,
+        EventTableComponent
 
     ],
     providers: [DatePipe],
@@ -57,7 +61,9 @@ import { RouterModule } from '@angular/router';
         MatIconModule,
         NgxPaginationModule,
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatTableModule,
+        MatPaginatorModule
 
     ]
 })

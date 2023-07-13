@@ -17,6 +17,8 @@ import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/c
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+import { EventTableComponent } from './Components/event/event-table/event-table.component';
+
 
 
 const routes: Routes = [
@@ -28,11 +30,11 @@ const routes: Routes = [
   { path: 'user/management', component: UserComponent},
 
   {path: "addproduct", component: AddProductComponent},
-  {path: "addEvent", component: AddEventComponent},
+  {path: "addEvent/:idEvent", component: AddEventComponent},
   {path: "EventDetails/:idEvent", component: EventDetailsComponent},
   {path: "EventList", component: EventListComponent},
   {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
-
+  {path: "EventTable", component: EventTableComponent},
   {path: "ProductCard", component: ProductCardComponent},
   {path: "ProductList", component: ListProductComponent},
 
@@ -41,6 +43,7 @@ const routes: Routes = [
   {path: "listCampPlace", component: CampPlaceListComponent},
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 
   {path: "**", component: NotFoundComponent}
 
