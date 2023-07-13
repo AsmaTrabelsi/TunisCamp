@@ -79,18 +79,6 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         }
     }
 
-    private void validateLoginAttempt(User user) {
-        if(user.isNotLocked()) {
-            if(loginAttemptService.hasExceededMaxAttempts(user.getUsername())) {
-                user.setNotLocked(false);
-            } else {
-                user.setNotLocked(true);
-            }
-        } else {
-            loginAttemptService.evictUserFromLoginAttemptCache(user.getUsername());
-        }
-    }
-
     @Override
     public User register(String firstName, String lastName, String username, String email) throws UserNotFoundException, EmailExistException, UsernameExistException, MessagingException {
         validateNewUsernameAndEmail(EMPTY, username, email);
@@ -108,6 +96,7 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
         user.setNotLocked(true);
         user.setRole(Role.ROLE_USER.name());
         user.setAuthorities(ROLE_USER.getAuthorities());
+        user.setProfileImageUrl(getTemporaryProfileImageUrl(username));
         userRepository.save(user);
         LOGGER.info("New user password: " + password);
         emailService.sendNewPasswordEmail(firstName, password, email);
@@ -244,6 +233,17 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
                 + username + DOT + JPG_EXTENSION).toUriString();
     }
 
+    private void validateLoginAttempt(User user) {
+        if(user.isNotLocked()) {
+            if(loginAttemptService.hasExceededMaxAttempts(user.getUsername())) {
+                user.setNotLocked(false);
+            } else {
+                user.setNotLocked(true);
+            }
+        } else {
+            loginAttemptService.evictUserFromLoginAttemptCache(user.getUsername());
+        }
+    }
     private User validateNewUsernameAndEmail(String currentUsername, String newUsername, String newEmail) throws UserNotFoundException, UsernameExistException, EmailExistException {
         User userByNewUsername = findUserByUsername(newUsername);
         User userByNewEmail = findUserByEmail(newEmail);

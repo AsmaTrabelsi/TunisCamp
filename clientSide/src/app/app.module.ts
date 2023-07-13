@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
@@ -9,7 +10,6 @@ import { HomeComponent } from './Components/home/home.component';
 
 import { AddProductComponent } from './Components/product/add-product/add-product.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -31,8 +31,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
-
-
+import { AuthenticationService } from './Services/authentication.service';
+import { UserService } from './Services/user.service';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AuthenticationGuard } from './guard/authentication.guard';
+import { NotificationModule } from './notification.module';
+import { NotificationService } from './Services/notification.service';
 
 
 @NgModule({
@@ -67,8 +71,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     MatIconModule,
     NgxSliderModule,
     NgxPaginationModule,
+    NotificationModule,
   ],
-  providers: [],
+  providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 
 })
