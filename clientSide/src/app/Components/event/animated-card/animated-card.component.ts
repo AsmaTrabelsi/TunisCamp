@@ -1,27 +1,31 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { EventDto } from 'app/Models/eventDto';
+import { Component, Input, OnInit } from '@angular/core';
+import { EventService } from 'app/Services/event.service';
 
 @Component({
   selector: 'app-animated-card',
   templateUrl: './animated-card.component.html',
   styleUrls: ['./animated-card.component.css']
 })
-export class AnimatedCardComponent {
+export class AnimatedCardComponent implements OnInit {
 
-  relevantEvents: EventDto[]=[
-    new EventDto("Mountain Morning","Ain Zaghouan","assets/camp2.jpg"),
-    new EventDto("Mountain Morning","Ain Zaghouan", "assets/tbarka.jpg"),
-    new EventDto("Mountain Morning","Ain Zaghouan","assets/bg3.jpg"),
-    new EventDto("Mountain Morning","Ain Zaghouan", "assets/zaghouan.jpg")
+  @Input() category: any;
+  relevantEvents: any;
+  constructor(private eventService: EventService) { }
+  ngOnInit(): void {
 
-  ];
+      this.eventService.getRelevantEvent(this.category).subscribe(
+        reponse =>{
+          console.log(reponse);
 
-  constructor(private router: Router){
+         this.relevantEvents = reponse;
+        },
+        error=>{
+          console.log("error "+error.message);
+        }
+      );
+    }
+
 
   }
-  selectEvent(){
-    this.router.navigate(['/addEvent']);
 
-  }
-}
+

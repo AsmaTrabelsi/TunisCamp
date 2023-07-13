@@ -3,8 +3,13 @@
 }
 
 .btn-primary{
-    background-color: #ef9273;
-    border-color: #ef9273;
+    background-color: #0DEC67;
+    border-color: #0DEC67;
+}
+
+.btn-primary:hover{
+  background-color: #fff;
+  color: #0DEC67;
 }
 
 .custom-dropzone{

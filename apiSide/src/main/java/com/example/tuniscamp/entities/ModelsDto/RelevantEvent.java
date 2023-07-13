@@ -14,4 +14,5 @@ public class RelevantEvent {
     private String name;
 
     private String campPlaceLocation;
+    private byte[] image;
 }

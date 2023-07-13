@@ -1,3 +1,4 @@
+
 <div class="mx-5">
     <div class="mx-5 mt-4 mb-4">
         <h4>Add New Event</h4>
@@ -8,15 +9,17 @@
             <form enctype="multipart/form-data" (ngSubmit)="addEvent(eventNgForm)" #eventNgForm="ngForm" #form>
                 <div class="container-fluid row mt-2">
                     <div class="col-lg-6 col-md-12 p-5 container-left-side">
-                        <div class="form-group mb-3">
-                            <label for="campPlaceSelect" class="form-label">Camp Place</label>
-                            <select class="form-select" id="campPlaceSelect">
-                                <option *ngFor="let category of categories">{{category}}</option>
-                            </select>
-                        </div>
+                      <div class="form-group mb-3">
+                        <label for="campSelect" class="form-label">CampPlace</label>
+                        <select class="form-select" id="campSelect" [(ngModel)]="event.idCampPlace" name="camp">
+                          <option value="" selected disabled>Select Camp Place</option>
+                          <option *ngFor="let camp of campPlaces" [value]="camp.idCampPlace">{{camp.name}}</option>
+                        </select>
+                      </div>
                         <div class="form-group mb-3">
                           <label for="categorySelect" class="form-label">Category</label>
                           <select class="form-select" id="categorySelect" [(ngModel)]="event.category" name="category">
+                            <option value="" selected disabled>Select a category</option>
                             <option *ngFor="let category of categories" [value]="category">{{ formatCategoryName(category) }}</option>
                           </select>
                         </div>
@@ -80,7 +83,7 @@
                             <label class="form-label ">Event Price</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
-                                <input #priceRef="ngModel" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required min="1"
+                                <input #priceRef="ngModel" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" required min="1"
                                  [ngClass]="{'is-invalid' :(priceRef.invalid &&(priceRef.touched || priceRef.dirty))}" id="price" name="price" [(ngModel)]="event.price">
                                 <div *ngIf="priceRef.invalid && (priceRef.touched ||priceRef.dirty)" class="invalid-feedback">
                                     <div *ngIf="priceRef.errors?.['required']">Event Price is required.
