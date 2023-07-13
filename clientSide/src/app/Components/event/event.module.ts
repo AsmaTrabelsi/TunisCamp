@@ -8,7 +8,6 @@ import { GoogleMapComponent } from './google-map/google-map.component';
 import { EventListComponent } from './event-list/event-list.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSliderModule} from '@angular/material/slider';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { EventCardComponent } from './event-card/event-card.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +48,6 @@ import { RouterModule } from '@angular/router';
         GoogleMapsModule,
         MatChipsModule,
         MatSliderModule,
-        NgxSliderModule,
         NgxDropzoneModule,
         MatExpansionModule,
         MatButtonModule,

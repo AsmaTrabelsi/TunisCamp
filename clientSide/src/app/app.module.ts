@@ -32,9 +32,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
