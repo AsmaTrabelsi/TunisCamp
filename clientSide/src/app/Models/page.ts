@@ -10,4 +10,3 @@ export interface Page<T> {
   numberOfElements: number;
   empty: boolean;
 }
-

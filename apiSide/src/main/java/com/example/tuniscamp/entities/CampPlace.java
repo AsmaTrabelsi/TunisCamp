@@ -1,4 +1,5 @@
 package com.example.tuniscamp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +26,7 @@ public class CampPlace {
     private Double longitude ;
     private Double latitude;
     @OneToMany(mappedBy = "campPlace")
+    @JsonIgnoreProperties("campPlace")
     private List<Event> events;
     @OneToMany(mappedBy = "campPlace")
     private List<Feedback> feedbacks;

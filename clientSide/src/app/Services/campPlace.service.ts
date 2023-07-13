@@ -29,6 +29,14 @@ export class CampPlaceService {
   getAllCampPlace(){
     return this.httpClient.get<CampPlace[]>(this.apiurl+'campPlace');
   }
+  // for home screen
+  getTop5CampPlace(){
+    return this.httpClient.get<CampPlace[]>(this.apiurl+'campPlace/getTop5CampPlace');
+  }
+  getCampPlaceCount(){
+    return this.httpClient.get<number>(this.apiurl+'campPlace/campPlacesCount');
+  }
+
   getCampPlaceCategories(){
     return this.httpClient.get<string[]>(this.apiurl+'campPlace/categories');
 
@@ -93,5 +101,9 @@ export class CampPlaceService {
   }
   getCampPlaceById (idCampPlace : any){
     return this.httpClient.get<CampPlace>(this.apiurl + 'campPlace/'+ idCampPlace);
+  }
+
+  getCampPlacesSelect(){
+    return this.httpClient.get<{idCampPlace:any,name:any}>(this.apiurl+'campPlace/getCampPlaceForSelect');
   }
 }

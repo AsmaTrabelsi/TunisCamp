@@ -29,4 +29,8 @@ public interface IProductService {
     void deleteProduct(int id);
 
     List<ProductCategory> getCategories();
+
+    // for home screen
+    List<Product> getTop4Product();
+    long productCount();
 }

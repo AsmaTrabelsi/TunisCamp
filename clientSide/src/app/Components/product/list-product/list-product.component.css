@@ -8,14 +8,11 @@
   float: right;
   line-height: 22px;
 }
-.mat-mdc-standard-chip {
-  background-color: grey;
 
-}
 
 
 .mat-mdc-standard-chip.mat-accent.mat-mdc-chip-selected, .mat-mdc-standard-chip.mat-accent.mat-mdc-chip-highlighted {
-  --mdc-chip-elevated-container-color: #0DEC67;
+  --mdc-chip-elevated-container-color: #0DEC67 !important;
 }
 
 .event-container{
@@ -27,7 +24,7 @@
 }
 .pagination-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 

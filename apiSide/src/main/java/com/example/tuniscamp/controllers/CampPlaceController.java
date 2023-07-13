@@ -2,6 +2,7 @@ package com.example.tuniscamp.controllers;
 
 import com.example.tuniscamp.entities.*;
 import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceSelectDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.services.ICampPlaceService;
 import lombok.RequiredArgsConstructor;
@@ -102,8 +103,20 @@ public class CampPlaceController {
 
     }
 
+    // for home screen
+    @GetMapping("/getTop5CampPlace")
+    public List<CampPlace> getTop5CampPlacesEndpoint() {
+        return iCampPlaceService.findTop5CampPlaces();
+    }
+    @GetMapping("campPlacesCount")
+    public long getcampPlacesCount(){
+        return this.iCampPlaceService.campPlacesCount();
+    }
 
-
+    @GetMapping("/getCampPlaceForSelect")
+    public List<CampPlaceSelectDto> getCampPlaceForSelect(){
+       return this.iCampPlaceService.getCampPlaceSelect();
+    }
     private Sort getSort(String sort) {
         String[] sortParams = sort.split(",");
         String property = sortParams[0];
