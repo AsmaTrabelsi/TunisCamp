@@ -23,15 +23,8 @@ export class ProductTableComponent implements OnInit {
   categories :any;
   selectedCategories: any;
   panelOpenState = false;
-  /// slider variables
-  options: Options = {
-    floor: 0,
-    ceil: 500,
-    step:10
-  };
-  pageSize = 6;
-  p: number = 1;
-  totalItems = 1;
+
+
 
   sortOptions = [
     {name: 'Alphabetical', value: 'name,asc',icon: "sort_by_alpha"},
@@ -56,12 +49,11 @@ export class ProductTableComponent implements OnInit {
 
   getFilteredProducts(){
 
-    this.productservice.getFilteredProducts(this.productFilter,this.p-1, this.pageSize).subscribe(
+    this.productservice.getFilteredProducts(this.productFilter,0, 100).subscribe(
       response =>{
         console.log(response);
 
         this.products = response.content;
-        this.totalItems = response.totalElements;
         console.log(response.totalElements);
 
       },
@@ -72,16 +64,11 @@ export class ProductTableComponent implements OnInit {
   }
 
 
-onPageChange(event: any) {
-  console.log(event);
-  this.p = event;
-  this.getFilteredProducts();
-}
+
 
 clearFilter(){
   console.log("clean data");
   this.productFilter = new ProductFilterDto([],0.0,500,"name,asc");
-  this.p = 1;
   this.selectedCategories= [];
   this.getFilteredProducts();
 }

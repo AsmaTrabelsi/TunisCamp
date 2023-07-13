@@ -6,7 +6,7 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
-import {MatChipsModule} from '@angular/material/chips';
+
 import { AddProductComponent } from './Components/product/add-product/add-product.component';
 import { FormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -19,47 +19,66 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProductDetailsComponent } from './Components/product/product-details/product-details.component';
 import { ProductCardComponent } from './Components/product/product-card/product-card.component';
 import { ListProductComponent } from './Components/product/list-product/list-product.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
 
 
+
+
+
+import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
+import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
+import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
+import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { EventDetailsModule } from './Components/event/event-details/event-details.module';
+
+
+
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
-    AddProductComponent,
-    ProductDetailsComponent,
-    ProductCardComponent,
-    ListProductComponent,
-    PagingHeaderComponent,
-    ProductTableComponent
-
-  ],
-
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgxDropzoneModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CarouselModule,
-    MatChipsModule,
-    NgxPaginationModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    NgxSliderModule,
-    MatTableModule,
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        NotFoundComponent,
+        HomeComponent,
+        AddProductComponent,
+        ProductDetailsComponent,
+        ProductCardComponent,
+        ListProductComponent,
+        AddCampPlaceComponent,
+        CampPlaceDetailsComponent,
+        CampPlaceCardComponent,
+        CampPlaceListComponent,
+        PagingHeaderComponent,
+        ProductTableComponent
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        NgxDropzoneModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CarouselModule,
+        MatChipsModule,
+        NgxPaginationModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        NgxSliderModule,
+        NgxPaginationModule,
+        EventDetailsModule,
+        MatTableModule,
+    ]
 })
 export class AppModule { }

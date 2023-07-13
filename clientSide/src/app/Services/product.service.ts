@@ -24,8 +24,17 @@ export class productservice {
    return  this.httpClient.post(this.apiurl + 'product/addProduct', this.convertProductToFormData(product,files)) ;
 
   }
+
+  updateProduct(product: Product, files:File[]) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+
+   return  this.httpClient.put(this.apiurl + 'product/addProduct', this.convertProductToFormData(product,files)) ;
+
+  }
   convertProductToFormData(product: Product, files: File[]): any {
     const formData = new FormData();
+    formData.append('idProduct', product.idProduct);
     formData.append('name', product.name);
     formData.append('description', product.description);
     formData.append('size', product.size.toString());

@@ -1,6 +1,7 @@
 package com.example.tuniscamp.config;
 
-import com.example.tuniscamp.entities.Event;
+import com.example.tuniscamp.entities.*;
+import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
 import com.example.tuniscamp.entities.ModelsDto.EventDto;
 import com.example.tuniscamp.entities.ModelsDto.ProductDto;
 import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
+
 
 @Configuration
 public class MapperConfig {
@@ -43,6 +45,7 @@ public class MapperConfig {
 
                 });
 
+
         //product auto mapper  (ProductDto => Product
         modelMapper.createTypeMap(ProductDto.class, Product.class)
                 .addMappings(mapper -> {
@@ -58,4 +61,7 @@ public class MapperConfig {
         return modelMapper;
     }
 
-}
+
+
+    }
+

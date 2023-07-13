@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'app/Models/Product.model';
 import { productservice } from 'app/Services/product.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -18,10 +20,13 @@ export class AddProductComponent implements OnInit{
 
   categories :string[]=[];
 
-  constructor(private productService: productservice){
+  constructor(private productService: productservice,private route: ActivatedRoute){
 
   }
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.product.idProduct = params.get('idProduct');
+    });
     this.productService.getProductCategories().subscribe(
       response =>{
 
@@ -34,43 +39,64 @@ export class AddProductComponent implements OnInit{
   }
 
 
-  addProduct(productNgForm: NgForm){
-    if (productNgForm.valid == false || this.files.length < 1) {
-      console.log(productNgForm.errors);
+  upsertProduct(eventNgForm: NgForm){
+    if (eventNgForm.valid == false || this.files.length < 1) {
+      console.log(eventNgForm.errors);
       return;
     }
-    console.log(this.selectedCategory);
-    console.log(this.product);
-    this.productService.addProduct(this.product, this.files).subscribe(
-      reponse =>{
-        console.log('Product added successfully');
 
-        /*Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your product has been saved',
-          showConfirmButton: false,
-          timer: 2500
-        });
-        */
+    if(this.product.idProduct >0){
+      this.productService.updateProduct(this.product, this.files).subscribe(
+        reponse =>{
+          console.log('Product updated successfully');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your product has been saved',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          eventNgForm.resetForm();
+          this.files = [];
+        },
+        error=>{
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Unable to upload image',
+          });
+        }
+      );
+    }else{
+      this.productService.addProduct(this.product, this.files).subscribe(
+        reponse =>{
+          console.log('Product added successfully');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your product has been saved',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          eventNgForm.resetForm();
+          this.files = [];
+        },
+        error=>{
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Unable to upload image',
+          });
+        }
+      );
+    }
 
-        productNgForm.resetForm();
-        this.files = [];
-      },
-
-      error=>{
-        console.log(error);
-
-        /*
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong! Unable to upload image',
-        });
-        */
-      }
-    );
   }
+
+
+
 
 
   onSelect(product: any) {

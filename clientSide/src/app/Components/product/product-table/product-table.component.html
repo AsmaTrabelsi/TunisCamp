@@ -1,14 +1,8 @@
-<div class="m-3">
-  <div class="button-container">
-    <button [routerLink]="['/addEvent']" class="btn btn-add">Add New Event</button>
-  </div>
+<div class="m-3 mt-5">
+
 
   <div class="d-flex justify-content-between align-items-center pb-3 px-3">
-    <app-paging-header class="align-items-center"
-        [totalCount]="totalItems"
-        [pageNumber]="p"
-        [pageSize]="pageSize"
-    ></app-paging-header>
+
 
     <div class="d-flex mt-2 align-items-center">
         <input (keyup.enter)="getFilteredProducts()" type="text" placeholder="Search" [(ngModel)]="productFilter.searchTerm" class="search-input form-control me-2" #search>
@@ -24,9 +18,12 @@
           </button>
         </mat-menu>
     </div>
+    <div class="button-container">
+      <button [routerLink]="['/addproduct/'+(-1)]" class="btn btn-add">Add New Product</button>
+    </div>
 
 </div>
-  <table mat-table  class="mat-elevation-z8" >
+  <table mat-table [dataSource]="products" class="mat-elevation-z8" >
     <ng-container matColumnDef="Id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
         <td mat-cell *matCellDef="let element">{{element.idProduct}}</td>
@@ -55,7 +52,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <a [routerLink]="['/addEvent'+element.idEvent]"><i class="bi bi-pencil-square fs-3"></i></a>
+        <a [routerLink]="['/addproduct/'+element.idProduct]"><i class="bi bi-pencil-square fs-3"></i></a>
         <a (click)="deleteProduct(element)"><i class="bi bi-trash-fill fs-3 ms-4"></i></a>
       </td>
   </ng-container>
