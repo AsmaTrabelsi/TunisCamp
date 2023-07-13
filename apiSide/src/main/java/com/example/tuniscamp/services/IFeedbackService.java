@@ -8,8 +8,6 @@ public interface IFeedbackService {
     Feedback getFeedbackById (int id);
     void addFeedback (Feedback feedback);
 
-    void updateFeedback(Feedback feedback);
-
     void deleteFeedback(int id);
     
 }

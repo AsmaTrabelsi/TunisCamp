@@ -32,13 +32,9 @@ public class ReservationService implements IReservationService {
     @Override
     public void addReservation(Reservation reservation) {
         reservationRepository.save(reservation);
+
     }
 
-    @Override
-    public void updateReservation(Reservation reservation) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateFeedback'");
-    }
 
 
 

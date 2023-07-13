@@ -8,7 +8,6 @@ public interface IReservationService {
     Reservation getReservationById (int id);
     void addReservation(Reservation reservation);
 
-    void updateReservation(Reservation reservation);
 
     void deleteReservation(int id);
 }
