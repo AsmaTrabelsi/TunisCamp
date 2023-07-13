@@ -34,6 +34,7 @@ import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 @RestController
 @RequestMapping(path = {"/user"})
 public class UserController extends ExceptionHandling {
+    private static final String TEMP_PROFILE_IMAGE_BASE_URL = "https://example.com/profile/";
     public static final String EMAIL_SENT = "An email with a new password was sent to: ";
     public static final String USER_DELETED_SUCCESSFULLY = "User deleted successfully";
 
@@ -43,21 +44,9 @@ public class UserController extends ExceptionHandling {
 
     @Autowired
     public UserController(IUserService userService, AuthenticationManager authenticationManager, JWTTokenProvider jwtTokenProvider) {
-        this.userService = userService;
         this.authenticationManager = authenticationManager;
+        this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
-    }
-
-    @GetMapping("/home")
-    public String showUser() throws EmailExistException{
-        //return "appl works";
-        throw new EmailExistException("this email address is already taken");
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
-        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
-        return new ResponseEntity<>(newUser, OK);
     }
 
     @PostMapping("/login")
@@ -67,6 +56,12 @@ public class UserController extends ExceptionHandling {
         UserPrincipal userPrincipal = new UserPrincipal(loginUser);
         HttpHeaders jwtHeader = getJwtHeader(userPrincipal);
         return new ResponseEntity<>(loginUser, jwtHeader, OK);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException, UsernameExistException, EmailExistException, MessagingException {
+        User newUser = userService.register(user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
+        return new ResponseEntity<>(newUser, OK);
     }
 
     @PostMapping("/add")
@@ -82,7 +77,7 @@ public class UserController extends ExceptionHandling {
         return new ResponseEntity<>(newUser, OK);
     }
 
-    @PostMapping("/update")
+    @PutMapping ("/update")
     public ResponseEntity<User> update(@RequestParam("currentUsername") String currentUsername,
                                        @RequestParam("firstName") String firstName,
                                        @RequestParam("lastName") String lastName,
@@ -126,7 +121,6 @@ public class UserController extends ExceptionHandling {
         User user = userService.updateProfileImage(username, profileImage);
         return new ResponseEntity<>(user, OK);
     }
-
 
     @GetMapping(path = "/image/{username}/{fileName}", produces = IMAGE_JPEG_VALUE)
     public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {

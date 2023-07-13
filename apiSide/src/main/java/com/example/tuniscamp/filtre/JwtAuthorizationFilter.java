@@ -18,8 +18,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
-import static org.springframework.http.HttpHeaders.*;
-
 @Component
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
