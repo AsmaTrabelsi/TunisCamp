@@ -14,10 +14,18 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
+  {path: "home", component: HomeComponent},
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user/management', component: UserComponent},
 
   {path: "addproduct", component: AddProductComponent},
   {path: "addEvent", component: AddEventComponent},
@@ -28,13 +36,11 @@ const routes: Routes = [
   {path: "ProductCard", component: ProductCardComponent},
   {path: "ProductList", component: ListProductComponent},
 
-
   {path: "AddCampPlace", component: AddCampPlaceComponent},
   {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent},
 
-
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   {path: "**", component: NotFoundComponent}
 

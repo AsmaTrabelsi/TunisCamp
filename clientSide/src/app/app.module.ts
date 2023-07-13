@@ -37,6 +37,9 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NotificationModule } from './notification.module';
 import { NotificationService } from './Services/notification.service';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
 
 
 @NgModule({
@@ -54,6 +57,9 @@ import { NotificationService } from './Services/notification.service';
     CampPlaceDetailsComponent,
     CampPlaceCardComponent,
     CampPlaceListComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

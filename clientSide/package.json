@@ -25,6 +25,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@coreui/angular": "4.4.9",
     "@coreui/icons-angular": "4.4.7",
+    "@fortawesome/angular-fontawesome": "^0.12.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "angular-notifier": "^13.0.0",
     "animate.css": "^4.1.1",
