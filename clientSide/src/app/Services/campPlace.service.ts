@@ -21,7 +21,7 @@ export class CampPlaceService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'multipart/form-data');
 
-   return  this.httpClient.post(this.apiurl + 'campPlace', this.convertEventToFormData(campPlace,file)) ;
+   return  this.httpClient.post(this.apiurl + 'campPlace', this.convertCampPlaceToFormData(campPlace,file)) ;
 
   }
 
@@ -38,8 +38,9 @@ export class CampPlaceService {
 
   }
 
-  convertEventToFormData(campPlace: CampPlace, files:File[]): FormData{
+  convertCampPlaceToFormData(campPlace: CampPlace, files:File[]): FormData{
     const formData = new FormData();
+    formData.append('idCampPlace', campPlace.idCampPlace);
     formData.append('name', campPlace.name);
     formData.append('tel', campPlace.tel.toString());
     formData.append('email', campPlace.email);
@@ -93,5 +94,21 @@ export class CampPlaceService {
   }
   getCampPlaceById (idCampPlace : any){
     return this.httpClient.get<CampPlace>(this.apiurl + 'campPlace/'+ idCampPlace);
+  }
+
+
+
+  deleteCampPlace(id:any){
+
+    return this.httpClient.delete<string[]>(this.apiurl+'campPlace/'+id);
+  }
+  updateCampPlace(campPlace: CampPlace, file:File []) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+
+   return  this.httpClient.put(this.apiurl + 'campPlace', this.convertCampPlaceToFormData(campPlace,file)) ;
+
+ 
+
   }
 }

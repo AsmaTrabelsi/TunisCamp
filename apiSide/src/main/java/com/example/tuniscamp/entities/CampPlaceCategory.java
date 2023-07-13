@@ -2,5 +2,7 @@ package com.example.tuniscamp.entities;
 
 public enum CampPlaceCategory {
 PLAGE,
-FORET
+FORET,
+    MONTAGNE,
+    DESERT
 }

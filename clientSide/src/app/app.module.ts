@@ -11,7 +11,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import {HttpClientModule } from '@angular/common/http';
 import { AddEventComponent } from './Components/event/add-event/add-event.component';
 import { EventDetailsModule } from './Components/event/event-details/event-details.module';
-
+import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
@@ -23,6 +23,7 @@ import { PagingHeaderComponent } from './Shared/paging-header/paging-header.comp
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CampPlaceCardComponent,
     CampPlaceListComponent,
     PagingHeaderComponent,
+    CampPlaceTableComponent
   
     ],
   imports: [
@@ -52,7 +54,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatChipsModule,
     MatMenuModule,
     MatIconModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTableModule
+
 
 
   ],

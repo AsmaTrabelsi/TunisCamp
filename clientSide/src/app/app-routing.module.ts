@@ -7,6 +7,7 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path: "AddCampPlace", component: AddCampPlaceComponent},
   {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent},
+  {path: "CampPlaceTable", component: CampPlaceTableComponent},
+
 
 
 
