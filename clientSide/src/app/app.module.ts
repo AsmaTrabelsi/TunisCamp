@@ -30,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
@@ -78,6 +79,7 @@ import { UserComponent } from './Components/user/user.component';
     NgxSliderModule,
     NgxPaginationModule,
     NotificationModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
