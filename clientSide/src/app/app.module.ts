@@ -35,6 +35,8 @@ import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
+import { NotificationModule } from './notification.module';
+import { NotificationService } from './Services/notification.service';
 
 
 @NgModule({
@@ -69,8 +71,9 @@ import { AuthenticationGuard } from './guard/authentication.guard';
     MatIconModule,
     NgxSliderModule,
     NgxPaginationModule,
+    NotificationModule,
   ],
-  providers: [AuthenticationGuard, AuthenticationService, UserService,
+  providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 

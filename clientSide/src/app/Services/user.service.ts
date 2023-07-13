@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpResponse,
+  HttpErrorResponse,
+  HttpEvent,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { User } from '../Models/user';
 import { CustomHttpRespone } from '../Models/custom-http-response';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private host = environment.apiUrl;
@@ -27,18 +31,23 @@ export class UserService {
   }
 
   public resetPassword(email: string): Observable<CustomHttpRespone> {
-    return this.http.get<CustomHttpRespone>(`${this.host}/user/resetpassword/${email}`);
+    return this.http.get<CustomHttpRespone>(
+      `${this.host}/user/resetpassword/${email}`
+    );
   }
 
   public updateProfileImage(formData: FormData): Observable<HttpEvent<User>> {
-    return this.http.post<User>(`${this.host}/user/updateProfileImage`, formData,
-    {reportProgress: true,
-      observe: 'events'
-    });
+    return this.http.post<User>(
+      `${this.host}/user/updateProfileImage`,
+      formData,
+      { reportProgress: true, observe: 'events' }
+    );
   }
 
   public deleteUser(username: string): Observable<CustomHttpRespone> {
-    return this.http.delete<CustomHttpRespone>(`${this.host}/user/delete/${username}`);
+    return this.http.delete<CustomHttpRespone>(
+      `${this.host}/user/delete/${username}`
+    );
   }
 
   public addUsersToLocalCache(users: User[]): void {
@@ -53,7 +62,11 @@ export class UserService {
     return null;
   }
 
-  public createUserFormDate(loggedInUsername: string, user: User, profileImage: File): FormData {
+  public createUserFormDate(
+    loggedInUsername: string,
+    user: User,
+    profileImage: File
+  ): FormData {
     const formData = new FormData();
     formData.append('currentUsername', loggedInUsername);
     formData.append('firstName', user.firstName);
@@ -66,5 +79,4 @@ export class UserService {
     formData.append('isNonLocked', JSON.stringify(user.notLocked));
     return formData;
   }
-
 }
