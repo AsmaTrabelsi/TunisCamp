@@ -1,4 +1,9 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'app/Models/user';
+import { AuthenticationService } from 'app/Services/authentication.service';
+import { NotificationService } from 'app/Services/notification.service';
+import { NotificationType } from 'app/enum/notification-type.enum';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +11,18 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  public user: User = new User;
+
+  constructor(private router: Router, private authenticationService: AuthenticationService,
+   private notificationService: NotificationService) {}
+
+   ngOnInit(): void {
+    const user = this.authenticationService.getUserFromLocalCache();
+    if (user !== null) {
+      this.user = user;
+    }
+  }
 
   @HostListener('window:scroll', ['$event'])
 
@@ -15,6 +32,24 @@ onWindowScroll() {
       element.classList.add('navbar-inverse');
     } else {
       element.classList.remove('navbar-inverse');
+    }
+  }
+
+  public onLogOut(): void {
+    this.authenticationService.logOut();
+    this.router.navigate(['/login']);
+    this.sendNotification(NotificationType.SUCCESS, `You've been successfully logged out`);
+  }
+
+  isLoggedIn(): boolean {
+    return this.authenticationService.isUserLoggedIn();
+  }
+
+  private sendNotification(notificationType: NotificationType, message: string): void {
+    if (message) {
+      this.notificationService.notify(notificationType, message);
+    } else {
+      this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
     }
   }
 }

@@ -26,9 +26,9 @@
 
         </ul>
 
-        <span class="navbar-text">
+        <a class="logouttext" (click)="onLogOut()" *ngIf="isLoggedIn()">
           Logout
-        </span>
+        </a>
       </div>
     </div>
   </nav>

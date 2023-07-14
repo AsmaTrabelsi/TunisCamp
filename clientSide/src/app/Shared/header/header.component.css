@@ -12,3 +12,10 @@
   background-color: rgba(13, 13, 13, 0.5) !important;
 }
 
+.logouttext{
+  text-decoration: none !important;
+  cursor: pointer;
+  font-weight: 500;
+  color: #00563B;
+}
+
