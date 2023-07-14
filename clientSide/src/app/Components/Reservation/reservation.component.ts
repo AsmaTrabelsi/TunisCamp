@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Reservation } from 'app/Models/reservation.model';
 import { EventService } from 'app/Services/event.service';
 import { ReservationService } from 'app/Services/reservation.service';
 import Swal from 'sweetalert2';
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit{
-  reservation: any;
+  reservation= new Reservation("",0,new Date(),"",0);
   idEvent : any;
   event: any;
   ngOnInit(): void {
@@ -22,7 +23,7 @@ export class ReservationComponent implements OnInit{
         reponse =>{
 
          this.event = reponse;
-         console.log(this.event.campPlace.images[0]);
+         this.reservation.idEvent= this.idEvent;
         },
         error=>{
           console.log("error "+error.message);
@@ -32,7 +33,7 @@ export class ReservationComponent implements OnInit{
 
   }
 
-  submitFeedback(){
+  submitReservation(){
 
     this.reservationService.addReservation(this.reservation).subscribe(
       reponse =>{
@@ -45,7 +46,7 @@ export class ReservationComponent implements OnInit{
           timer: 2500
         });
 
-          this.router.navigate(['/EventDetails/:'+this.idEvent]);
+          this.router.navigate(['/EventDetails/'+this.idEvent]);
 
       },
       error=>{
@@ -58,14 +59,6 @@ export class ReservationComponent implements OnInit{
       }
     );
   }
-
-
-
-
-
-
-
-
 
 
   backendLocation: string;

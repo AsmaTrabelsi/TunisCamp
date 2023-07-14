@@ -79,4 +79,8 @@ export class AuthenticationService {
     return false; // Add a return statement to handle the case where none of the conditions are satisfied
   }
 
+  public isUserLogged(): boolean {
+    return this.token !== '' && !this.jwtHelper.isTokenExpired(this.token);
+  }
+
 }

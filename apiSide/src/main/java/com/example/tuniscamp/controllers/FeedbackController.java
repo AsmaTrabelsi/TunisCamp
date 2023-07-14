@@ -4,8 +4,10 @@ import com.example.tuniscamp.entities.CampPlace;
 import com.example.tuniscamp.entities.Event;
 import com.example.tuniscamp.entities.Feedback;
 import com.example.tuniscamp.entities.ModelsDto.FeedbackDto;
+import com.example.tuniscamp.entities.User;
 import com.example.tuniscamp.services.FeedbackService;
 import com.example.tuniscamp.services.ICampPlaceService;
+import com.example.tuniscamp.services.IUserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,6 +26,7 @@ import java.util.List;
 public class FeedbackController {
     private final FeedbackService feedbackService;
     private final ICampPlaceService iCampPlaceService ;
+    private final IUserService iUserService;
     private final ModelMapper modelMapper;
 
 
@@ -49,6 +52,9 @@ public class FeedbackController {
 
         CampPlace campPlace = this.iCampPlaceService.getCampPlaceById(feedbackDto.getIdCampPlace());
         feedback.setCampPlace(campPlace);
+
+        User user = this.iUserService.findUserByUsername(feedbackDto.getUsername());
+        feedback.setUser(user);
         feedbackService.addFeedback(feedback);
         return feedback;
     }

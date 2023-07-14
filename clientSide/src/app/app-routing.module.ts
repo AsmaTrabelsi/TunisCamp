@@ -22,7 +22,9 @@ import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
-
+import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
+import { FeedbackListComponent } from './feedback-list/feedback-list.component';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
 
 
@@ -54,7 +56,13 @@ const routes: Routes = [
   {path: "AddCampPlace", component: AddCampPlaceComponent},
   {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent},
+
+  {path: "CampPlaceTable", component: CampPlaceTableComponent},
+
   {path: "productTable", component: ProductTableComponent},
+  {path: "feddbackList", component: FeedbackListComponent},
+  {path: "reservationList", component: ReservationListComponent},
+
 
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },

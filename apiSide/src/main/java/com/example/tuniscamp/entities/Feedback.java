@@ -21,8 +21,10 @@ public class Feedback {
     private String comment ;
     private Date createAt ;
     @ManyToOne
-    @JsonIgnore
     private CampPlace campPlace;
+
+    @OneToOne
+    private User user;
 
 
 }

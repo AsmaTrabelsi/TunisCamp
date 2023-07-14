@@ -18,5 +18,5 @@ public class FeedbackDto {
     private Date createAt ;
 
     private Integer idCampPlace;
-    private Integer userId;
+    private String username;
 }

@@ -28,7 +28,6 @@ import { EventTableComponent } from './event-table/event-table.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-
 @NgModule({
     declarations: [
         EventDetailsComponent,
@@ -62,7 +61,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         GoogleMapsModule,
         MatChipsModule,
         MatSliderModule,
-        NgxSliderModule,
         NgxDropzoneModule,
         MatExpansionModule,
         MatButtonModule,
@@ -72,7 +70,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         CommonModule,
         RouterModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        NgxSliderModule
 
     ]
 })

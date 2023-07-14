@@ -40,6 +40,7 @@ public class Event {
     private CampPlace campPlace;
 
     @OneToMany(mappedBy = "event")
+    @JsonIgnore
     private List<Reservation> reservations;
 
 

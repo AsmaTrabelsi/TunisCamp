@@ -5,7 +5,7 @@ export class Feedback{
   comment : string;
   createAt :Date;
   idCampPlace: any;
-  userId?:any;
+  username?:any;
 
 
   constructor(idFeedback: number,

@@ -14,10 +14,10 @@
           </p>
         </div>
         <div class="inputbox">
-          <textarea rows="5" cols="65" required type="text"  name="additional_notes" id="additional_notes"></textarea>
+          <textarea rows="5" cols="65" [(ngModel)]="reservation.notes" required type="text"  name="additional_notes" id="additional_notes"></textarea>
           <span>Additional notes</span>
         </div>
-        <button class="button">Book</button>
+        <button (click)="submitReservation()" class="button">Book</button>
       </div>
     </div>
     <div class="video-container">

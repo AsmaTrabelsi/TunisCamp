@@ -115,7 +115,8 @@ selectSortOption(value : string){
               'Deleted!',
               event.name+'has been deleted.',
               'success'
-            )
+            );
+            this.getFilteredEvents();
           },
           error=>{
             console.log(error);

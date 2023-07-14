@@ -81,6 +81,12 @@ public class MapperConfig {
                     mapper.map(FeedbackDto::getCreateAt, Feedback::setCreateAt);
                 });
 
+        modelMapper.createTypeMap(ReservationDto.class,Reservation.class)
+                .addMappings(mapper ->{
+                    mapper.map(ReservationDto::getNotes, Reservation::setNotes);
+                    mapper.map(ReservationDto::getDate, Reservation::setDate);
+                });
+
         return modelMapper;
     }
 

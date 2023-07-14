@@ -1,6 +1,6 @@
 export class CampPlace {
 
-    idCampPlace? : number ;
+    idCampPlace? : any ;
     name :  string;
     category : string ;
     tel : number;
