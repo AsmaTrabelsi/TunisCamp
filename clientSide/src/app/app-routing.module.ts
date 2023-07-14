@@ -24,6 +24,7 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
 
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user/management', component: UserComponent},
+  { path: 'addUser', component: EditUserComponent},
 
   {path: "addproduct", component: AddProductComponent},
   {path: "addEvent/:idEvent", component: AddEventComponent},

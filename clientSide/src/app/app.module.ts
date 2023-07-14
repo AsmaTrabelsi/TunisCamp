@@ -47,6 +47,7 @@ import { PagingHeaderComponent } from './Shared/paging-header/paging-header.comp
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 
  
 
@@ -71,6 +72,7 @@ import { ProductTableComponent } from './Components/product/product-table/produc
     RegisterComponent,
     UserComponent,
     ResetPasswordComponent,
+    EditUserComponent,
     ProductTableComponent
   ],
   imports: [
@@ -87,8 +89,6 @@ import { ProductTableComponent } from './Components/product/product-table/produc
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-   
-
     NgxSliderModule,
     NgxPaginationModule,
     NgbModule,
