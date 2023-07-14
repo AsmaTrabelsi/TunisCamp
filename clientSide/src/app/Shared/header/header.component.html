@@ -21,13 +21,16 @@
             <a class="nav-link" routerLink="/ProductList">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="">About</a>
+            <a class="nav-link" routerLink="/user/management" *ngIf="isLoggedIn()">User Management</a>
           </li>
 
         </ul>
 
         <a class="logouttext" (click)="onLogOut()" *ngIf="isLoggedIn()">
           Logout
+        </a>
+        <a class="logouttext" routerLink="/login"  *ngIf="!isLoggedIn()">
+          Login
         </a>
       </div>
     </div>
