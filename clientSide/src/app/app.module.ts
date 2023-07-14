@@ -81,7 +81,7 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
     ReservationComponent,
     FeedbackListComponent,
     ReservationListComponent
-  ],
+    ],
   imports: [
     CommonModule,
     EventModule,
