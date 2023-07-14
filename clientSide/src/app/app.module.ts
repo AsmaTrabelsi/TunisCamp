@@ -39,12 +39,16 @@ import { NotificationService } from './Services/notification.service';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
 
  
 
 @NgModule({
+
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -62,7 +66,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     CampPlaceTableComponent,
     LoginComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    ProductTableComponent
 
   ],
   imports: [
