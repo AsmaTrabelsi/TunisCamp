@@ -167,6 +167,10 @@ export class HomeComponent  implements OnInit {
   selectImage(image: string) {
     this.selectedCampImage = image;
   }
+  onCircleChatBot(){
+    window.open('https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?backgroundImageURL=https%3A%2F%2Feu-gb.assistant.watson.cloud.ibm.com%2Fpublic%2Fimages%2Fupx-fddcfbb8-41db-4d63-95d3-65521ce37a0b%3A%3Affcd64b2-2f32-48e8-a3a3-c1e6e066f4db&integrationID=69edeb97-7165-4f64-a26a-6182e526c94d&region=eu-gb&serviceInstanceID=fddcfbb8-41db-4d63-95d3-65521ce37a0b&fbclid=IwAR0sUHRPsdH4V6NUa7x4XT4hJWh1f-7vd0Wp57MeMbNhy8l2r1OMnRiMlSE', '_blank');
+
+  }
 }
 
 export class Equipement{

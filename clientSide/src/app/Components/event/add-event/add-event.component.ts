@@ -25,6 +25,21 @@ export class AddEventComponent implements OnInit{
 
     this.route.paramMap.subscribe(params => {
       this.event.idEvent = params.get('idEvent');
+
+      if( this.event.idEvent && this.event.idEvent >0){
+        this.eventService.getEventById(this.event.idEvent).subscribe(
+          response =>{
+
+            this.event = response;
+
+
+          },
+          error =>{
+            console.log(error);
+          }
+        )
+      }
+
       this.campPlaceService.getCampPlacesSelect().subscribe(
         response =>{
 

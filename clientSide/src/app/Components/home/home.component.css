@@ -535,3 +535,27 @@ ul{
   font-size: 35px;
   margin-top: 10px;
 }
+
+
+.circle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0DEC67;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.circle-button:hover {
+
+  background-color: #fff;
+  color: #0DEC67;
+
+}
