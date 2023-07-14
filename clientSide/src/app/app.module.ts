@@ -31,6 +31,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
@@ -41,6 +42,7 @@ import { NotificationService } from './Services/notification.service';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { UserComponent } from './Components/user/user.component';
     CampPlaceListComponent,
     LoginComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -78,6 +81,7 @@ import { UserComponent } from './Components/user/user.component';
     MatIconModule,
     NgxSliderModule,
     NgxPaginationModule,
+    NgbModule,
     NotificationModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],

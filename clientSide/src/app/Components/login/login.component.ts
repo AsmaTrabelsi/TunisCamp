@@ -7,6 +7,8 @@ import { NotificationType } from 'app/enum/notification-type.enum';
 import { NotificationService } from 'app/Services/notification.service';
 import { AuthenticationService } from 'app/Services/authentication.service';
 import { HeaderType } from 'app/enum/header-type.enum';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(private router: Router, private authenticationService: AuthenticationService,
-              private notificationService: NotificationService) {}
+              private notificationService: NotificationService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     if (this.authenticationService.isUserLoggedIn()) {
@@ -26,6 +28,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     } else {
       this.router.navigateByUrl('/login');
     }
+  }
+
+  openResetPasswordModal(): void {
+    const modalRef = this.modalService.open(ResetPasswordComponent);
+    // You can pass data to the modal component using modalRef.componentInstance
+    // Example: modalRef.componentInstance.userId = this.userId;
   }
 
  /*  public onLogin(user: User): void {
