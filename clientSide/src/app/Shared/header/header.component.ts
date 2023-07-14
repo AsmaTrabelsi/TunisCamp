@@ -4,6 +4,7 @@ import { User } from 'app/Models/user';
 import { AuthenticationService } from 'app/Services/authentication.service';
 import { NotificationService } from 'app/Services/notification.service';
 import { NotificationType } from 'app/enum/notification-type.enum';
+import { Role } from 'app/enum/role.enum';
 
 @Component({
   selector: 'app-header',
@@ -34,6 +35,19 @@ onWindowScroll() {
       element.classList.remove('navbar-inverse');
     }
   }
+
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.SUPER_ADMIN;
+  }
+  
+  private getUserRole(): string {
+    const user = this.authenticationService.getUserFromLocalCache();
+    if (user !== null) {
+      return user.role;
+    }
+    return '';
+      }
+
 
   public onLogOut(): void {
     this.authenticationService.logOut();
