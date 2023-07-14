@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {Event} from 'app/Models/event'
 import { CampPlaceService } from 'app/Services/campPlace.service';
 import { EventService } from 'app/Services/event.service';
@@ -17,10 +18,23 @@ export class AddEventComponent implements OnInit{
   campPlaces : any;
   categories :string[]=[];
 
-  constructor(private eventService: EventService,private campPlaceService: CampPlaceService){
-
+  constructor(private eventService: EventService,private campPlaceService: CampPlaceService,private route: ActivatedRoute){
   }
+
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe(params => {
+      this.event.idEvent = params.get('idEvent');
+      this.campPlaceService.getCampPlacesSelect().subscribe(
+        response =>{
+
+          this.campPlaces = response
+        },
+        error =>{
+          console.log(error);
+        }
+      );
+    });
     this.campPlaceService.getCampPlacesSelect().subscribe(
       response =>{
 
@@ -42,35 +56,60 @@ export class AddEventComponent implements OnInit{
   }
 
 
-  addEvent(eventNgForm: NgForm){
+  upsertEvent(eventNgForm: NgForm){
     if (eventNgForm.valid == false || this.files.length < 1) {
       console.log(eventNgForm.errors);
       return;
     }
-    console.log(this.selectedCategory);
-    console.log(this.event);
-    this.eventService.addEvent(this.event, this.files[0]).subscribe(
-      reponse =>{
-        console.log('Event added successfully');
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your event has been saved',
-          showConfirmButton: false,
-          timer: 2500
-        });
-        eventNgForm.resetForm();
-        this.files = [];
-      },
-      error=>{
-        console.log(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong! Unable to upload image',
-        });
-      }
-    );
+
+    if(this.event.idEvent >0){
+      this.eventService.updateEvent(this.event, this.files[0]).subscribe(
+        reponse =>{
+          console.log('Event updated successfully');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your event has been saved',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          eventNgForm.resetForm();
+          this.files = [];
+        },
+        error=>{
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Unable to upload image',
+          });
+        }
+      );
+    }else{
+      this.eventService.addEvent(this.event, this.files[0]).subscribe(
+        reponse =>{
+          console.log('Event added successfully');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your event has been saved',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          eventNgForm.resetForm();
+          this.files = [];
+        },
+        error=>{
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Unable to upload image',
+          });
+        }
+      );
+    }
+
   }
 
 

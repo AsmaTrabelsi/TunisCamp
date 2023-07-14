@@ -27,6 +27,13 @@ export class EventService {
 
   }
 
+  updateEvent(event: Event, file:File) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+
+   return  this.httpClient.put(this.apiurl + 'event', this.convertEventToFormData(event,file)) ;
+
+  }
 
   getAllEvent(){
     return this.httpClient.get<Event[]>(this.apiurl+'event');
@@ -68,9 +75,15 @@ export class EventService {
 
   }
 
+  deleteEvent(id:any){
+    return this.httpClient.delete<string[]>(this.apiurl+'event/'+id);
+
+  }
+
   convertEventToFormData(event: Event, file:File): FormData{
-    console.log(event.category);
+    console.log(event);
     const formData = new FormData();
+    formData.append('idEvent', event.idEvent);
     formData.append('name', event.name);
     formData.append('description', event.description);
     formData.append('startDate', formatDate(event.startDate, 'yyyy-MM-dd', 'en-US'));

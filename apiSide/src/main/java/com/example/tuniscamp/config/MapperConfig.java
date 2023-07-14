@@ -21,6 +21,7 @@ public class MapperConfig {
 
         modelMapper.createTypeMap(EventDto.class, Event.class)
                 .addMappings(mapper -> {
+                    mapper.map(EventDto::getIdEvent, Event::setIdEvent);
                     mapper.map(EventDto::getName, Event::setName);
                     mapper.map(EventDto::getDescription, Event::setDescription);
                     mapper.map(EventDto::getStartDate, Event::setStartDate);
