@@ -22,6 +22,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user/management', component: UserComponent},
+  { path: 'addUser', component: EditUserComponent},
 
 
   {path: "event", component: EventCardComponent},

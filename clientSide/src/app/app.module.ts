@@ -48,12 +48,11 @@ import { PagingHeaderComponent } from './Shared/paging-header/paging-header.comp
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
 import { FeedbackComponent } from './Components/feedback/feedback.component';
 import { ReservationComponent } from './Components/Reservation/reservation.component';
 import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 import { ReservationListComponent } from './reservation-list/reservation-list.component';
-
-
 
 @NgModule({
 
@@ -76,12 +75,14 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
     RegisterComponent,
     UserComponent,
     ResetPasswordComponent,
-    ProductTableComponent,
+    EditUserComponent,
+    ProductTableComponent
     FeedbackComponent,
     ReservationComponent,
     FeedbackListComponent,
     ReservationListComponent
     ],
+
   imports: [
     CommonModule,
     EventModule,
@@ -96,7 +97,6 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-
     NgxSliderModule,
     NgxPaginationModule,
     NgbModule,

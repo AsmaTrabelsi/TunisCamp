@@ -13,11 +13,11 @@ import { FileUploadStatus } from '../../Models/file-upload.status';
 import { Role } from '../../enum/role.enum';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class UserComponent implements OnInit, OnDestroy {
+export class EditUserComponent implements OnInit, OnDestroy  {
   private titleSubject = new BehaviorSubject<string>('Users');
   public titleAction$ = this.titleSubject.asObservable();
   public users: User[] | null | undefined;
