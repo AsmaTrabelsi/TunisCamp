@@ -53,6 +53,7 @@
                     </div>
 
                     <div class="col-lg-6 col-md-12 p-5 ">
+
                         <div class="form-group mb-3">
                             <label for="name">Name</label>
                             <input #nameRef="ngModel" type="text" required class="form-control"
@@ -65,6 +66,21 @@
                                 </div>
                               </div>
                         </div>
+
+
+
+
+                        <div class="form-group mb-3">
+                          <label for="name">Video Url</label>
+                          <input #videoRef="ngModel" type="text" required class="form-control"
+                          [ngClass]="{'is-invalid' :(videoRef.invalid &&(videoRef.touched || videoRef.dirty))}"
+                           id="video" name="video" [(ngModel)]="event.videoUrl" required >
+                          <div *ngIf="videoRef.invalid && (videoRef.touched ||videoRef.dirty)" class="invalid-feedback">
+                              <div *ngIf="videoRef.errors?.['required']">Event Video is required.
+                              </div>
+                            </div>
+                      </div>
+
 
                         <div class="form-group mb-3">
                             <label for="description">Description</label>

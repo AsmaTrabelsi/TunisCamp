@@ -1,6 +1,7 @@
 package com.example.tuniscamp.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -61,10 +62,11 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
     //uni
-    @OneToMany
-    private List<Feedback> feedbacks;
+   // @OneToMany
+    //private List<Feedback> feedbacks;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Reservation> reservations;
 
 

@@ -1,4 +1,5 @@
 package com.example.tuniscamp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
@@ -29,6 +30,7 @@ public class CampPlace {
     @JsonIgnoreProperties("campPlace")
     private List<Event> events;
     @OneToMany(mappedBy = "campPlace")
+    @JsonIgnoreProperties("campPlace")
     private List<Feedback> feedbacks;
 
     // uni

@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class AddEventComponent implements OnInit{
   files: File[] = [];
   selectedCategory : any;
-  event: Event = new Event("", "", new Date(), new Date(),0,0,"");
+  event: Event = new Event("", "", new Date(), new Date(),0,0,"","");
   campPlaces : any;
   categories :string[]=[];
 

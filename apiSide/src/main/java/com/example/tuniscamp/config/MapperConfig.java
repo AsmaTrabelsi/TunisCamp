@@ -1,10 +1,7 @@
 package com.example.tuniscamp.config;
 
 import com.example.tuniscamp.entities.*;
-import com.example.tuniscamp.entities.ModelsDto.CampPlaceDto;
-import com.example.tuniscamp.entities.ModelsDto.EventDto;
-import com.example.tuniscamp.entities.ModelsDto.ProductDto;
-import com.example.tuniscamp.entities.ModelsDto.RelevantEvent;
+import com.example.tuniscamp.entities.ModelsDto.*;
 import com.example.tuniscamp.entities.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +25,7 @@ public class MapperConfig {
                     mapper.map(EventDto::getEndDate, Event::setEndDate);
                     mapper.map(EventDto::getPrice, Event::setPrice);
                     mapper.map(EventDto::getCategory, Event::setCategory);
+                    mapper.map(EventDto::getVideoUrl, Event::setVideoUrl);
                     mapper.map(EventDto::getNbParticipant, Event::setNbParticipant);
 
                     mapper.map(src -> {
@@ -73,6 +71,20 @@ public class MapperConfig {
                     mapper.map(ProductDto::getColor, Product::setColor);
                     mapper.map(ProductDto::getWeight, Product::setWeight);
                     mapper.map(ProductDto::getState, Product::setState);
+                });
+
+
+            modelMapper.createTypeMap(FeedbackDto.class,Feedback.class)
+                .addMappings(mapper ->{
+                    mapper.map(FeedbackDto::getRating, Feedback::setRating);
+                    mapper.map(FeedbackDto::getComment, Feedback::setComment);
+                    mapper.map(FeedbackDto::getCreateAt, Feedback::setCreateAt);
+                });
+
+        modelMapper.createTypeMap(ReservationDto.class,Reservation.class)
+                .addMappings(mapper ->{
+                    mapper.map(ReservationDto::getNotes, Reservation::setNotes);
+                    mapper.map(ReservationDto::getDate, Reservation::setDate);
                 });
 
         return modelMapper;

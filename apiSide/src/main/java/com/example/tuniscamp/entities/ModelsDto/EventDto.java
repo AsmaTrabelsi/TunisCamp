@@ -25,7 +25,7 @@ public class EventDto {
     private  int nbParticipant;
     @Enumerated(EnumType.STRING)
     private EventCategory category;
-
+    private String videoUrl ;
     private MultipartFile image;
     private double price;
     private Integer idCampPlace;

@@ -212,3 +212,8 @@ tr:hover{
   height: 150px;
   width: 150px;
 }
+
+
+.video-container {
+  width: 100%;
+}

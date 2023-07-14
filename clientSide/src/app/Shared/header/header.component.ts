@@ -39,7 +39,7 @@ onWindowScroll() {
   public get isAdmin(): boolean {
     return this.getUserRole() === Role.SUPER_ADMIN;
   }
-  
+
   private getUserRole(): string {
     const user = this.authenticationService.getUserFromLocalCache();
     if (user !== null) {

@@ -27,6 +27,7 @@ public class Event {
     @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
     private double price;
+    private String videoUrl ;
 
     // bi
     @ManyToOne
@@ -39,6 +40,7 @@ public class Event {
     private CampPlace campPlace;
 
     @OneToMany(mappedBy = "event")
+    @JsonIgnore
     private List<Reservation> reservations;
 
 

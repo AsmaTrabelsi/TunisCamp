@@ -57,6 +57,7 @@ export class EventService {
     params = params.append('sort', eventFilterDto.sort);
     params = params.append('search', eventFilterDto.searchTerm);
 
+
     return this.httpClient.get<Page<Event>>(this.apiurl + 'event/filteredEvents', { params });
   }
 
@@ -91,6 +92,7 @@ export class EventService {
     formData.append('nbParticipant', event.nbParticipant.toString());
     formData.append('category', event.category.toString());
     formData.append('price', event.price.toString());
+    formData.append('videoUrl', event.videoUrl);
     formData.append('idCampPlace', event.idCampPlace!.toString());
     formData.append('image', file, file.name);
     return formData;

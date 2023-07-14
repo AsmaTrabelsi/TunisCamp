@@ -20,11 +20,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { PagingHeaderComponent } from 'app/Shared/paging-header/paging-header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
+
+import { SafePipe } from 'app/pipes/SafePipe';
+
+
 import { EventTableComponent } from './event-table/event-table.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
- 
 @NgModule({
     declarations: [
         EventDetailsComponent,
@@ -34,7 +37,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         EventCardComponent,
         AddEventComponent,
         PagingHeaderComponent,
+        SafePipe,
         EventTableComponent
+
 
     ],
     exports: [
@@ -44,7 +49,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         EventCardComponent,
         AddEventComponent,
         PagingHeaderComponent,
+        SafePipe,
         EventTableComponent
+
 
     ],
     providers: [DatePipe],
