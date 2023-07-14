@@ -28,5 +28,7 @@ public class EventDto {
 
     private MultipartFile image;
     private double price;
+    private Integer idCampPlace;
+
 
 }

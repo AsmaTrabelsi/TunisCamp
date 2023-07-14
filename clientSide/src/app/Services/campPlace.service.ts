@@ -29,6 +29,14 @@ export class CampPlaceService {
   getAllCampPlace(){
     return this.httpClient.get<CampPlace[]>(this.apiurl+'campPlace');
   }
+  // for home screen
+  getTop5CampPlace(){
+    return this.httpClient.get<CampPlace[]>(this.apiurl+'campPlace/getTop5CampPlace');
+  }
+  getCampPlaceCount(){
+    return this.httpClient.get<number>(this.apiurl+'campPlace/campPlacesCount');
+  }
+
   getCampPlaceCategories(){
     return this.httpClient.get<string[]>(this.apiurl+'campPlace/categories');
 
@@ -96,8 +104,6 @@ export class CampPlaceService {
     return this.httpClient.get<CampPlace>(this.apiurl + 'campPlace/'+ idCampPlace);
   }
 
-
-
   deleteCampPlace(id:any){
 
     return this.httpClient.delete<string[]>(this.apiurl+'campPlace/'+id);
@@ -106,9 +112,9 @@ export class CampPlaceService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'multipart/form-data');
 
-   return  this.httpClient.put(this.apiurl + 'campPlace', this.convertCampPlaceToFormData(campPlace,file)) ;
+   return  this.httpClient.put(this.apiurl + 'campPlace', this.convertCampPlaceToFormData(campPlace,file)) ;}
 
- 
-
+  getCampPlacesSelect(){
+    return this.httpClient.get<{idCampPlace:any,name:any}>(this.apiurl+'campPlace/getCampPlaceForSelect');
   }
 }

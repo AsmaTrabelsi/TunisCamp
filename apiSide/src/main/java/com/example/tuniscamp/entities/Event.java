@@ -1,4 +1,5 @@
 package com.example.tuniscamp.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
@@ -13,17 +14,17 @@ import java.util.List;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
     private Integer idEvent;
     private String name;
 
+    @Column(length = 1000)
     private String description;
 
     private Date startDate ;
     private Date endDate ;
     private  int nbParticipant;
     @Lob
-    @Column(length = 50000000)
+    @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
     private double price;
 

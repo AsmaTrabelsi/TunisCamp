@@ -27,10 +27,13 @@ public class Product {
     private  double weight ;
     private String color;
 
+
     @ManyToOne
     private User user;
     // uniDirectionnel
     @OneToMany
     private List<ProductFile> files;
+
+
 
 }
