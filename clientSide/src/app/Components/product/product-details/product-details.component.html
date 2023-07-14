@@ -22,8 +22,8 @@
 <h6>{{equipement.product.category}}</h6>
 <div class="row">
   <div class="col-2">
-    <span><h6 [ngClass]="{'available ==1': equipement.available, 'out-of-stock': !equipement.available }">
-      {{ equipement.available == 1 ? 'Available' : 'Out of Stock' }}
+    <span><h6 class="out-of-stock" [ngClass]="{'equipement.product.available': 'available' }">
+      {{ equipement.product.available ? 'Available' : 'Out of Stock' }}
     </h6></span>
   </div>
   <div class="col">

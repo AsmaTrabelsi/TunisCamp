@@ -17,30 +17,47 @@ import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
 import { EventCardComponent } from './Components/event/event-card/event-card.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { UserComponent } from './Components/user/user.component';
+import { EventTableComponent } from './Components/event/event-table/event-table.component';
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+
+
 
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
+  {path: "home", component: HomeComponent},
 
-  {path: "addproduct", component: AddProductComponent},
-  {path: "addEvent", component: AddEventComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user/management', component: UserComponent},
+
 
   {path: "event", component: EventCardComponent},
   {path: "feedback/:idCampPlace", component: FeedbackComponent},
   {path: "reservation/:idEvent", component: ReservationComponent},
 
+  {path: "addEvent/:idEvent", component: AddEventComponent},
+
   {path: "EventDetails/:idEvent", component: EventDetailsComponent},
   {path: "EventList", component: EventListComponent},
-  {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
 
+  {path: "addproduct/:idProduct", component: AddProductComponent},
+
+  {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
+  {path: "EventTable", component: EventTableComponent},
   {path: "ProductCard", component: ProductCardComponent},
   {path: "ProductList", component: ListProductComponent},
 
   {path: "AddCampPlace", component: AddCampPlaceComponent},
   {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent},
+  {path: "productTable", component: ProductTableComponent},
 
 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 
   {path: "**", component: NotFoundComponent}

@@ -1,7 +1,7 @@
 
 export class Event{
 
-    idEvent? : number;
+    idEvent? : any;
     name : string;
     description : string;
     startDate : Date;
@@ -12,7 +12,6 @@ export class Event{
     category: string;
     videoUrl : string;
     idCampPlace?: number;
-
 
     constructor(name: string, des: string, startDate: Date, endDate: Date, nbP: number,price: number,cate: string,videoUrl : string ,id?: number,idCampPlace?:number,img?: any) {
         this.idEvent = id;

@@ -1,3 +1,9 @@
+<ng-container *ngIf="currentRoute !== '/login' && currentRoute !== '/register'">
 <app-header></app-header>
+</ng-container>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<notifier-container></notifier-container>
+<ng-container *ngIf="currentRoute !== '/login' && currentRoute !== '/register'">
+    <app-footer></app-footer>
+</ng-container>
+
