@@ -41,49 +41,56 @@ import { NotificationService } from './Services/notification.service';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+import { MatTableModule } from '@angular/material/table';
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
-    AddProductComponent,
-    ProductDetailsComponent,
-    ProductCardComponent,
-    ListProductComponent,
-    AddCampPlaceComponent,
-    CampPlaceDetailsComponent,
-    CampPlaceCardComponent,
-    CampPlaceListComponent,
-    LoginComponent,
-    RegisterComponent,
-    UserComponent
-  ],
-  imports: [
-    CommonModule,
-    EventModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgxDropzoneModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CarouselModule,
-    MatChipsModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    NgxSliderModule,
-    NgxPaginationModule,
-    NotificationModule,
-    ToastrModule.forRoot(), // ToastrModule added
-  ],
-  providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
-  bootstrap: [AppComponent]
+    declarations: [
+      AppComponent,
+      HeaderComponent,
+      FooterComponent,
+      NotFoundComponent,
+      HomeComponent,
+      AddProductComponent,
+      ProductDetailsComponent,
+      ProductCardComponent,
+      ListProductComponent,
+      AddCampPlaceComponent,
+      CampPlaceDetailsComponent,
+      CampPlaceCardComponent,
+      CampPlaceListComponent,
+      LoginComponent,
+      RegisterComponent,
+      UserComponent,
+      ProductTableComponent
+    ],
+
+    imports: [
+      CommonModule,
+      EventModule,
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      NgxDropzoneModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      CarouselModule,
+      MatChipsModule,
+      MatButtonModule,
+      MatMenuModule,
+      MatIconModule,
+      NgxSliderModule,
+      NgxPaginationModule,
+      NotificationModule,
+      MatTableModule,
+      ToastrModule.forRoot()
+    ],
+
+
+    providers: [NotificationService, AuthenticationGuard, AuthenticationService, UserService,
+      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
+    bootstrap: [AppComponent]
 
 })
 export class AppModule { }
