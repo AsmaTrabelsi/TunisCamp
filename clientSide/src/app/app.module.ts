@@ -7,7 +7,8 @@ import { HeaderComponent } from './Shared/header/header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { HomeComponent } from './Components/home/home.component';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {MatTableModule} from '@angular/material/table';
 import { AddProductComponent } from './Components/product/add-product/add-product.component';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,12 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {EventModule} from './Components/event/event.module';
 import { CommonModule } from '@angular/common';
-
 import { ProductDetailsComponent } from './Components/product/product-details/product-details.component';
 import { ProductCardComponent } from './Components/product/product-card/product-card.component';
 import { ListProductComponent } from './Components/product/list-product/list-product.component';
 
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceCardComponent } from './Components/campPlace/camp-place-card/camp-place-card.component';
@@ -29,7 +28,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxDropzoneModule } from 'ngx-dropzone';
+import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -44,8 +43,15 @@ import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
+import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
+
+ 
 
 @NgModule({
+
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -60,10 +66,12 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     CampPlaceDetailsComponent,
     CampPlaceCardComponent,
     CampPlaceListComponent,
+    CampPlaceTableComponent,
     LoginComponent,
     RegisterComponent,
     UserComponent,
     ResetPasswordComponent,
+    ProductTableComponent
   ],
   imports: [
     CommonModule,
@@ -79,9 +87,13 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+   
+
     NgxSliderModule,
     NgxPaginationModule,
     NgbModule,
+    MatTableModule,
+    NgxPaginationModule,
     NotificationModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],

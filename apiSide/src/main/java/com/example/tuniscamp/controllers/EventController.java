@@ -63,7 +63,12 @@ public class EventController {
     }
 
     @PutMapping
-    public void update(@RequestBody Event event) {
+    public void update(@ModelAttribute EventDto eventDto) {
+        Event event = modelMapper.map(eventDto, Event.class);
+
+        CampPlace campPlace = this.iCampPlaceService.getCampPlaceById(eventDto.getIdCampPlace());
+        event.setCampPlace(campPlace);
+
         iEventService.updateEvent(event);
     }
 

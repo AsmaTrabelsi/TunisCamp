@@ -14,10 +14,16 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AddCampPlaceComponent } from './Components/campPlace/add-camp-place/add-camp-place.component';
 import { CampPlaceDetailsComponent } from './Components/campPlace/camp-place-details/camp-place-details.component';
 import { CampPlaceListComponent } from './Components/campPlace/camp-place-list/camp-place-list.component';
+import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
+
+
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { EventTableComponent } from './Components/event/event-table/event-table.component';
+
+import { ProductTableComponent } from './Components/product/product-table/product-table.component';
 
 
 const routes: Routes = [
@@ -29,11 +35,16 @@ const routes: Routes = [
   { path: 'user/management', component: UserComponent},
 
   {path: "addproduct", component: AddProductComponent},
-  {path: "addEvent", component: AddEventComponent},
+  {path: "addEvent/:idEvent", component: AddEventComponent},
   {path: "EventDetails/:idEvent", component: EventDetailsComponent},
   {path: "EventList", component: EventListComponent},
-  {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
 
+  {path: "addproduct/:idProduct", component: AddProductComponent},
+  {path: "addEvent", component: AddEventComponent},
+  {path: "EventDetails", component: EventDetailsComponent},
+
+  {path: "ProductDetails/:idProduct", component: ProductDetailsComponent},
+  {path: "EventTable", component: EventTableComponent},
   {path: "ProductCard", component: ProductCardComponent},
   {path: "ProductList", component: ListProductComponent},
 
@@ -41,7 +52,13 @@ const routes: Routes = [
   {path: "CampPlaceDetails/:idCampPlace", component: CampPlaceDetailsComponent},
   {path: "listCampPlace", component: CampPlaceListComponent},
 
+  {path: "CampPlaceTable", component: CampPlaceTableComponent},
+
+  {path: "productTable", component: ProductTableComponent},
+
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 
   {path: "**", component: NotFoundComponent}
 

@@ -20,11 +20,24 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/ProductList">Products</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="/user/management" *ngIf="isLoggedIn()">User Management</a>
           </li>
 
         </ul>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/EventTable" *ngIf="isLoggedIn()">My Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/listCampPlace" *ngIf="isLoggedIn()">My Camp Places</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/productTable" *ngIf="isLoggedIn()">My Products</a>
+          </li>
+        </ul>
+
 
         <a class="logouttext" (click)="onLogOut()" *ngIf="isLoggedIn()">
           Logout
