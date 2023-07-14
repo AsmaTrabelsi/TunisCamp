@@ -20,11 +20,10 @@ import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { EventTableComponent } from './Components/event/event-table/event-table.component';
 
 import { ProductTableComponent } from './Components/product/product-table/product-table.component';
-
-
 
 
 const routes: Routes = [

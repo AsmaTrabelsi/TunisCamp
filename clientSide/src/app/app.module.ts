@@ -30,6 +30,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CampPlaceTableComponent } from './Components/campPlace/camp-place-table/camp-place-table.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AuthenticationService } from './Services/authentication.service';
 import { UserService } from './Services/user.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
@@ -39,6 +41,7 @@ import { NotificationService } from './Services/notification.service';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { UserComponent } from './Components/user/user.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
 import { PagingHeaderComponent } from './Shared/paging-header/paging-header.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
@@ -67,8 +70,8 @@ import { ProductTableComponent } from './Components/product/product-table/produc
     LoginComponent,
     RegisterComponent,
     UserComponent,
+    ResetPasswordComponent,
     ProductTableComponent
-
   ],
   imports: [
     CommonModule,
@@ -88,6 +91,7 @@ import { ProductTableComponent } from './Components/product/product-table/produc
 
     NgxSliderModule,
     NgxPaginationModule,
+    NgbModule,
     MatTableModule,
     NgxPaginationModule,
     NotificationModule,
