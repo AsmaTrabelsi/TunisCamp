@@ -19,7 +19,7 @@ Tunis Camp is a web application that allows users to explore and reserve camping
 To run Tunis Camp locally, please follow these steps:
 
 1- Clone the repository: git clone https://github.com/your-username/tunis-camp.git
-1- Navigate to the project directory: cd tunis-camp
+2- Navigate to the project directory: cd tunis-camp
 3- Set up the backend:
 Install dependencies and build the Spring Boot project.
 Configure the database connection and Google Maps API key in the application properties file.
